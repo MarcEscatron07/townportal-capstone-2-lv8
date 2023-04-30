@@ -1,1 +1,1 @@
-require('./bootstrap/bootstrap.bundle');
+/** APPLY CUSTOM JS CODE HERE */

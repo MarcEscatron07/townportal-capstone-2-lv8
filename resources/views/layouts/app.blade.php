@@ -17,6 +17,8 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
+    <link href="{{ asset('css/bootstrap/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/fontawesome/all.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -79,5 +81,11 @@
             @yield('content')
         </main>
     </div>
+
+    <script src="{{ asset('js/bootstrap/bootstrap.bundle.js') }}"></script>
+    <script src="{{ asset('js/fontawesome/all.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+
+    @yield('script')
 </body>
 </html>
