@@ -20,6 +20,8 @@
     <link href="{{ asset('css/bootstrap/bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('css/fontawesome/all.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    @yield('link')
 </head>
 <body>
     <div id="app">
