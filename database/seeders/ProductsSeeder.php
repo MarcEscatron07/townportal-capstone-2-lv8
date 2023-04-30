@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class NetworksSeeder extends Seeder
+class ProductsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,6 +13,6 @@ class NetworksSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Network::factory(5)->create();
+        \App\Models\Product::factory(5)->create();
     }
 }

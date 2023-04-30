@@ -16,7 +16,7 @@ class CreatePeripheralsTable extends Migration
         Schema::create('peripherals', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('computer_id')->unsigned()->index();
-            $table->bigInteger('types_id')->unsigned()->index();
+            $table->bigInteger('type_id')->unsigned()->index();
             $table->string('name');
             $table->string('brand')->nullable();
             $table->string('model')->nullable();
@@ -26,7 +26,7 @@ class CreatePeripheralsTable extends Migration
             $table->timestamps();
 
             $table->foreign('computer_id')->references('id')->on('computers');
-            $table->foreign('types_id')->references('id')->on('types');
+            $table->foreign('type_id')->references('id')->on('types');
         });
     }
 
@@ -41,8 +41,8 @@ class CreatePeripheralsTable extends Migration
             $table->dropForeign(['computer_id']);
             $table->dropColumn('computer_id');
 
-            $table->dropForeign(['types_id']);
-            $table->dropColumn('types_id');
+            $table->dropForeign(['type_id']);
+            $table->dropColumn('type_id');
         });
 
         Schema::dropIfExists('peripherals');

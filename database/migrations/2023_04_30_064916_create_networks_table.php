@@ -15,8 +15,8 @@ class CreateNetworksTable extends Migration
     {
         Schema::create('networks', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->string('isp'); // Internet Service Provider
+            $table->string('name');
+            $table->string('provider')->nullable(); // Internet Service Provider
             $table->decimal('cost', 18, 2)->nullable();
             $table->text('remarks')->nullable();
             $table->timestamps();
