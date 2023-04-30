@@ -19,6 +19,7 @@ class CreatePeripheralsTable extends Migration
             $table->bigInteger('types_id')->unsigned()->index();
             $table->string('name');
             $table->string('brand')->nullable();
+            $table->string('model')->nullable();
             $table->string('serial_number')->nullable();
             $table->decimal('cost', 18, 2)->nullable();
             $table->text('remarks')->nullable();
