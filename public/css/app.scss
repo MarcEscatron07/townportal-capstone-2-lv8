@@ -1,0 +1,22 @@
+@font-face {
+    font-family: "Titillium Web";
+    src: url(../fonts/titillium_web/TitilliumWeb-Regular.ttf);
+}
+
+@font-face {
+    font-family: "Open Sans";
+    src: url(../fonts/open_sans/OpenSans-Regular.ttf);
+}
+
+
+h1, h2, .navbar-links a {
+    font-family: "Titillium Web";
+}
+
+html, body {
+    font-family: "Open Sans";
+}
+
+html {
+    scroll-behavior: smooth;
+}
