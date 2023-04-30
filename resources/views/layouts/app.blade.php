@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/bootstrap/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/tabler/tabler.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/fontawesome/all.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
@@ -85,6 +86,7 @@
     </div>
 
     <script src="{{ asset('js/bootstrap/bootstrap.bundle.js') }}"></script>
+    <script src="{{ asset('js/tabler/tabler.min.js') }}"></script>
     <script src="{{ asset('js/fontawesome/all.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
 
