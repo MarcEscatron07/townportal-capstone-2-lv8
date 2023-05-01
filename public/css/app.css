@@ -23,10 +23,10 @@ html {
   color: white;
 }
 .nav-pills a:hover {
-  color: #c7c700;
+  color: #d28800;
 }
 .nav-pills .nav-link.active {
-  color: #ffff00;
+  color: #f59f00;
 }
 
 /* CSS Ruleset for Welcome */
