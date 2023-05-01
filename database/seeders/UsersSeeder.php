@@ -39,7 +39,7 @@ class UsersSeeder extends Seeder
                 'fname' => 'Joshua',
                 'mname' => 'Siga',
                 'lname' => 'Alarva',
-                'username' => 'kewnie',
+                'username' => 'kewnie25',
                 'email' => 'kewnie@gmail.com',
                 'password' => Hash::make('passstaff'),
             ],

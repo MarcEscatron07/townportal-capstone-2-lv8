@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/bootstrap/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/tabler/tabler.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/fontawesome/all.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
@@ -57,19 +58,18 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                                <a href="{{ route('home') }}" class="nav-link dropdown-toggle d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open User Menu">
+                                    <img class="avatar avatar-sm" src="{{ asset('images/profile-default.png') }}" alt="user-avatar">
+                                    <div class="d-none d-xl-block ps-2">
+                                        <div class="text-success">{{ \Illuminate\Support\Facades\Auth::user()->username }}</div>
+                                        {{-- <div class="mt-1 small text-white">{{ strtoupper(Auth::user()->office) }}</div> --}}
+                                    </div>
                                 </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                    <a href="{{ route('home') }}" class="dropdown-item">Profile</a>
+                                    <form action="{{ route('logout') }}" method="POST">
                                         @csrf
+                                        <button type="submit" class="dropdown-item">Logout</button>
                                     </form>
                                 </div>
                             </li>
@@ -85,6 +85,7 @@
     </div>
 
     <script src="{{ asset('js/bootstrap/bootstrap.bundle.js') }}"></script>
+    {{-- <script src="{{ asset('js/tabler/tabler.min.js') }}"></script> --}}
     <script src="{{ asset('js/fontawesome/all.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
 

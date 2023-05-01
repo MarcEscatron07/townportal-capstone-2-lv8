@@ -1,3 +1,10 @@
+$primary-theme: #616876;
+$secondary-theme: #ffffff;
+$tertiary-theme: #f59f00;
+
+$tertiary-hover: #d28800;
+
+
 @font-face {
     font-family: "Titillium Web";
     src: url(../fonts/titillium_web/TitilliumWeb-Regular.ttf);
@@ -20,3 +27,36 @@ html, body {
 html {
     scroll-behavior: smooth;
 }
+
+/* CSS Ruleset for Welcome */
+.nav-pills {
+    a {
+        color: white;
+        &:hover {
+            color: $tertiary-hover;
+        }
+    }
+
+    .nav-link {
+        &.active {
+            color: $tertiary-theme;
+        }
+    }
+}
+
+.dropdown {
+    .dropdown-toggle {
+        &::after {
+            display: inline-block;
+            margin-left: 0.255em;
+            vertical-align: 0.255em;
+            content: "";
+            border-top: 0.3em solid;
+            border-right: 0.3em solid transparent;
+            border-bottom: 0;
+            border-left: 0.3em solid transparent;
+            transform: unset;
+        }
+    }
+}
+/* CSS Ruleset for Welcome */
