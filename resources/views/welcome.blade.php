@@ -9,7 +9,7 @@
             <div class="content">
                 <div class="accounts-container">
                     <div class="mx-5 px-5">
-                        <h1 class="mb-3 text-center">*Accounts*</h1>
+                        <h1 class="mb-3 text-center">&lt; Accounts &gt;</h1>
                         <hr>
                         <h2>Owner</h2>
                         <ul class="list-unstyled">
