@@ -14,10 +14,10 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ url('css/bootstrap/bootstrap.css') }}" rel="stylesheet">
-    <link href="{{ url('css/tabler/tabler.min.css') }}" rel="stylesheet">
-    <link href="{{ url('css/fontawesome/all.css') }}" rel="stylesheet">
-    <link href="{{ url('css/app.css') }}" rel="stylesheet">
+    <link href="{{ url('public/css/bootstrap/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ url('public/css/tabler/tabler.min.css') }}" rel="stylesheet">
+    <link href="{{ url('public/css/fontawesome/all.css') }}" rel="stylesheet">
+    <link href="{{ url('public/css/app.css') }}" rel="stylesheet">
 
     @yield('link')
 </head>
@@ -43,10 +43,10 @@
         </main>
     </div>
 
-    <script src="{{ url('js/bootstrap/bootstrap.bundle.js') }}"></script>
-    <script src="{{ url('js/tabler/tabler.min.js') }}"></script>
-    <script src="{{ url('js/fontawesome/all.js') }}"></script>
-    <script src="{{ url('js/app.js') }}"></script>
+    <script src="{{ url('public/js/bootstrap/bootstrap.bundle.js') }}"></script>
+    <script src="{{ url('public/js/tabler/tabler.min.js') }}"></script>
+    <script src="{{ url('public/js/fontawesome/all.js') }}"></script>
+    <script src="{{ url('public/js/app.js') }}"></script>
 
     @yield('script')
 </body>
