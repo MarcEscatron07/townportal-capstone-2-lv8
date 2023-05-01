@@ -9,18 +9,15 @@
 
     <title>{{ config('app.name', 'Laravel') }} | @yield('title')</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/bootstrap/bootstrap.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/tabler/tabler.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/fontawesome/all.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ url('css/bootstrap/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ url('css/tabler/tabler.min.css') }}" rel="stylesheet">
+    <link href="{{ url('css/fontawesome/all.css') }}" rel="stylesheet">
+    <link href="{{ url('css/app.css') }}" rel="stylesheet">
 
     @yield('link')
 </head>
@@ -46,10 +43,10 @@
         </main>
     </div>
 
-    <script src="{{ asset('js/bootstrap/bootstrap.bundle.js') }}"></script>
-    <script src="{{ asset('js/tabler/tabler.min.js') }}"></script>
-    <script src="{{ asset('js/fontawesome/all.js') }}"></script>
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ url('js/bootstrap/bootstrap.bundle.js') }}"></script>
+    <script src="{{ url('js/tabler/tabler.min.js') }}"></script>
+    <script src="{{ url('js/fontawesome/all.js') }}"></script>
+    <script src="{{ url('js/app.js') }}"></script>
 
     @yield('script')
 </body>
