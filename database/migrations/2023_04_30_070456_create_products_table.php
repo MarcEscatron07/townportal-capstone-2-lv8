@@ -21,8 +21,6 @@ class CreateProductsTable extends Migration
             $table->decimal('cost', 18, 2)->nullable();
             $table->text('remarks')->nullable();
             $table->timestamps();
-
-            $table->foreign('category_id')->references('id')->on('categories');
         });
     }
 
@@ -33,11 +31,6 @@ class CreateProductsTable extends Migration
      */
     public function down()
     {
-        Schema::table('products', function (Blueprint $table) {
-            $table->dropForeign(['category_id']);
-            $table->dropColumn('category_id');
-        });
-
         Schema::dropIfExists('products');
     }
 }
