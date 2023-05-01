@@ -11,7 +11,7 @@
         "APP_NAME": "Town Portal",
         "APP_ENV": "production",
         "APP_DEBUG": "true",
-        "APP_URL": "https://townportal-capstone-2-lv8.vercel.app/public",
+        "APP_URL": "https://townportal-capstone-2-lv8.vercel.app",
 
         "ASSET_URL": "https://townportal-capstone-2-lv8.vercel.app/public",
 
