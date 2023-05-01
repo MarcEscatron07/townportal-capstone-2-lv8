@@ -93,7 +93,7 @@
             <div class="sidenav-mid">
                 <!-- Navigation Links -->
                 <ul class="navigation-list">
-                    <li class="row m-0" title="Home">
+                    <li class="row @yield('home-active')" title="Home">
                         <div class="col-sm-2 d-flex align-items-center justify-content-center">
                             <i class="fa fa-home"></i>
                         </div>
@@ -101,7 +101,7 @@
                             Home
                         </div>
                     </li>
-                    <li class="row m-0" title="Networks">
+                    <li class="row @yield('networks-active')" title="Networks">
                         <div class="col-sm-2 d-flex align-items-center justify-content-center">
                             <i class="fa fa-network-wired"></i>
                         </div>
@@ -109,7 +109,7 @@
                             Networks
                         </div>
                     </li>
-                    <li class="row m-0" title="Computers">
+                    <li class="row @yield('computers-active')" title="Computers">
                         <div class="col-sm-2 d-flex align-items-center justify-content-center">
                             <i class="fa fa-computer"></i>
                         </div>
@@ -117,7 +117,7 @@
                             Computers
                         </div>
                     </li>
-                    <li class="row m-0" title="Peripherals">
+                    <li class="row @yield('peripherals-active')" title="Peripherals">
                         <div class="col-sm-2 d-flex align-items-center justify-content-center">
                             <i class="fa fa-keyboard"></i>
                         </div>
@@ -125,7 +125,7 @@
                             Peripherals
                         </div>
                     </li>
-                    <li class="row m-0" title="Products">
+                    <li class="row @yield('products-active')" title="Products">
                         <div class="col-sm-2 d-flex align-items-center justify-content-center">
                             <i class="fa fa-box"></i>
                         </div>
@@ -134,14 +134,14 @@
                         </div>
                     </li>
                     @if(Auth::user()->role_id === 1)
-                    <li class="row m-0" title="Users">
-                        <div class="col-sm-2 d-flex align-items-center justify-content-center">
-                            <i class="fa fa-users"></i>
-                        </div>
-                        <div class="col-10 d-none d-sm-flex">
-                            Users
-                        </div>
-                    </li>
+                        <li class="row @yield('users-active')" title="Users">
+                            <div class="col-sm-2 d-flex align-items-center justify-content-center">
+                                <i class="fa fa-users"></i>
+                            </div>
+                            <div class="col-10 d-none d-sm-flex">
+                                Users
+                            </div>
+                        </li>
                     @endif
                 </ul>
             </div>

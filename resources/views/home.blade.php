@@ -2,6 +2,8 @@
 
 @section('title', 'Home')
 
+@section('home-active','active')
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

@@ -105,8 +105,13 @@ body {
                 text-align: left;
                 min-height: 50px;
                 padding: 20px;
+                margin: 0px;
 
                 &:hover {
+                    background-color: #213150;
+                }
+
+                &.active {
                     background-color: #213150;
                 }
             }

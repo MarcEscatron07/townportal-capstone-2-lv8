@@ -86,8 +86,12 @@ body {
   text-align: left;
   min-height: 50px;
   padding: 20px;
+  margin: 0px;
 }
 .sidenav .sidenav-mid .navigation-list li:hover {
+  background-color: #213150;
+}
+.sidenav .sidenav-mid .navigation-list li.active {
   background-color: #213150;
 }
 .sidenav .sidenav-bot {
