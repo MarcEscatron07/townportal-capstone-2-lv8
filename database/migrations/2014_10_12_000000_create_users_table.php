@@ -26,8 +26,6 @@ class CreateUsersTable extends Migration
             $table->string('image')->nullable()->default('images/profile-default.png');
             $table->rememberToken();
             $table->timestamps();
-
-            $table->foreign('role_id')->references('id')->on('roles');
         });
     }
 
@@ -38,11 +36,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropForeign(['role_id']);
-            $table->dropColumn('role_id');
-        });
-
         Schema::dropIfExists('users');
     }
 }

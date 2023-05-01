@@ -21,9 +21,6 @@ class CreateComputersTable extends Migration
             $table->string('unit');
             $table->text('remarks')->nullable();
             $table->timestamps();
-
-            $table->foreign('network_id')->references('id')->on('networks');
-            $table->foreign('status_id')->references('id')->on('statuses');
         });
     }
 
@@ -34,14 +31,6 @@ class CreateComputersTable extends Migration
      */
     public function down()
     {
-        Schema::table('computers', function (Blueprint $table) {
-            $table->dropForeign(['network_id']);
-            $table->dropColumn('network_id');
-
-            $table->dropForeign(['status_id']);
-            $table->dropColumn('status_id');
-        });
-
         Schema::dropIfExists('computers');
     }
 }

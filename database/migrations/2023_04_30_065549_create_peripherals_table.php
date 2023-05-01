@@ -24,9 +24,6 @@ class CreatePeripheralsTable extends Migration
             $table->decimal('cost', 18, 2)->nullable();
             $table->text('remarks')->nullable();
             $table->timestamps();
-
-            $table->foreign('computer_id')->references('id')->on('computers');
-            $table->foreign('type_id')->references('id')->on('types');
         });
     }
 
@@ -37,14 +34,6 @@ class CreatePeripheralsTable extends Migration
      */
     public function down()
     {
-        Schema::table('peripherals', function (Blueprint $table) {
-            $table->dropForeign(['computer_id']);
-            $table->dropColumn('computer_id');
-
-            $table->dropForeign(['type_id']);
-            $table->dropColumn('type_id');
-        });
-
         Schema::dropIfExists('peripherals');
     }
 }
