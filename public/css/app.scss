@@ -45,6 +45,10 @@ body {
 
 .navbar {
     z-index: 99999;
+
+    .navbar-brand {
+        color: $primary-theme;
+    }
 }
 
 .sidenav {
@@ -171,7 +175,7 @@ body {
 /* CSS Ruleset for Home */
 
 
-@media screen and (max-width: 575px){ // Bootstrap Breakpoint: Extra Small
+@media screen and (max-width: 576px){ // Bootstrap Breakpoint: Extra Small
     #appNavbar, #appMain {
         margin-left: $sidenav-width-mobile;
     }
@@ -181,14 +185,20 @@ body {
     }
 }
 
-@media screen and (min-width: 576px) and (max-width: 767px){ // Bootstrap Breakpoint: Small
+@media screen and (min-width: 576px) and (max-width: 768px){ // Bootstrap Breakpoint: Small
+    #appNavbar, #appMain {
+        margin-left: $sidenav-width-default;
+    }
+
+    .sidenav {
+        min-width: $sidenav-width-default;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px){ // Bootstrap Breakpoint: Medium
 
 }
 
-@media screen and (min-width: 768px) and (max-width: 991px){ // Bootstrap Breakpoint: Medium
-
-}
-
-@media screen and (min-width: 992px) and (max-width: 1199px){ // Bootstrap Breakpoint: Large
+@media screen and (min-width: 992px) and (max-width: 1200px){ // Bootstrap Breakpoint: Large
 
 }

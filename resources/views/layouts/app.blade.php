@@ -28,9 +28,11 @@
     <div id="app">
         <nav id="appNavbar" class="navbar navbar-expand-md navbar-light bg-light shadow-sm">
             <div class="container px-4">
-                {{-- <a class="navbar-brand text-white" href="{{ route('home') }}">
-                    <span class="app-logo"><i class="fa fa-scroll me-2"></i> {{ config('app.name', 'Laravel') }}</span>
-                </a> --}}
+                <a class="navbar-brand d-inline d-sm-none" href="{{ route('home') }}">
+                    <span class="app-logo" title="{{ config('app.name', 'Laravel') }}">
+                        <strong class="d-block">{{ config('app.name', 'Laravel') }}</strong>
+                    </span>
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>

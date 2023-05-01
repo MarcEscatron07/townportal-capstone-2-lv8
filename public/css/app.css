@@ -30,6 +30,9 @@ body {
 .navbar {
   z-index: 99999;
 }
+.navbar .navbar-brand {
+  color: #1d273b;
+}
 
 .sidenav {
   position: fixed;
@@ -132,12 +135,20 @@ body {
 /* CSS Ruleset for Welcome */
 /* CSS Ruleset for Home */
 /* CSS Ruleset for Home */
-@media screen and (max-width: 575px) {
+@media screen and (max-width: 576px) {
   #appNavbar, #appMain {
     margin-left: 100px;
   }
   .sidenav {
     min-width: 100px;
+  }
+}
+@media screen and (min-width: 576px) and (max-width: 768px) {
+  #appNavbar, #appMain {
+    margin-left: 250px;
+  }
+  .sidenav {
+    min-width: 250px;
   }
 }
 
