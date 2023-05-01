@@ -69,28 +69,23 @@ body {
 }
 .sidenav .sidenav-mid .navigation-list {
   list-style-type: none;
-  color: #ffffff;
   padding: 0px;
 }
 .sidenav .sidenav-mid .navigation-list li {
   cursor: pointer;
 }
+.sidenav .sidenav-mid .navigation-list li:hover {
+  background-color: #213150;
+}
+.sidenav .sidenav-mid .navigation-list li.active {
+  background-color: #213150;
+}
 .sidenav .sidenav-mid .navigation-list .navigation-link {
-  position: relative;
-  min-height: 50px;
   width: 100%;
-  display: flex;
-  align-items: center;
   padding: 20px;
   margin: 0px;
   color: #ffffff;
   text-decoration: none;
-}
-.sidenav .sidenav-mid .navigation-list .navigation-link:hover {
-  background-color: #213150;
-}
-.sidenav .sidenav-mid .navigation-list .navigation-link.active {
-  background-color: #213150;
 }
 .sidenav .sidenav-bot {
   height: 8%;
