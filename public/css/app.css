@@ -27,8 +27,8 @@ body {
   margin-left: 0px;
 }
 
-.app-logo {
-  font-size: 1.2rem;
+.navbar {
+  z-index: 99999;
 }
 
 .sidenav {
@@ -39,6 +39,7 @@ body {
   height: 100vh;
   min-width: 250px;
   background-color: #1d273b;
+  z-index: 99999;
 }
 .sidenav .sidenav-top {
   height: 8%;
@@ -58,6 +59,7 @@ body {
   font-size: 1rem;
   white-space: nowrap;
   text-decoration: none;
+  color: #ffffff;
 }
 .sidenav .sidenav-mid {
   height: 84%;
@@ -96,10 +98,14 @@ body {
   color: #ffffff;
 }
 
+.app-logo {
+  font-size: 1.2rem;
+}
+
 /* CSS Ruleset for Layout (App) */
 /* CSS Ruleset for Welcome */
 .nav-pills a {
-  color: white;
+  color: #ffffff;
 }
 .nav-pills a:hover {
   color: #d28800;
@@ -119,9 +125,20 @@ body {
   border-left: 0.3em solid transparent;
   transform: unset;
 }
+.dropdown .dropdown-menu-arrow::before {
+  display: none;
+}
 
 /* CSS Ruleset for Welcome */
 /* CSS Ruleset for Home */
 /* CSS Ruleset for Home */
+@media screen and (max-width: 575px) {
+  #appNavbar, #appMain {
+    margin-left: 100px;
+  }
+  .sidenav {
+    min-width: 100px;
+  }
+}
 
 /*# sourceMappingURL=app.css.map */

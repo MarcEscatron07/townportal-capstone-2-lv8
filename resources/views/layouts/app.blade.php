@@ -60,7 +60,7 @@
                             <li class="nav-item dropdown">
                                 <a href="{{ route('home') }}" class="nav-link dropdown-toggle d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open User Menu">
                                     <img class="avatar avatar-sm" src="{{ asset('images/profile-default.png') }}" alt="user-avatar">
-                                    <div class="d-none d-xl-block ps-2">
+                                    <div class="d-none d-sm-block ps-2">
                                         <div class="text-success">{{ \Illuminate\Support\Facades\Auth::user()->username }}</div>
                                         {{-- <div class="mt-1 small text-white">{{ strtoupper(Auth::user()->office) }}</div> --}}
                                     </div>
@@ -69,7 +69,7 @@
                                     <a href="{{ route('home') }}" class="dropdown-item">Profile</a>
                                     <form action="{{ route('logout') }}" method="POST">
                                         @csrf
-                                        <button type="submit" class="dropdown-item">Logout</button>
+                                        <button type="submit" class="dropdown-item d-flex w-100">Logout</button>
                                     </form>
                                 </div>
                             </li>
@@ -81,58 +81,61 @@
 
         <aside class="sidenav">
             <div class="sidenav-top">
-                <a class="sidenav-brand text-white" href="{{ route('home') }}">
-                    <span class="app-logo"><i class="fa fa-scroll me-2"></i> {{ config('app.name', 'Laravel') }}</span>
+                <a class="sidenav-brand" href="{{ route('home') }}">
+                    <span class="app-logo" title="{{ config('app.name', 'Laravel') }}">
+                        <i class="fa fa-scroll me-sm-2"></i>
+                        <strong class="d-none d-sm-inline">{{ config('app.name', 'Laravel') }}</strong>
+                    </span>
                 </a>
             </div>
             <div class="sidenav-mid">
                 <!-- Navigation Links -->
                 <ul class="navigation-list">
-                    <li class="row m-0">
-                        <div class="col-2">
+                    <li class="row m-0" title="Home">
+                        <div class="col-sm-2 d-flex align-items-center justify-content-center">
                             <i class="fa fa-home"></i>
                         </div>
-                        <div class="col-10">
+                        <div class="col-10 d-none d-sm-flex">
                             Home
                         </div>
                     </li>
-                    <li class="row m-0">
-                        <div class="col-2">
+                    <li class="row m-0" title="Networks">
+                        <div class="col-sm-2 d-flex align-items-center justify-content-center">
                             <i class="fa fa-network-wired"></i>
                         </div>
-                        <div class="col-10">
+                        <div class="col-10 d-none d-sm-flex">
                             Networks
                         </div>
                     </li>
-                    <li class="row m-0">
-                        <div class="col-2">
+                    <li class="row m-0" title="Computers">
+                        <div class="col-sm-2 d-flex align-items-center justify-content-center">
                             <i class="fa fa-computer"></i>
                         </div>
-                        <div class="col-10">
+                        <div class="col-10 d-none d-sm-flex">
                             Computers
                         </div>
                     </li>
-                    <li class="row m-0">
-                        <div class="col-2">
+                    <li class="row m-0" title="Peripherals">
+                        <div class="col-sm-2 d-flex align-items-center justify-content-center">
                             <i class="fa fa-keyboard"></i>
                         </div>
-                        <div class="col-10">
+                        <div class="col-10 d-none d-sm-flex">
                             Peripherals
                         </div>
                     </li>
-                    <li class="row m-0">
-                        <div class="col-2">
+                    <li class="row m-0" title="Products">
+                        <div class="col-sm-2 d-flex align-items-center justify-content-center">
                             <i class="fa fa-box"></i>
                         </div>
-                        <div class="col-10">
+                        <div class="col-10 d-none d-sm-flex">
                             Products
                         </div>
                     </li>
-                    <li class="row m-0">
-                        <div class="col-2">
+                    <li class="row m-0" title="Users">
+                        <div class="col-sm-2 d-flex align-items-center justify-content-center">
                             <i class="fa fa-users"></i>
                         </div>
-                        <div class="col-10">
+                        <div class="col-10 d-none d-sm-flex">
                             Users
                         </div>
                     </li>

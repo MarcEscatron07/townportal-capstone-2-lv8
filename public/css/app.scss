@@ -6,7 +6,8 @@ $primary-hover: #213150;
 $secondary-hover: #c7c7c7;
 $tertiary-hover: #d28800;
 
-$sidenav-width: 250px;
+$sidenav-width-default: 250px;
+$sidenav-width-mobile: 100px;
 
 
 @font-face {
@@ -35,15 +36,15 @@ body {
 
 /* CSS Ruleset for Layout (App) */
 #appNavbar, #appMain {
-    margin-left: $sidenav-width;
+    margin-left: $sidenav-width-default;
 }
 
 #guestNavbar, #guestMain {
     margin-left: 0px;
 }
 
-.app-logo {
-    font-size: 1.2rem;
+.navbar {
+    z-index: 99999;
 }
 
 .sidenav {
@@ -52,8 +53,9 @@ body {
     display: flex;
     flex-direction: column;
     height: 100vh;
-    min-width: $sidenav-width;
+    min-width: $sidenav-width-default;
     background-color: $primary-theme;
+    z-index: 99999;
 
     .sidenav-top {
         height: 8%;
@@ -73,6 +75,7 @@ body {
             font-size: 1rem;
             white-space: nowrap;
             text-decoration: none;
+            color: $secondary-theme;
         }
     }
 
@@ -118,12 +121,16 @@ body {
         }
     }
 }
+
+.app-logo {
+    font-size: 1.2rem;
+}
 /* CSS Ruleset for Layout (App) */
 
 /* CSS Ruleset for Welcome */
 .nav-pills {
     a {
-        color: white;
+        color: $secondary-theme;
         &:hover {
             color: $tertiary-hover;
         }
@@ -150,6 +157,12 @@ body {
             transform: unset;
         }
     }
+
+    .dropdown-menu-arrow {
+        &::before {
+            display: none;
+        }
+    }
 }
 /* CSS Ruleset for Welcome */
 
@@ -159,7 +172,13 @@ body {
 
 
 @media screen and (max-width: 575px){ // Bootstrap Breakpoint: Extra Small
+    #appNavbar, #appMain {
+        margin-left: $sidenav-width-mobile;
+    }
 
+    .sidenav {
+        min-width: $sidenav-width-mobile;
+    }
 }
 
 @media screen and (min-width: 576px) and (max-width: 767px){ // Bootstrap Breakpoint: Small
