@@ -14,10 +14,10 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ url('public/css/bootstrap/bootstrap.css') }}" rel="stylesheet">
-    <link href="{{ url('public/css/tabler/tabler.min.css') }}" rel="stylesheet">
-    <link href="{{ url('public/css/fontawesome/all.css') }}" rel="stylesheet">
-    <link href="{{ url('public/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/tabler/tabler.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/fontawesome/all.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     @yield('link')
 </head>
@@ -58,7 +58,7 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a href="{{ route('home') }}" class="nav-link dropdown-toggle d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open User Menu">
-                                    <img class="avatar avatar-sm" src="{{ url('public/images/profile-default.png') }}" alt="user-avatar">
+                                    <img class="avatar avatar-sm" src="{{ asset('images/profile-default.png') }}" alt="user-avatar">
                                     <div class="d-none d-sm-block ps-2">
                                         <div class="text-success">{{ \Illuminate\Support\Facades\Auth::user()->username }}</div>
                                         {{-- <div class="mt-1 small text-white">{{ strtoupper(Auth::user()->office) }}</div> --}}
@@ -164,10 +164,10 @@
         </main>
     </div>
 
-    <script src="{{ url('public/js/bootstrap/bootstrap.bundle.js') }}"></script>
-    {{-- <script src="{{ url('public/js/tabler/tabler.min.js') }}"></script> --}}
-    <script src="{{ url('public/js/fontawesome/all.js') }}"></script>
-    <script src="{{ url('public/js/app.js') }}"></script>
+    <script src="{{ asset('js/bootstrap/bootstrap.bundle.js') }}"></script>
+    {{-- <script src="{{ asset('js/tabler/tabler.min.js') }}"></script> --}}
+    <script src="{{ asset('js/fontawesome/all.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 
     @yield('script')
 </body>
