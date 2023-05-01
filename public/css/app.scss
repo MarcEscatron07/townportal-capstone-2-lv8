@@ -32,8 +32,16 @@ body {
 
 
 /* CSS Ruleset for Layout (App) */
-.navbar {
+#appNavbar, #appMain {
     margin-left: $sidenav-width;
+}
+
+#guestNavbar, #guestMain {
+    margin-left: 0px;
+}
+
+.app-logo {
+    font-size: 1.2rem;
 }
 
 .sidenav {
@@ -107,10 +115,6 @@ body {
             color: $secondary-theme;
         }
     }
-}
-
-main {
-    margin-left: $sidenav-width;
 }
 /* CSS Ruleset for Layout (App) */
 

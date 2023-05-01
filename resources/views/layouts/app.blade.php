@@ -26,11 +26,11 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-light shadow-sm">
+        <nav id="appNavbar" class="navbar navbar-expand-md navbar-light bg-light shadow-sm">
             <div class="container px-4">
-                {{-- <a class="navbar-brand text-white" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a> --}}
+                <a class="navbar-brand text-white" href="{{ route('home') }}">
+                    <span class="app-logo"><i class="fa fa-scroll me-2"></i> {{ config('app.name', 'Laravel') }}</span>
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -81,8 +81,8 @@
 
         <aside class="sidenav">
             <div class="sidenav-top">
-                <a class="sidenav-brand text-white" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                <a class="sidenav-brand text-white" href="{{ route('home') }}">
+                    <span class="app-logo"><i class="fa fa-scroll me-2"></i> {{ config('app.name', 'Laravel') }}</span>
                 </a>
             </div>
             <div class="sidenav-mid">
@@ -114,7 +114,7 @@
                     </li>
                     <li class="row m-0">
                         <div class="col-2">
-                            <i class="fa fa-computer-mouse"></i>
+                            <i class="fa fa-keyboard"></i>
                         </div>
                         <div class="col-10">
                             Peripherals
@@ -131,11 +131,11 @@
                 </ul>
             </div>
             <div class="sidenav-bot">
-                <span>T.P.A.M.S. v3.0</span>
+                <span title="Town Portal Asset Management System">T.P.A.M.S. v3.0</span>
             </div>
         </aside>
 
-        <main class="py-4 px-3">
+        <main id="appMain" class="py-4 px-3">
             @yield('content')
         </main>
     </div>
