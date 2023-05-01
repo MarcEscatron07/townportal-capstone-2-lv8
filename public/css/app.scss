@@ -93,19 +93,18 @@ body {
 
             li {
                 cursor: pointer;
-                display: flex;
-                -webkit-box-pack: start;
-                justify-content: flex-start;
-                -webkit-box-align: center;
-                align-items: center;
+            }
+
+            .navigation-link {
                 position: relative;
-                text-decoration: none;
-                width: 100%;
-                box-sizing: border-box;
-                text-align: left;
                 min-height: 50px;
+                width: 100%;
+                display: flex;
+                align-items: center;
                 padding: 20px;
                 margin: 0px;
+                color: $secondary-theme;
+                text-decoration: none;
 
                 &:hover {
                     background-color: #213150;

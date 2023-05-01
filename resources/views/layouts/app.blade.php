@@ -93,54 +93,66 @@
             <div class="sidenav-mid">
                 <!-- Navigation Links -->
                 <ul class="navigation-list">
-                    <li class="row @yield('home-active')" title="Home">
-                        <div class="col-sm-2 d-flex align-items-center justify-content-center">
-                            <i class="fa fa-home"></i>
-                        </div>
-                        <div class="col-10 d-none d-sm-flex">
-                            Home
-                        </div>
-                    </li>
-                    <li class="row @yield('networks-active')" title="Networks">
-                        <div class="col-sm-2 d-flex align-items-center justify-content-center">
-                            <i class="fa fa-network-wired"></i>
-                        </div>
-                        <div class="col-10 d-none d-sm-flex">
-                            Networks
-                        </div>
-                    </li>
-                    <li class="row @yield('computers-active')" title="Computers">
-                        <div class="col-sm-2 d-flex align-items-center justify-content-center">
-                            <i class="fa fa-computer"></i>
-                        </div>
-                        <div class="col-10 d-none d-sm-flex">
-                            Computers
-                        </div>
-                    </li>
-                    <li class="row @yield('peripherals-active')" title="Peripherals">
-                        <div class="col-sm-2 d-flex align-items-center justify-content-center">
-                            <i class="fa fa-keyboard"></i>
-                        </div>
-                        <div class="col-10 d-none d-sm-flex">
-                            Peripherals
-                        </div>
-                    </li>
-                    <li class="row @yield('products-active')" title="Products">
-                        <div class="col-sm-2 d-flex align-items-center justify-content-center">
-                            <i class="fa fa-box"></i>
-                        </div>
-                        <div class="col-10 d-none d-sm-flex">
-                            Products
-                        </div>
-                    </li>
-                    @if(Auth::user()->role_id === 1)
-                        <li class="row @yield('users-active')" title="Users">
+                    <li class="@yield('home-active')" title="Home">
+                        <a href="{{ route('home') }}" class="navigation-link row">
                             <div class="col-sm-2 d-flex align-items-center justify-content-center">
-                                <i class="fa fa-users"></i>
+                                <i class="fa fa-home"></i>
                             </div>
                             <div class="col-10 d-none d-sm-flex">
-                                Users
+                                Home
                             </div>
+                        </a>
+                    </li>
+                    <li class="@yield('networks-active')" title="Networks">
+                        <a href="{{ route('networks.index') }}" class="navigation-link row">
+                            <div class="col-sm-2 d-flex align-items-center justify-content-center">
+                                <i class="fa fa-network-wired"></i>
+                            </div>
+                            <div class="col-10 d-none d-sm-flex">
+                                Networks
+                            </div>
+                        </a>
+                    </li>
+                    <li class="@yield('computers-active')" title="Computers">
+                        <a href="{{ route('computers.index') }}" class="navigation-link row">
+                            <div class="col-sm-2 d-flex align-items-center justify-content-center">
+                                <i class="fa fa-computer"></i>
+                            </div>
+                            <div class="col-10 d-none d-sm-flex">
+                                Computers
+                            </div>
+                        </a>
+                    </li>
+                    <li class="@yield('peripherals-active')" title="Peripherals">
+                        <a href="{{ route('peripherals.index') }}" class="navigation-link row">
+                            <div class="col-sm-2 d-flex align-items-center justify-content-center">
+                                <i class="fa fa-keyboard"></i>
+                            </div>
+                            <div class="col-10 d-none d-sm-flex">
+                                Peripherals
+                            </div>
+                        </a>
+                    </li>
+                    <li class="@yield('products-active')" title="Products">
+                        <a href="{{ route('products.index') }}" class="navigation-link row">
+                            <div class="col-sm-2 d-flex align-items-center justify-content-center">
+                                <i class="fa fa-box"></i>
+                            </div>
+                            <div class="col-10 d-none d-sm-flex">
+                                Products
+                            </div>
+                        </a>
+                    </li>
+                    @if(Auth::user()->role_id === 1)
+                        <li class="@yield('users-active')" title="Users">
+                            <a href="{{ route('users.index') }}" class="navigation-link row">
+                                <div class="col-sm-2 d-flex align-items-center justify-content-center">
+                                    <i class="fa fa-users"></i>
+                                </div>
+                                <div class="col-10 d-none d-sm-flex">
+                                    Users
+                                </div>
+                            </a>
                         </li>
                     @endif
                 </ul>
