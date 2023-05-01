@@ -1,8 +1,12 @@
-$primary-theme: #616876;
+$primary-theme: #1d273b;
 $secondary-theme: #ffffff;
 $tertiary-theme: #f59f00;
 
+$primary-hover: #213150;
+$secondary-hover: #c7c7c7;
 $tertiary-hover: #d28800;
+
+$sidenav-width: 250px;
 
 
 @font-face {
@@ -20,13 +24,101 @@ h1, h2, .navbar-links a {
     font-family: "Titillium Web";
 }
 
-html, body {
+body {
     font-family: "Open Sans";
 }
 
-html {
-    scroll-behavior: smooth;
+body {
+    overflow: auto;
 }
+
+
+/* CSS Ruleset for Layout (App) */
+#appNavbar, #appMain {
+    margin-left: $sidenav-width;
+}
+
+#guestNavbar, #guestMain {
+    margin-left: 0px;
+}
+
+.app-logo {
+    font-size: 1.2rem;
+}
+
+.sidenav {
+    position: fixed;
+    top: 0px;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    min-width: $sidenav-width;
+    background-color: $primary-theme;
+
+    .sidenav-top {
+        height: 8%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom: 2px solid $tertiary-theme;
+
+        .sidenav-brand {
+            display: inline-flex;
+            align-items: center;
+            font-weight: 600;
+            margin: 0;
+            line-height: 1;
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            font-size: 1rem;
+            white-space: nowrap;
+            text-decoration: none;
+        }
+    }
+
+    .sidenav-mid {
+        height: 84%;
+
+        .navigation-list {
+            list-style-type: none;
+            color: $secondary-theme;
+            padding: 0px;
+
+            li {
+                cursor: pointer;
+                display: flex;
+                -webkit-box-pack: start;
+                justify-content: flex-start;
+                -webkit-box-align: center;
+                align-items: center;
+                position: relative;
+                text-decoration: none;
+                width: 100%;
+                box-sizing: border-box;
+                text-align: left;
+                min-height: 50px;
+                padding: 20px;
+
+                &:hover {
+                    background-color: #213150;
+                }
+            }
+        }
+    }
+
+    .sidenav-bot {
+        height: 8%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-top: 2px solid $tertiary-theme;
+
+        span {
+            color: $secondary-theme;
+        }
+    }
+}
+/* CSS Ruleset for Layout (App) */
 
 /* CSS Ruleset for Welcome */
 .nav-pills {
@@ -60,3 +152,7 @@ html {
     }
 }
 /* CSS Ruleset for Welcome */
+
+/* CSS Ruleset for Home */
+
+/* CSS Ruleset for Home */

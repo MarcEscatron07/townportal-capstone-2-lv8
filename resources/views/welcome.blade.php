@@ -34,7 +34,7 @@
         </div>
 
         <div class="col-md-6">
-            <ul class="nav nav-pills d-flex flex-row text-center bg-secondary" id="pills-tab" role="tablist">
+            <ul class="nav nav-pills d-flex flex-row text-center bg-dark" id="pills-tab" role="tablist">
                 <li class="nav-item w-50">
                     <a class="nav-link rounded-0 active" id="pills-login-tab" data-bs-toggle="pill" href="#pills-login" role="tab" aria-controls="pills-login" aria-selected="true">Log In</a>
                 </li>
@@ -100,7 +100,7 @@
 
                                         @if (Route::has('password.request'))
                                             <a class="btn btn-link" href="{{ route('password.request') }}">
-                                                {{ __('Forgot Your Password?') }}
+                                                {{ __('Forgot your password?') }}
                                             </a>
                                         @endif
                                     </div>

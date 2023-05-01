@@ -26,22 +26,22 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark bg-secondary shadow-sm">
+        <nav id="guestNavbar" class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container d-flex justify-content-center">
                 <div class="text-center">
                     <a class="text-decoration-none text-white" href="{{ url('/') }}">
                         <div class="p-2">
-                            <i class="fas fa-scroll fa-2x"></i>
+                            <i class="fa fa-scroll fa-2x"></i>
                             <h1 class="header-title">Town Portal</h1>
                         </div>
                     </a>
-                    <h2 class="subheader-title m-0">Internet Cafe</h2>
+                    <h2 class="subheader-title m-0">Cyber Cafe</h2>
                     <h2 class="subheader-title">Asset Management System</h2>
                 </div>
             </div>
         </nav>
 
-        <main class="py-4">
+        <main id="guestMain" class="py-4">
             @yield('content')
         </main>
     </div>

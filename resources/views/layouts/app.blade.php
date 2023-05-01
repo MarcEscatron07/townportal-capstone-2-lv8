@@ -26,10 +26,10 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+        <nav id="appNavbar" class="navbar navbar-expand-md navbar-light bg-light shadow-sm">
+            <div class="container px-4">
+                <a class="navbar-brand text-white" href="{{ route('home') }}">
+                    <span class="app-logo"><i class="fa fa-scroll me-2"></i> {{ config('app.name', 'Laravel') }}</span>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -45,7 +45,7 @@
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
                         @guest
-                            @if (Route::has('login'))
+                            {{-- @if (Route::has('login'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
@@ -55,7 +55,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
-                            @endif
+                            @endif --}}
                         @else
                             <li class="nav-item dropdown">
                                 <a href="{{ route('home') }}" class="nav-link dropdown-toggle d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open User Menu">
@@ -79,7 +79,63 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <aside class="sidenav">
+            <div class="sidenav-top">
+                <a class="sidenav-brand text-white" href="{{ route('home') }}">
+                    <span class="app-logo"><i class="fa fa-scroll me-2"></i> {{ config('app.name', 'Laravel') }}</span>
+                </a>
+            </div>
+            <div class="sidenav-mid">
+                <!-- Navigation Links -->
+                <ul class="navigation-list">
+                    <li class="row m-0">
+                        <div class="col-2">
+                            <i class="fa fa-home"></i>
+                        </div>
+                        <div class="col-10">
+                            Home
+                        </div>
+                    </li>
+                    <li class="row m-0">
+                        <div class="col-2">
+                            <i class="fa fa-network-wired"></i>
+                        </div>
+                        <div class="col-10">
+                            Networks
+                        </div>
+                    </li>
+                    <li class="row m-0">
+                        <div class="col-2">
+                            <i class="fa fa-computer"></i>
+                        </div>
+                        <div class="col-10">
+                            Computers
+                        </div>
+                    </li>
+                    <li class="row m-0">
+                        <div class="col-2">
+                            <i class="fa fa-keyboard"></i>
+                        </div>
+                        <div class="col-10">
+                            Peripherals
+                        </div>
+                    </li>
+                    <li class="row m-0">
+                        <div class="col-2">
+                            <i class="fa fa-box"></i>
+                        </div>
+                        <div class="col-10">
+                            Products
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="sidenav-bot">
+                <span title="Town Portal Asset Management System">T.P.A.M.S. v2.0</span>
+            </div>
+        </aside>
+
+        <main id="appMain" class="py-4 px-3">
             @yield('content')
         </main>
     </div>

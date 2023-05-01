@@ -10,14 +10,93 @@ h1, h2, .navbar-links a {
   font-family: "Titillium Web";
 }
 
-html, body {
+body {
   font-family: "Open Sans";
 }
 
-html {
-  scroll-behavior: smooth;
+body {
+  overflow: auto;
 }
 
+/* CSS Ruleset for Layout (App) */
+#appNavbar, #appMain {
+  margin-left: 250px;
+}
+
+#guestNavbar, #guestMain {
+  margin-left: 0px;
+}
+
+.app-logo {
+  font-size: 1.2rem;
+}
+
+.sidenav {
+  position: fixed;
+  top: 0px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  min-width: 250px;
+  background-color: #1d273b;
+}
+.sidenav .sidenav-top {
+  height: 8%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 2px solid #f59f00;
+}
+.sidenav .sidenav-top .sidenav-brand {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 1rem;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.sidenav .sidenav-mid {
+  height: 84%;
+}
+.sidenav .sidenav-mid .navigation-list {
+  list-style-type: none;
+  color: #ffffff;
+  padding: 0px;
+}
+.sidenav .sidenav-mid .navigation-list li {
+  cursor: pointer;
+  display: flex;
+  -webkit-box-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: center;
+  align-items: center;
+  position: relative;
+  text-decoration: none;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: left;
+  min-height: 50px;
+  padding: 20px;
+}
+.sidenav .sidenav-mid .navigation-list li:hover {
+  background-color: #213150;
+}
+.sidenav .sidenav-bot {
+  height: 8%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 2px solid #f59f00;
+}
+.sidenav .sidenav-bot span {
+  color: #ffffff;
+}
+
+/* CSS Ruleset for Layout (App) */
 /* CSS Ruleset for Welcome */
 .nav-pills a {
   color: white;
@@ -42,5 +121,7 @@ html {
 }
 
 /* CSS Ruleset for Welcome */
+/* CSS Ruleset for Home */
+/* CSS Ruleset for Home */
 
 /*# sourceMappingURL=app.css.map */
