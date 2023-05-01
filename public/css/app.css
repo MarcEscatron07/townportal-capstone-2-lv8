@@ -18,4 +18,17 @@ html {
   scroll-behavior: smooth;
 }
 
+/* CSS Ruleset for Welcome */
+.nav-pills a {
+  color: white;
+}
+.nav-pills a:hover {
+  color: #c7c700;
+}
+.nav-pills .nav-link.active {
+  color: #ffff00;
+}
+
+/* CSS Ruleset for Welcome */
+
 /*# sourceMappingURL=app.css.map */
