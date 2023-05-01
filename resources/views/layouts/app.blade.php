@@ -131,7 +131,7 @@
                 </ul>
             </div>
             <div class="sidenav-bot">
-                <span title="Town Portal Asset Management System">T.P.A.M.S. v3.0</span>
+                <span title="Town Portal Asset Management System">T.P.A.M.S. v2.0</span>
             </div>
         </aside>
 
