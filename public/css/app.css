@@ -18,6 +18,21 @@ body {
   overflow: auto;
 }
 
+.page-header {
+  margin-bottom: 20px;
+  padding: 0px;
+}
+.page-header .header-title {
+  font-size: 1.3rem;
+  border-bottom: 3px solid #1d273b;
+  text-transform: uppercase;
+}
+
+.page-content {
+  min-height: 530px;
+  background-color: #ffffff;
+}
+
 /* CSS Ruleset for Layout (App) */
 #appNavbar, #appMain {
   margin-left: 250px;
@@ -130,8 +145,8 @@ body {
 }
 
 /* CSS Ruleset for Welcome */
-/* CSS Ruleset for Home */
-/* CSS Ruleset for Home */
+/* CSS Ruleset for Networks */
+/* CSS Ruleset for Networks */
 @media screen and (max-width: 576px) {
   #appNavbar, #appMain {
     margin-left: 100px;

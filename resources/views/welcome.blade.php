@@ -5,10 +5,10 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-6">
+        <div class="col-lg-6">
             <div class="content">
                 <div class="accounts-container">
-                    <div class="mx-5 px-5">
+                    <div class="px-2 mx-2 px-sm-5 mx-sm-5">
                         <h1 class="mb-3 text-center">&lt; Accounts &gt;</h1>
                         <hr>
                         <h2>Owner</h2>
@@ -33,7 +33,7 @@
             </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-lg-6">
             <ul class="nav nav-pills d-flex flex-row text-center bg-dark" id="pills-tab" role="tablist">
                 <li class="nav-item w-50">
                     <a class="nav-link rounded-0 active" id="pills-login-tab" data-bs-toggle="pill" href="#pills-login" role="tab" aria-controls="pills-login" aria-selected="true">Log In</a>
@@ -119,20 +119,6 @@
                                 @csrf
 
                                 <div class="form-group row my-2">
-                                    <label for="register_username" class="col-md-4 col-form-label text-md-right">{{ __('Username:') }}</label>
-
-                                    <div class="col-md-6">
-                                        <input id="register_username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
-
-                                        @error('username')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <div class="form-group row my-2">
                                     <label for="register_firstname" class="col-md-4 col-form-label text-md-right">{{ __('Firstname:') }}</label>
 
                                     <div class="col-md-6">
@@ -147,12 +133,40 @@
                                 </div>
 
                                 <div class="form-group row my-2">
+                                    <label for="register_middlename" class="col-md-4 col-form-label text-md-right">{{ __('Middlename:') }}</label>
+
+                                    <div class="col-md-6">
+                                        <input id="register_middlename" type="text" class="form-control @error('middlename') is-invalid @enderror" name="middlename" value="{{ old('middlename') }}" required autocomplete="middlename" autofocus>
+
+                                        @error('middlename')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="form-group row my-2">
                                     <label for="register_lastname" class="col-md-4 col-form-label text-md-right">{{ __('Lastname:') }}</label>
 
                                     <div class="col-md-6">
                                         <input id="register_lastname" type="text" class="form-control @error('lastname') is-invalid @enderror" name="lastname" value="{{ old('lastname') }}" required autocomplete="lastname" autofocus>
 
                                         @error('lastname')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="form-group row my-2">
+                                    <label for="register_username" class="col-md-4 col-form-label text-md-right">{{ __('Username:') }}</label>
+
+                                    <div class="col-md-6">
+                                        <input id="register_username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
+
+                                        @error('username')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>

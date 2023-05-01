@@ -44,7 +44,9 @@
         </nav>
 
         <main id="guestMain" class="py-4">
-            @yield('content')
+            <section>
+                @yield('content')
+            </section>
         </main>
     </div>
 

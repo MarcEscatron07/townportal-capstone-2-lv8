@@ -33,6 +33,22 @@ body {
     overflow: auto;
 }
 
+.page-header {
+    margin-bottom: 20px;
+    padding: 0px;
+
+    .header-title {
+        font-size: 1.3rem;
+        border-bottom: 3px solid $primary-theme;
+        text-transform: uppercase;
+    }
+}
+
+.page-content {
+    min-height: 530px;
+    background-color: $secondary-theme;
+}
+
 
 /* CSS Ruleset for Layout (App) */
 #appNavbar, #appMain {
@@ -169,9 +185,9 @@ body {
 }
 /* CSS Ruleset for Welcome */
 
-/* CSS Ruleset for Home */
+/* CSS Ruleset for Networks */
 
-/* CSS Ruleset for Home */
+/* CSS Ruleset for Networks */
 
 
 @media screen and (max-width: 576px){ // Bootstrap Breakpoint: Extra Small
