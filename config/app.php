@@ -54,7 +54,7 @@ return [
 
     'url' => env('APP_URL', 'http://localhost'),
 
-    'asset_url' => env('ASSET_URL', 'https://townportal-capstone-2-lv8.vercel.app/public'),
+    'asset_url' => env('ASSET_URL', 'https://townportal-capstone-2-lv8.vercel.app'),
 
     /*
     |--------------------------------------------------------------------------

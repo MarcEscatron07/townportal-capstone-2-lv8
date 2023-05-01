@@ -13,7 +13,7 @@
         "APP_DEBUG": "true",
         "APP_URL": "https://townportal-capstone-2-lv8.vercel.app",
 
-        "ASSET_URL": "https://townportal-capstone-2-lv8.vercel.app/public",
+        "ASSET_URL": "https://townportal-capstone-2-lv8.vercel.app",
 
         "DB_CONNECTION": "mysql",
         "DB_HOST": "sql12.freemysqlhosting.net",
