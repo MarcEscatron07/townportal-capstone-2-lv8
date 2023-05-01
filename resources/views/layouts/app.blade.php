@@ -128,6 +128,14 @@
                             Products
                         </div>
                     </li>
+                    <li class="row m-0">
+                        <div class="col-2">
+                            <i class="fa fa-users"></i>
+                        </div>
+                        <div class="col-10">
+                            Users
+                        </div>
+                    </li>
                 </ul>
             </div>
             <div class="sidenav-bot">
