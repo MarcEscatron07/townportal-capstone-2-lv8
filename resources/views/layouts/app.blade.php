@@ -164,8 +164,13 @@
             </div>
         </aside>
 
-        <main id="appMain" class="py-4 px-3">
-            @yield('content')
+        <main id="appMain" class="p-4">
+            <section>
+                @yield('header')
+            </section>
+            <section>
+                @yield('content')
+            </section>
         </main>
     </div>
 
