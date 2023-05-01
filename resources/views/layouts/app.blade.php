@@ -28,8 +28,10 @@
     <div id="app">
         <nav id="appNavbar" class="navbar navbar-expand-md navbar-light bg-light shadow-sm">
             <div class="container px-4">
-                <a class="navbar-brand text-white" href="{{ route('home') }}">
-                    <span class="app-logo"><i class="fa fa-scroll me-2"></i> {{ config('app.name', 'Laravel') }}</span>
+                <a class="navbar-brand d-inline d-sm-none" href="{{ route('home') }}">
+                    <span class="app-logo" title="{{ config('app.name', 'Laravel') }}">
+                        <strong class="d-block">{{ config('app.name', 'Laravel') }}</strong>
+                    </span>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -60,7 +62,7 @@
                             <li class="nav-item dropdown">
                                 <a href="{{ route('home') }}" class="nav-link dropdown-toggle d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open User Menu">
                                     <img class="avatar avatar-sm" src="{{ asset('images/profile-default.png') }}" alt="user-avatar">
-                                    <div class="d-none d-xl-block ps-2">
+                                    <div class="d-none d-sm-block ps-2">
                                         <div class="text-success">{{ \Illuminate\Support\Facades\Auth::user()->username }}</div>
                                         {{-- <div class="mt-1 small text-white">{{ strtoupper(Auth::user()->office) }}</div> --}}
                                     </div>
@@ -69,7 +71,7 @@
                                     <a href="{{ route('home') }}" class="dropdown-item">Profile</a>
                                     <form action="{{ route('logout') }}" method="POST">
                                         @csrf
-                                        <button type="submit" class="dropdown-item">Logout</button>
+                                        <button type="submit" class="dropdown-item d-flex w-100">Logout</button>
                                     </form>
                                 </div>
                             </li>
@@ -81,53 +83,78 @@
 
         <aside class="sidenav">
             <div class="sidenav-top">
-                <a class="sidenav-brand text-white" href="{{ route('home') }}">
-                    <span class="app-logo"><i class="fa fa-scroll me-2"></i> {{ config('app.name', 'Laravel') }}</span>
+                <a class="sidenav-brand" href="{{ route('home') }}">
+                    <span class="app-logo" title="{{ config('app.name', 'Laravel') }}">
+                        <i class="fa fa-scroll me-sm-2"></i>
+                        <strong class="d-none d-sm-inline">{{ config('app.name', 'Laravel') }}</strong>
+                    </span>
                 </a>
             </div>
             <div class="sidenav-mid">
                 <!-- Navigation Links -->
                 <ul class="navigation-list">
-                    <li class="row m-0">
-                        <div class="col-2">
-                            <i class="fa fa-home"></i>
-                        </div>
-                        <div class="col-10">
-                            Home
-                        </div>
+                    <li class="@yield('home-active')" title="Home">
+                        <a href="{{ route('home') }}" class="navigation-link row">
+                            <div class="col-sm-2 d-flex align-items-center justify-content-center">
+                                <i class="fa fa-home"></i>
+                            </div>
+                            <div class="col-10 d-none d-sm-flex">
+                                Home
+                            </div>
+                        </a>
                     </li>
-                    <li class="row m-0">
-                        <div class="col-2">
-                            <i class="fa fa-network-wired"></i>
-                        </div>
-                        <div class="col-10">
-                            Networks
-                        </div>
+                    <li class="@yield('networks-active')" title="Networks">
+                        <a href="{{ route('networks.index') }}" class="navigation-link row">
+                            <div class="col-sm-2 d-flex align-items-center justify-content-center">
+                                <i class="fa fa-network-wired"></i>
+                            </div>
+                            <div class="col-10 d-none d-sm-flex">
+                                Networks
+                            </div>
+                        </a>
                     </li>
-                    <li class="row m-0">
-                        <div class="col-2">
-                            <i class="fa fa-computer"></i>
-                        </div>
-                        <div class="col-10">
-                            Computers
-                        </div>
+                    <li class="@yield('computers-active')" title="Computers">
+                        <a href="{{ route('computers.index') }}" class="navigation-link row">
+                            <div class="col-sm-2 d-flex align-items-center justify-content-center">
+                                <i class="fa fa-computer"></i>
+                            </div>
+                            <div class="col-10 d-none d-sm-flex">
+                                Computers
+                            </div>
+                        </a>
                     </li>
-                    <li class="row m-0">
-                        <div class="col-2">
-                            <i class="fa fa-keyboard"></i>
-                        </div>
-                        <div class="col-10">
-                            Peripherals
-                        </div>
+                    <li class="@yield('peripherals-active')" title="Peripherals">
+                        <a href="{{ route('peripherals.index') }}" class="navigation-link row">
+                            <div class="col-sm-2 d-flex align-items-center justify-content-center">
+                                <i class="fa fa-keyboard"></i>
+                            </div>
+                            <div class="col-10 d-none d-sm-flex">
+                                Peripherals
+                            </div>
+                        </a>
                     </li>
-                    <li class="row m-0">
-                        <div class="col-2">
-                            <i class="fa fa-box"></i>
-                        </div>
-                        <div class="col-10">
-                            Products
-                        </div>
+                    <li class="@yield('products-active')" title="Products">
+                        <a href="{{ route('products.index') }}" class="navigation-link row">
+                            <div class="col-sm-2 d-flex align-items-center justify-content-center">
+                                <i class="fa fa-box"></i>
+                            </div>
+                            <div class="col-10 d-none d-sm-flex">
+                                Products
+                            </div>
+                        </a>
                     </li>
+                    @if(Auth::user()->role_id === 1)
+                        <li class="@yield('users-active')" title="Users">
+                            <a href="{{ route('users.index') }}" class="navigation-link row">
+                                <div class="col-sm-2 d-flex align-items-center justify-content-center">
+                                    <i class="fa fa-users"></i>
+                                </div>
+                                <div class="col-10 d-none d-sm-flex">
+                                    Users
+                                </div>
+                            </a>
+                        </li>
+                    @endif
                 </ul>
             </div>
             <div class="sidenav-bot">

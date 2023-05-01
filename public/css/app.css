@@ -27,8 +27,11 @@ body {
   margin-left: 0px;
 }
 
-.app-logo {
-  font-size: 1.2rem;
+.navbar {
+  z-index: 99999;
+}
+.navbar .navbar-brand {
+  color: #1d273b;
 }
 
 .sidenav {
@@ -39,6 +42,7 @@ body {
   height: 100vh;
   min-width: 250px;
   background-color: #1d273b;
+  z-index: 99999;
 }
 .sidenav .sidenav-top {
   height: 8%;
@@ -58,32 +62,30 @@ body {
   font-size: 1rem;
   white-space: nowrap;
   text-decoration: none;
+  color: #ffffff;
 }
 .sidenav .sidenav-mid {
   height: 84%;
 }
 .sidenav .sidenav-mid .navigation-list {
   list-style-type: none;
-  color: #ffffff;
   padding: 0px;
 }
 .sidenav .sidenav-mid .navigation-list li {
   cursor: pointer;
-  display: flex;
-  -webkit-box-pack: start;
-  justify-content: flex-start;
-  -webkit-box-align: center;
-  align-items: center;
-  position: relative;
-  text-decoration: none;
-  width: 100%;
-  box-sizing: border-box;
-  text-align: left;
-  min-height: 50px;
-  padding: 20px;
 }
 .sidenav .sidenav-mid .navigation-list li:hover {
   background-color: #213150;
+}
+.sidenav .sidenav-mid .navigation-list li.active {
+  background-color: #213150;
+}
+.sidenav .sidenav-mid .navigation-list .navigation-link {
+  width: 100%;
+  padding: 20px;
+  margin: 0px;
+  color: #ffffff;
+  text-decoration: none;
 }
 .sidenav .sidenav-bot {
   height: 8%;
@@ -96,10 +98,14 @@ body {
   color: #ffffff;
 }
 
+.app-logo {
+  font-size: 1.2rem;
+}
+
 /* CSS Ruleset for Layout (App) */
 /* CSS Ruleset for Welcome */
 .nav-pills a {
-  color: white;
+  color: #ffffff;
 }
 .nav-pills a:hover {
   color: #d28800;
@@ -119,9 +125,28 @@ body {
   border-left: 0.3em solid transparent;
   transform: unset;
 }
+.dropdown .dropdown-menu-arrow::before {
+  display: none;
+}
 
 /* CSS Ruleset for Welcome */
 /* CSS Ruleset for Home */
 /* CSS Ruleset for Home */
+@media screen and (max-width: 576px) {
+  #appNavbar, #appMain {
+    margin-left: 100px;
+  }
+  .sidenav {
+    min-width: 100px;
+  }
+}
+@media screen and (min-width: 576px) and (max-width: 768px) {
+  #appNavbar, #appMain {
+    margin-left: 250px;
+  }
+  .sidenav {
+    min-width: 250px;
+  }
+}
 
 /*# sourceMappingURL=app.css.map */

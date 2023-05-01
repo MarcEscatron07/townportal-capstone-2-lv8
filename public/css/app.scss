@@ -6,7 +6,8 @@ $primary-hover: #213150;
 $secondary-hover: #c7c7c7;
 $tertiary-hover: #d28800;
 
-$sidenav-width: 250px;
+$sidenav-width-default: 250px;
+$sidenav-width-mobile: 100px;
 
 
 @font-face {
@@ -35,15 +36,19 @@ body {
 
 /* CSS Ruleset for Layout (App) */
 #appNavbar, #appMain {
-    margin-left: $sidenav-width;
+    margin-left: $sidenav-width-default;
 }
 
 #guestNavbar, #guestMain {
     margin-left: 0px;
 }
 
-.app-logo {
-    font-size: 1.2rem;
+.navbar {
+    z-index: 99999;
+
+    .navbar-brand {
+        color: $primary-theme;
+    }
 }
 
 .sidenav {
@@ -52,8 +57,9 @@ body {
     display: flex;
     flex-direction: column;
     height: 100vh;
-    min-width: $sidenav-width;
+    min-width: $sidenav-width-default;
     background-color: $primary-theme;
+    z-index: 99999;
 
     .sidenav-top {
         height: 8%;
@@ -73,6 +79,7 @@ body {
             font-size: 1rem;
             white-space: nowrap;
             text-decoration: none;
+            color: $secondary-theme;
         }
     }
 
@@ -81,27 +88,26 @@ body {
 
         .navigation-list {
             list-style-type: none;
-            color: $secondary-theme;
             padding: 0px;
 
             li {
                 cursor: pointer;
-                display: flex;
-                -webkit-box-pack: start;
-                justify-content: flex-start;
-                -webkit-box-align: center;
-                align-items: center;
-                position: relative;
-                text-decoration: none;
-                width: 100%;
-                box-sizing: border-box;
-                text-align: left;
-                min-height: 50px;
-                padding: 20px;
 
                 &:hover {
                     background-color: #213150;
                 }
+
+                &.active {
+                    background-color: #213150;
+                }
+            }
+
+            .navigation-link {
+                width: 100%;
+                padding: 20px;
+                margin: 0px;
+                color: $secondary-theme;
+                text-decoration: none;
             }
         }
     }
@@ -118,12 +124,16 @@ body {
         }
     }
 }
+
+.app-logo {
+    font-size: 1.2rem;
+}
 /* CSS Ruleset for Layout (App) */
 
 /* CSS Ruleset for Welcome */
 .nav-pills {
     a {
-        color: white;
+        color: $secondary-theme;
         &:hover {
             color: $tertiary-hover;
         }
@@ -150,9 +160,44 @@ body {
             transform: unset;
         }
     }
+
+    .dropdown-menu-arrow {
+        &::before {
+            display: none;
+        }
+    }
 }
 /* CSS Ruleset for Welcome */
 
 /* CSS Ruleset for Home */
 
 /* CSS Ruleset for Home */
+
+
+@media screen and (max-width: 576px){ // Bootstrap Breakpoint: Extra Small
+    #appNavbar, #appMain {
+        margin-left: $sidenav-width-mobile;
+    }
+
+    .sidenav {
+        min-width: $sidenav-width-mobile;
+    }
+}
+
+@media screen and (min-width: 576px) and (max-width: 768px){ // Bootstrap Breakpoint: Small
+    #appNavbar, #appMain {
+        margin-left: $sidenav-width-default;
+    }
+
+    .sidenav {
+        min-width: $sidenav-width-default;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px){ // Bootstrap Breakpoint: Medium
+
+}
+
+@media screen and (min-width: 992px) and (max-width: 1200px){ // Bootstrap Breakpoint: Large
+
+}
