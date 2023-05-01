@@ -131,6 +131,7 @@
                             Products
                         </div>
                     </li>
+                    @if(Auth::user()->role_id === 1)
                     <li class="row m-0" title="Users">
                         <div class="col-sm-2 d-flex align-items-center justify-content-center">
                             <i class="fa fa-users"></i>
@@ -139,6 +140,7 @@
                             Users
                         </div>
                     </li>
+                    @endif
                 </ul>
             </div>
             <div class="sidenav-bot">
