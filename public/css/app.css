@@ -6,12 +6,12 @@
   font-family: "Open Sans";
   src: url(../fonts/open_sans/OpenSans-Regular.ttf);
 }
-h1, h2, .navbar-links a {
-  font-family: "Titillium Web";
+body {
+  font-family: "Open Sans", sans-serif;
 }
 
-body {
-  font-family: "Open Sans";
+h1, h2, .navbar-links a {
+  font-family: "Titillium Web", sans-serif;
 }
 
 body {
