@@ -59,6 +59,7 @@ body {
 .table-wrapper {
   position: relative;
   overflow-x: auto;
+  background-color: #f0f8ff;
 }
 
 /* CSS Ruleset for DataTables */
@@ -72,6 +73,19 @@ body {
 }
 .dataTables_filter label input[type=search] {
   width: 100% !important;
+}
+
+.dataTables_info {
+  padding-top: 0px !important;
+}
+
+.paginate_button.previous, .paginate_button.next {
+  background-color: #616876 !important;
+  border-radius: 4px !important;
+  margin: auto 8px;
+}
+.paginate_button.previous .page-link, .paginate_button.next .page-link {
+  color: #ffffff !important;
 }
 
 /* CSS Ruleset for DataTables */

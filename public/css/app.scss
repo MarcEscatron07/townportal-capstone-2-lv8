@@ -77,6 +77,7 @@ body {
 .table-wrapper {
     position: relative;
     overflow-x: auto;
+    background-color: #f0f8ff;
 }
 
 
@@ -91,6 +92,22 @@ body {
 
         input[type="search"] {
             width: 100% !important;
+        }
+    }
+}
+
+.dataTables_info {
+    padding-top: 0px !important;
+}
+
+.paginate_button {
+    &.previous, &.next {
+        background-color: #616876 !important;
+        border-radius: 4px !important;
+        margin: auto 8px;
+
+        .page-link {
+            color: $secondary-theme !important;
         }
     }
 }
