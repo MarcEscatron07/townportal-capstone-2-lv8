@@ -13,6 +13,6 @@ class ComputersSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Computer::factory(5)->create();
+        \App\Models\Computer::factory(30)->create();
     }
 }
