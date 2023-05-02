@@ -33,12 +33,12 @@ Auth::routes();
 Route::middleware(['auth'])->group(function() {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-    Route::get('networks/data', [NetworkController::class, 'data'])->name('networks.data');
-    Route::get('computers/data', [ComputerController::class, 'data'])->name('computers.data');
-    Route::get('peripherals/data', [PeripheralController::class, 'data'])->name('peripherals.data');
-    Route::get('products/data', [ProductController::class, 'data'])->name('products.data');
+    Route::get('/networks/data', [NetworkController::class, 'data'])->name('networks.data');
+    Route::get('/computers/data', [ComputerController::class, 'data'])->name('computers.data');
+    Route::get('/peripherals/data', [PeripheralController::class, 'data'])->name('peripherals.data');
+    Route::get('/products/data', [ProductController::class, 'data'])->name('products.data');
 
-    Route::get('users/data', [UserController::class, 'data'])->name('users.data');
+    Route::get('/users/data', [UserController::class, 'data'])->name('users.data');
 
     Route::resources([
         'networks' => NetworkController::class,

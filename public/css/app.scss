@@ -31,6 +31,11 @@ h1, h2, .navbar-links a {
 
 body {
     overflow: auto;
+    background-color: #dddddd;
+}
+
+#app {
+    position: relative;
 }
 
 .page-header {
@@ -39,7 +44,7 @@ body {
 
     .header-title {
         font-size: 1.3rem;
-        border-bottom: 3px solid $primary-theme;
+        border-bottom: 3px solid $tertiary-theme;
         text-transform: uppercase;
     }
 }
@@ -47,6 +52,30 @@ body {
 .page-content {
     min-height: 530px;
     background-color: $secondary-theme;
+}
+
+.spinner-ctr {
+    position: fixed;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 99999 !important;
+    background: rgba(255, 255, 255, 0.4);
+
+    .spinner-wpr {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 99998 !important;
+    }
+}
+
+.table-wrapper {
+    position: relative;
+    overflow-x: auto;
 }
 
 
@@ -60,7 +89,7 @@ body {
 }
 
 .navbar {
-    z-index: 99999;
+    z-index: 99997;
 
     .navbar-brand {
         color: $primary-theme;
@@ -75,7 +104,7 @@ body {
     height: 100vh;
     min-width: $sidenav-width-default;
     background-color: $primary-theme;
-    z-index: 99999;
+    z-index: 99997;
 
     .sidenav-top {
         height: 8%;

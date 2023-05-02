@@ -22,12 +22,30 @@
     <link href="{{ asset('css/bootstrap/bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('css/tabler/tabler.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/fontawesome/all.css') }}" rel="stylesheet">
+    <link href="{{ asset('plugins/DataTables/datatables.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     @yield('link')
 </head>
 <body>
     <div id="app">
+        <!-- Spinner/Loader -->
+        <div class="spinner-ctr">
+            <div class="spinner-wpr">
+                <div class="spinner-grow mx-1 text-blue" role="status"></div>
+                <div class="spinner-grow mx-1 text-indigo" role="status"></div>
+                <div class="spinner-grow mx-1 text-purple" role="status"></div>
+                <div class="spinner-grow mx-1 text-pink" role="status"></div>
+                <div class="spinner-grow mx-1 text-red" role="status"></div>
+                <div class="spinner-grow mx-1 text-orange" role="status"></div>
+                <div class="spinner-grow mx-1 text-yellow" role="status"></div>
+                <div class="spinner-grow mx-1 text-lime" role="status"></div>
+                <div class="spinner-grow mx-1 text-green" role="status"></div>
+                <div class="spinner-grow mx-1 text-teal" role="status"></div>
+                <div class="spinner-grow mx-1 text-cyan" role="status"></div>
+            </div>
+        </div>
+
         <nav id="appNavbar" class="navbar navbar-expand-md navbar-light bg-light shadow-sm">
             <div class="container px-4">
                 <a class="navbar-brand d-inline d-sm-none" href="{{ route('home') }}">
@@ -174,9 +192,11 @@
         </main>
     </div>
 
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap/bootstrap.bundle.js') }}"></script>
     {{-- <script src="{{ asset('js/tabler/tabler.min.js') }}"></script> --}}
     <script src="{{ asset('js/fontawesome/all.js') }}"></script>
+    <script src="{{ asset('plugins/DataTables/datatables.min.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
 
     @yield('script')

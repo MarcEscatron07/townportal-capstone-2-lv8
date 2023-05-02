@@ -16,6 +16,11 @@ h1, h2, .navbar-links a {
 
 body {
   overflow: auto;
+  background-color: #dddddd;
+}
+
+#app {
+  position: relative;
 }
 
 .page-header {
@@ -24,13 +29,36 @@ body {
 }
 .page-header .header-title {
   font-size: 1.3rem;
-  border-bottom: 3px solid #1d273b;
+  border-bottom: 3px solid #f59f00;
   text-transform: uppercase;
 }
 
 .page-content {
   min-height: 530px;
   background-color: #ffffff;
+}
+
+.spinner-ctr {
+  position: fixed;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 99999 !important;
+  background: rgba(255, 255, 255, 0.4);
+}
+.spinner-ctr .spinner-wpr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99998 !important;
+}
+
+.table-wrapper {
+  position: relative;
+  overflow-x: auto;
 }
 
 /* CSS Ruleset for Layout (App) */
@@ -43,7 +71,7 @@ body {
 }
 
 .navbar {
-  z-index: 99999;
+  z-index: 99997;
 }
 .navbar .navbar-brand {
   color: #1d273b;
@@ -57,7 +85,7 @@ body {
   height: 100vh;
   min-width: 250px;
   background-color: #1d273b;
-  z-index: 99999;
+  z-index: 99997;
 }
 .sidenav .sidenav-top {
   height: 8%;

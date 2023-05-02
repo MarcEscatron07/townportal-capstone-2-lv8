@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class UserController extends Controller
 {
@@ -80,5 +82,29 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function data(Request $request) {
+        if($request->ajax()) {
+            $data = User::orderBy('lname', 'asc');
+
+            return DataTables::of($data)
+                ->addColumn('action', function(User $user){
+                    $showUrl = route('users.show', $user->id);
+                    $editUrl = route('users.edit', $user->id);
+                    $delUrl = route('users.destroy', $user->id);
+                    
+                    return '<div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                              <a href="'.$showUrl.'" class="btn btn-info rounded mx-1" title="Show"><i class="fa fa-eye"></i></a>
+                              <a href="'.$editUrl.'" class="btn btn-warning rounded mx-1" title="Edit"><i class="fa fa-edit"></i></a>
+                              <a href="'.$delUrl.'" class="btn btn-danger rounded mx-1 btn-delete" title="Delete"><i class="fa fa-trash"></i></a>
+                              <form action="'.$delUrl.'" method="POST" style="display: none;" class="form-delete">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="hidden" name="_token" value="'.csrf_token().'">
+                                </form>
+                            </div>';
+                })
+                ->rawColumns(['action'])->make(true);
+        }
     }
 }
