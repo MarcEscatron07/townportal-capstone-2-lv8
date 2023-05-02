@@ -13,6 +13,6 @@ class NetworksSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Network::factory(5)->create();
+        \App\Models\Network::factory(30)->create();
     }
 }

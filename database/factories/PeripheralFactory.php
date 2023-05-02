@@ -20,6 +20,7 @@ class PeripheralFactory extends Factory
             'type_id' => $this->faker->numberBetween(1, Type::count()),
             'name' => $this->faker->firstNameMale.' '.$this->faker->randomElement(['Headphone', 'Keyboard', 'Monitor', 'Mouse', 'Webcam']),
             'brand' => $this->faker->randomElement(['Logitech', 'HyperX', 'SteelSeries', 'Corsair']),
+            'model' => $this->faker->randomElement(['G213', 'Death Adder', 'Rival', 'HS80']),
             'serial_number' => $this->faker->uuid,
             'cost' => $this->faker->randomFloat(2, 500, 10000),
             'remarks' => $this->faker->realText()

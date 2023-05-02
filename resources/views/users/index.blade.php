@@ -59,11 +59,9 @@
         "initComplete": function(){
             $('.spinner-ctr').css('display', 'none');
         },
-        // dom: "<'row'<'col-sm-12 col-md-4 py-1'l><'col-sm-12 col-md-4 py-1'<'d-flex justify-content-center'p>><'col-sm-12 col-md-4 py-1'f>>" +
-        dom: "<'row'<'col-sm-12 col-md-9 py-1'l><'col-sm-12 col-md-3 py-1'f>>" +
-            "<'row'<'col-sm-12'tr>>" +
-            // "<'row mt-2'<'col-sm-12 col-md-4 py-1'i><'col-sm-12 col-md-4 py-1'<'d-flex justify-content-center'p>><'col-sm-12 col-md-4 py-1'>>",
-            "<'row mt-2'<'col-sm-12 col-md-8 py-1'i><'col-sm-12 col-md-4 py-1 d-flex justify-content-center'p>>",
+        dom: "<'row mb-2'<'col-md-12 col-lg-4 py-1 d-flex justify-content-lg-start align-items-center'f><'col-md-12 col-lg-4 py-1 d-flex justify-content-lg-center align-items-center'i><'col-md-12 col-lg-4 py-1 d-flex justify-content-lg-end'p>>" +
+             "<'row'<'col-md-12'tr>>" +
+             "<'row mt-2'<'col-md-12 col-lg-4 py-1 d-flex justify-content-lg-start align-items-center'l><'col-md-12 col-lg-4 py-1 d-flex justify-content-lg-center align-items-center'i><'col-md-12 col-lg-4 py-1 d-flex justify-content-lg-end'p>>",
         processing: false,
         serverSide: true,
         orderCellsTop: true,
@@ -78,10 +76,10 @@
         ],
         stateSave: true,
         stateSaveCallback: function(_settings, data) {
-            sessionStorage.setItem('table_networks', JSON.stringify(data));
+            sessionStorage.setItem('table_users', JSON.stringify(data));
         },
         stateLoadCallback: function(_settings) {
-            return JSON.parse(sessionStorage.getItem('table_networks') ?? '{}');
+            return JSON.parse(sessionStorage.getItem('table_users') ?? '{}');
         }
     });
 

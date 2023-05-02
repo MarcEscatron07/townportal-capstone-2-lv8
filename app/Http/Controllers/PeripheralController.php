@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Peripheral;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class PeripheralController extends Controller
 {
@@ -80,5 +82,29 @@ class PeripheralController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function data(Request $request) {
+        if($request->ajax()) {
+            $data = Peripheral::get();
+
+            return DataTables::of($data)
+                ->addColumn('action', function(Peripheral $peripheral){
+                    $showUrl = route('users.show', $peripheral->id);
+                    $editUrl = route('users.edit', $peripheral->id);
+                    $delUrl = route('users.destroy', $peripheral->id);
+
+                    return '<div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                              <a href="'.$showUrl.'" class="btn btn-info rounded mx-1" title="Show"><i class="fa fa-eye"></i></a>
+                              <a href="'.$editUrl.'" class="btn btn-warning rounded mx-1" title="Edit"><i class="fa fa-edit"></i></a>
+                              <a href="'.$delUrl.'" class="btn btn-danger rounded mx-1 btn-delete" title="Delete"><i class="fa fa-trash"></i></a>
+                              <form action="'.$delUrl.'" method="POST" style="display: none;" class="form-delete">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="hidden" name="_token" value="'.csrf_token().'">
+                                </form>
+                            </div>';
+                })
+                ->rawColumns(['action'])->make(true);
+        }
     }
 }

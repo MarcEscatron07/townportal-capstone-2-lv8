@@ -39,7 +39,7 @@ body {
 }
 
 .page-header {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     padding: 0px;
 
     .header-title {
@@ -77,10 +77,15 @@ body {
 .table-wrapper {
     position: relative;
     overflow-x: auto;
+    background-color: #f0f8ff;
 }
 
 
 /* CSS Ruleset for DataTables */
+.dataTable{
+    border: 2px solid $secondary-hover !important;
+}
+
 .dataTables_filter {
     display: flex !important;
     width: 100% !important;
@@ -91,6 +96,38 @@ body {
 
         input[type="search"] {
             width: 100% !important;
+            border: 2px solid $secondary-hover !important;
+            padding: 5px;
+        }
+    }
+}
+
+.dataTables_length {
+    .custom-select {
+        padding: 5px;
+        border: 2px solid $secondary-hover !important;
+    }
+}
+
+.dataTables_info {
+    padding-top: 0px !important;
+}
+
+.pagination {
+    background-color: $secondary-theme;
+    border: 2px solid $secondary-hover !important;
+    padding: 5px 0px;
+
+    .paginate_button {
+        &.previous, &.next {
+            background-color: #616876 !important;
+            border-radius: 4px !important;
+            margin: auto 8px;
+            min-width: 65px;
+
+            .page-link {
+                color: $secondary-theme !important;
+            }
         }
     }
 }
