@@ -34,7 +34,7 @@ body {
 }
 
 .page-content {
-  min-height: 530px;
+  min-height: 350px;
   background-color: #ffffff;
 }
 
@@ -61,6 +61,20 @@ body {
   overflow-x: auto;
 }
 
+/* CSS Ruleset for DataTables */
+.dataTables_filter {
+  display: flex !important;
+  width: 100% !important;
+  text-align: unset !important;
+}
+.dataTables_filter label {
+  width: 84% !important;
+}
+.dataTables_filter label input[type=search] {
+  width: 100% !important;
+}
+
+/* CSS Ruleset for DataTables */
 /* CSS Ruleset for Layout (App) */
 #appNavbar, #appMain {
   margin-left: 250px;

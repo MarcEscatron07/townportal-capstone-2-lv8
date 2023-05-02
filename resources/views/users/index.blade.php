@@ -21,7 +21,7 @@
 <div class="container page-content shadow-sm">
     <div class="row">
         <div class="col-12 p-4 table-wrapper">
-            <table class="table table-striped shadow-sm" id="table">
+            <table class="table table-striped shadow" id="table">
                 <thead>
                     <tr class="bg-success text-dark">
                         <th scope="col">First Name</th>
@@ -60,19 +60,20 @@
             $('.spinner-ctr').css('display', 'none');
         },
         // dom: "<'row'<'col-sm-12 col-md-4 py-1'l><'col-sm-12 col-md-4 py-1'<'d-flex justify-content-center'p>><'col-sm-12 col-md-4 py-1'f>>" +
-        dom: "<'row'<'col-sm-12 col-md-4 py-1'l><'col-sm-12 col-md-4 py-1'><'col-sm-12 col-md-4 py-1'f>>" +
+        dom: "<'row'<'col-sm-12 col-md-9 py-1'l><'col-sm-12 col-md-3 py-1'f>>" +
             "<'row'<'col-sm-12'tr>>" +
-            "<'row mt-2'<'col-sm-12 col-md-4 py-1'i><'col-sm-12 col-md-4 py-1'<'d-flex justify-content-center'p>><'col-sm-12 col-md-4 py-1'>>",
+            // "<'row mt-2'<'col-sm-12 col-md-4 py-1'i><'col-sm-12 col-md-4 py-1'<'d-flex justify-content-center'p>><'col-sm-12 col-md-4 py-1'>>",
+            "<'row mt-2'<'col-sm-12 col-md-8 py-1'i><'col-sm-12 col-md-4 py-1 d-flex justify-content-center'p>>",
         processing: false,
         serverSide: true,
         orderCellsTop: true,
         ajax: "{{ route('users.data') }}",
         columns: [
-            {data: 'fname', name: 'fname', width:"15%", searchable: true, orderable: false},
-            {data: 'mname', name: 'mname', width:"15%", searchable: true, orderable: false},
-            {data: 'lname', name: 'lname', width:"15%", searchable: true, orderable: false},
-            {data: 'username', name: 'username', width:"15%", searchable: true, orderable: false},
-            {data: 'email', name: 'email', width:"30%", searchable: true, orderable: false},
+            {data: 'fname', name: 'fname', width:"15%", searchable: true, orderable: true},
+            {data: 'mname', name: 'mname', width:"15%", searchable: true, orderable: true},
+            {data: 'lname', name: 'lname', width:"15%", searchable: true, orderable: true},
+            {data: 'username', name: 'username', width:"15%", searchable: true, orderable: true},
+            {data: 'email', name: 'email', width:"30%", searchable: true, orderable: true},
             {data: 'action', name: 'action', width:"10%", searchable: false, className:"text-center", orderable: false},
         ],
         stateSave: true,
