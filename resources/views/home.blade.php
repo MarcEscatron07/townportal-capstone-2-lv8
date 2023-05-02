@@ -25,3 +25,10 @@
     </div>
 </div>
 @endsection
+
+@push('script')
+    <script src="{{ asset('plugins/Chart.js/chart.js') }}"></script>
+    <script src="{{ asset('plugins/Chart.js/plugins/chartjs-plugin-datalabels.js') }}"></script>
+
+    {{-- Custom script here --}}
+@endsection
