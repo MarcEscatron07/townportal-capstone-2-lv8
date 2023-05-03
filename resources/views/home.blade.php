@@ -1,5 +1,7 @@
 @inject('network','App\Models\Network')
 @inject('computer','App\Models\Computer')
+@inject('peripheral','App\Models\Peripheral')
+@inject('product','App\Models\Product')
 
 @extends('layouts.app')
 
@@ -57,6 +59,42 @@
             <canvas id="chartComputersByMonth"></canvas>
         </div>
     </div>
+    <div class="row">
+        <div class="col-lg-8 my-3">
+            <div class="w-100 d-flex">
+                <span class="border-theme-bot fw-bold">
+                    Peripherals added by Month
+                </span>
+            </div>
+            <canvas id="chartPeripheralsByMonth"></canvas>
+        </div>
+        <div class="col-lg-4 my-3">
+            <div class="w-100 d-flex">
+                <span class="border-theme-bot fw-bold">
+                    Peripherals by Type
+                </span>
+            </div>
+            <canvas id="chartPeripheralsByType"></canvas>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4 my-3">
+            <div class="w-100 d-flex">
+                <span class="border-theme-bot fw-bold">
+                    Products by Category
+                </span>
+            </div>
+            <canvas id="chartProductsByCategory"></canvas>
+        </div>
+        <div class="col-lg-8 my-3">
+            <div class="w-100 d-flex">
+                <span class="border-theme-bot fw-bold">
+                    Products added by Month
+                </span>
+            </div>
+            <canvas id="chartProductsByMonth"></canvas>
+        </div>
+    </div>
 </div>
 @endsection
 
@@ -106,7 +144,7 @@
         const countComputersInUse = parseInt({{ $computer->getComputersByStatusCount('2') }});
         const countComputersUnderMaintenance = parseInt({{ $computer->getComputersByStatusCount('3') }});
         const sumComputersStatus = countComputersAvailable + countComputersInUse + countComputersUnderMaintenance;
-        
+
         const countComputersJAN = parseInt({{ $computer->getComputersByMonthCount(\Carbon\Carbon::now()->year, \Carbon\Carbon::parse('January')->month) }});
         const countComputersFEB = parseInt({{ $computer->getComputersByMonthCount(\Carbon\Carbon::now()->year, \Carbon\Carbon::parse('February')->month) }});
         const countComputersMAR = parseInt({{ $computer->getComputersByMonthCount(\Carbon\Carbon::now()->year, \Carbon\Carbon::parse('March')->month) }});
@@ -134,6 +172,75 @@
             countComputersDEC
         );
         /* JS code for Computers */
+
+        /* JS code for Peripherals */
+        const countPeripheralsJAN = parseInt({{ $peripheral->getPeripheralsByMonthCount(\Carbon\Carbon::now()->year, \Carbon\Carbon::parse('January')->month) }});
+        const countPeripheralsFEB = parseInt({{ $peripheral->getPeripheralsByMonthCount(\Carbon\Carbon::now()->year, \Carbon\Carbon::parse('February')->month) }});
+        const countPeripheralsMAR = parseInt({{ $peripheral->getPeripheralsByMonthCount(\Carbon\Carbon::now()->year, \Carbon\Carbon::parse('March')->month) }});
+        const countPeripheralsAPR = parseInt({{ $peripheral->getPeripheralsByMonthCount(\Carbon\Carbon::now()->year, \Carbon\Carbon::parse('April')->month) }});
+        const countPeripheralsMAY = parseInt({{ $peripheral->getPeripheralsByMonthCount(\Carbon\Carbon::now()->year, \Carbon\Carbon::parse('May')->month) }});
+        const countPeripheralsJUN = parseInt({{ $peripheral->getPeripheralsByMonthCount(\Carbon\Carbon::now()->year, \Carbon\Carbon::parse('June')->month) }});
+        const countPeripheralsJUL = parseInt({{ $peripheral->getPeripheralsByMonthCount(\Carbon\Carbon::now()->year, \Carbon\Carbon::parse('July')->month) }});
+        const countPeripheralsAUG = parseInt({{ $peripheral->getPeripheralsByMonthCount(\Carbon\Carbon::now()->year, \Carbon\Carbon::parse('August')->month) }});
+        const countPeripheralsSEP = parseInt({{ $peripheral->getPeripheralsByMonthCount(\Carbon\Carbon::now()->year, \Carbon\Carbon::parse('September')->month) }});
+        const countPeripheralsOCT = parseInt({{ $peripheral->getPeripheralsByMonthCount(\Carbon\Carbon::now()->year, \Carbon\Carbon::parse('October')->month) }});
+        const countPeripheralsNOV = parseInt({{ $peripheral->getPeripheralsByMonthCount(\Carbon\Carbon::now()->year, \Carbon\Carbon::parse('November')->month) }});
+        const countPeripheralsDEC = parseInt({{ $peripheral->getPeripheralsByMonthCount(\Carbon\Carbon::now()->year, \Carbon\Carbon::parse('December')->month) }});
+        const maxCountPeripheralsMonth = Math.max(
+            countPeripheralsJAN,
+            countPeripheralsFEB,
+            countPeripheralsMAR,
+            countPeripheralsAPR,
+            countPeripheralsMAY,
+            countPeripheralsJUN,
+            countPeripheralsJUL,
+            countPeripheralsAUG,
+            countPeripheralsSEP,
+            countPeripheralsOCT,
+            countPeripheralsNOV,
+            countPeripheralsDEC
+        );
+
+        const countPeripheralsHeadphone = parseInt({{ $peripheral->getPeripheralsByTypeCount('1') }});
+        const countPeripheralsKeyboard = parseInt({{ $peripheral->getPeripheralsByTypeCount('2') }});
+        const countPeripheralsMonitor = parseInt({{ $peripheral->getPeripheralsByTypeCount('3') }});
+        const countPeripheralsMouse = parseInt({{ $peripheral->getPeripheralsByTypeCount('4') }});
+        const countPeripheralsWebcam = parseInt({{ $peripheral->getPeripheralsByTypeCount('5') }});
+        const sumPeripheralsType = countPeripheralsHeadphone + countPeripheralsKeyboard + countPeripheralsMonitor + countPeripheralsMouse + countPeripheralsWebcam;
+        /* JS code for Peripherals */
+
+        /* JS code for Products */
+        const countProductsFood = parseInt({{ $product->getProductsByCategoryCount('1') }});
+        const countProductsDrinks = parseInt({{ $product->getProductsByCategoryCount('2') }});
+        const sumProductsCategory = countProductsFood + countProductsDrinks;
+
+        const countProductsJAN = parseInt({{ $product->getProductsByMonthCount(\Carbon\Carbon::now()->year, \Carbon\Carbon::parse('January')->month) }});
+        const countProductsFEB = parseInt({{ $product->getProductsByMonthCount(\Carbon\Carbon::now()->year, \Carbon\Carbon::parse('February')->month) }});
+        const countProductsMAR = parseInt({{ $product->getProductsByMonthCount(\Carbon\Carbon::now()->year, \Carbon\Carbon::parse('March')->month) }});
+        const countProductsAPR = parseInt({{ $product->getProductsByMonthCount(\Carbon\Carbon::now()->year, \Carbon\Carbon::parse('April')->month) }});
+        const countProductsMAY = parseInt({{ $product->getProductsByMonthCount(\Carbon\Carbon::now()->year, \Carbon\Carbon::parse('May')->month) }});
+        const countProductsJUN = parseInt({{ $product->getProductsByMonthCount(\Carbon\Carbon::now()->year, \Carbon\Carbon::parse('June')->month) }});
+        const countProductsJUL = parseInt({{ $product->getProductsByMonthCount(\Carbon\Carbon::now()->year, \Carbon\Carbon::parse('July')->month) }});
+        const countProductsAUG = parseInt({{ $product->getProductsByMonthCount(\Carbon\Carbon::now()->year, \Carbon\Carbon::parse('August')->month) }});
+        const countProductsSEP = parseInt({{ $product->getProductsByMonthCount(\Carbon\Carbon::now()->year, \Carbon\Carbon::parse('September')->month) }});
+        const countProductsOCT = parseInt({{ $product->getProductsByMonthCount(\Carbon\Carbon::now()->year, \Carbon\Carbon::parse('October')->month) }});
+        const countProductsNOV = parseInt({{ $product->getProductsByMonthCount(\Carbon\Carbon::now()->year, \Carbon\Carbon::parse('November')->month) }});
+        const countProductsDEC = parseInt({{ $product->getProductsByMonthCount(\Carbon\Carbon::now()->year, \Carbon\Carbon::parse('December')->month) }});
+        const maxCountProductsMonth = Math.max(
+            countProductsJAN,
+            countProductsFEB,
+            countProductsMAR,
+            countProductsAPR,
+            countProductsMAY,
+            countProductsJUN,
+            countProductsJUL,
+            countProductsAUG,
+            countProductsSEP,
+            countProductsOCT,
+            countProductsNOV,
+            countProductsDEC
+        );
+        /* JS code for Products */
     </script>
 
     <script src="{{ asset('js/home-chart.js') }}"></script>
