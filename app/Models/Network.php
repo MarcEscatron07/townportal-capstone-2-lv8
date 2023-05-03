@@ -24,10 +24,10 @@ class Network extends Model
     }
 
     public function getNetworksByMonthCount($year, $month) {
-        return $this->whereMonth('created_at', Carbon::create($year, $month))->count();
+        return $this->whereMonth('created_at', Carbon::create($year, $month))->count() ?? 0;
     }
 
     public function getNetworksByProviderCount($provider) {
-        return $this->where('provider', $provider)->count();
+        return $this->where('provider', $provider)->count() ?? 0;
     }
 }

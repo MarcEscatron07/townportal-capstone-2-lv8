@@ -33,10 +33,10 @@ class Computer extends Model
     }
 
     public function getComputersByStatusCount($status_id) {
-        return $this->where('status_id', $status_id)->count();
+        return $this->where('status_id', $status_id)->count() ?? 0;
     }
 
     public function getComputersByMonthCount($year, $month) {
-        return $this->whereMonth('created_at', Carbon::create($year, $month))->count();
+        return $this->whereMonth('created_at', Carbon::create($year, $month))->count() ?? 0;
     }
 }

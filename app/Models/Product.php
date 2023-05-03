@@ -25,10 +25,10 @@ class Product extends Model
     }
 
     public function getProductsByCategoryCount($category_id) {
-        return $this->where('category_id', $category_id)->count();
+        return $this->where('category_id', $category_id)->count() ?? 0;
     }
 
     public function getProductsByMonthCount($year, $month) {
-        return $this->whereMonth('created_at', Carbon::create($year, $month))->count();
+        return $this->whereMonth('created_at', Carbon::create($year, $month))->count() ?? 0;
     }
 }

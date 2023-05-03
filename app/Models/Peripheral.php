@@ -32,10 +32,10 @@ class Peripheral extends Model
     }
 
     public function getPeripheralsByMonthCount($year, $month) {
-        return $this->whereMonth('created_at', Carbon::create($year, $month))->count();
+        return $this->whereMonth('created_at', Carbon::create($year, $month))->count() ?? 0;
     }
 
     public function getPeripheralsByTypeCount($type_id) {
-        return $this->where('type_id', $type_id)->count();
+        return $this->where('type_id', $type_id)->count() ?? 0;
     }
 }
