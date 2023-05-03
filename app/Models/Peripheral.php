@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Peripheral extends Model
 {
@@ -28,5 +29,13 @@ class Peripheral extends Model
 
     public function type() {
         return $this->belongsTo(Type::class);
+    }
+
+    public function getPeripheralsByMonthCount($year, $month) {
+        return $this->whereMonth('created_at', Carbon::create($year, $month))->count();
+    }
+
+    public function getPeripheralsByTypeCount($type_id) {
+        return $this->where('type_id', $type_id)->count();
     }
 }
