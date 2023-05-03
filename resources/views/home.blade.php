@@ -10,7 +10,7 @@
 @section('home-active','active')
 
 @section('header')
-<div class="container page-header">
+<div class="container page-header mb-0">
     <div class="row">
         <div class="col-6">
             <h3><span class="header-title">Dashboard</span></h3>
