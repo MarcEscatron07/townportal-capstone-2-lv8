@@ -20,4 +20,8 @@ return [
         'Mouse' => 'Mouse',
         'Webcam' => 'Webcam',
     ],
+    'categories' => [
+        'Food' => 'Food',
+        'Drinks' => 'Drinks',
+    ]
 ];
