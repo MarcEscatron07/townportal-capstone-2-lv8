@@ -268,8 +268,14 @@ body {
 /* CSS Ruleset for Welcome */
 
 /* CSS Ruleset for Home */
-.border-theme-bot {
-    border-bottom: 3px solid $primary-theme;
+.home-chart {
+    background-color: $secondary-theme;
+    padding: 1rem;
+    min-height: auto;
+
+    .chart-label {
+        border-bottom: 3px solid $primary-theme;
+    }
 }
 /* CSS Ruleset for Home */
 
@@ -295,9 +301,25 @@ body {
 }
 
 @media screen and (min-width: 768px) and (max-width: 992px){ // Bootstrap Breakpoint: Medium
-
+    .home-chart {
+        min-height: auto;
+    }
 }
 
 @media screen and (min-width: 992px) and (max-width: 1200px){ // Bootstrap Breakpoint: Large
+    .home-chart {
+        min-height: 290px;
+    }
+}
 
+@media screen and (min-width: 1200px) and (max-width: 1400px){ // Bootstrap Breakpoint: Extra Large
+    .home-chart {
+        min-height: 345px;
+    }
+}
+
+@media screen and (min-width: 1400px){ // Bootstrap Breakpoint: Extra Extra Large
+    .home-chart {
+        min-height: 430px;
+    }
 }

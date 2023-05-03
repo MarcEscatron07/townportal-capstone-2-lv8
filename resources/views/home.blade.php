@@ -22,77 +22,93 @@
 @endsection
 
 @section('content')
-<div class="container page-content shadow-sm p-3">
+<div class="container p-3">
     <div class="row">
         <div class="col-lg-8 my-3">
-            <div class="w-100 d-flex">
-                <span class="border-theme-bot fw-bold">
-                    Networks added by Month
-                </span>
+            <div class="home-chart shadow-sm">
+                <div class="w-100 d-flex">
+                    <span class="chart-label fw-bold">
+                        Networks added by Month
+                    </span>
+                </div>
+                <canvas id="chartNetworksByMonth"></canvas>
             </div>
-            <canvas id="chartNetworksByMonth"></canvas>
         </div>
         <div class="col-lg-4 my-3">
-            <div class="w-100 d-flex">
-                <span class="border-theme-bot fw-bold">
-                    Networks by Provider
-                </span>
+            <div class="home-chart shadow-sm">
+                <div class="w-100 d-flex">
+                    <span class="chart-label fw-bold">
+                        Networks by Provider
+                    </span>
+                </div>
+                <canvas id="chartNetworksByProvider"></canvas>
             </div>
-            <canvas id="chartNetworksByProvider"></canvas>
         </div>
     </div>
     <div class="row">
         <div class="col-lg-4 my-3">
-            <div class="w-100 d-flex">
-                <span class="border-theme-bot fw-bold">
-                    Computers by Status
-                </span>
+            <div class="home-chart shadow-sm">
+                <div class="w-100 d-flex">
+                    <span class="chart-label fw-bold">
+                        Computers by Status
+                    </span>
+                </div>
+                <canvas id="chartComputersByStatus"></canvas>
             </div>
-            <canvas id="chartComputersByStatus"></canvas>
         </div>
         <div class="col-lg-8 my-3">
-            <div class="w-100 d-flex">
-                <span class="border-theme-bot fw-bold">
-                    Computers added by Month
-                </span>
+            <div class="home-chart shadow-sm">
+                <div class="w-100 d-flex">
+                    <span class="chart-label fw-bold">
+                        Computers added by Month
+                    </span>
+                </div>
+                <canvas id="chartComputersByMonth"></canvas>
             </div>
-            <canvas id="chartComputersByMonth"></canvas>
         </div>
     </div>
     <div class="row">
         <div class="col-lg-8 my-3">
-            <div class="w-100 d-flex">
-                <span class="border-theme-bot fw-bold">
-                    Peripherals added by Month
-                </span>
+            <div class="home-chart shadow-sm">
+                <div class="w-100 d-flex">
+                    <span class="chart-label fw-bold">
+                        Peripherals added by Month
+                    </span>
+                </div>
+                <canvas id="chartPeripheralsByMonth"></canvas>
             </div>
-            <canvas id="chartPeripheralsByMonth"></canvas>
         </div>
         <div class="col-lg-4 my-3">
-            <div class="w-100 d-flex">
-                <span class="border-theme-bot fw-bold">
-                    Peripherals by Type
-                </span>
+            <div class="home-chart shadow-sm">
+                <div class="w-100 d-flex">
+                    <span class="chart-label fw-bold">
+                        Peripherals by Type
+                    </span>
+                </div>
+                <canvas id="chartPeripheralsByType"></canvas>
             </div>
-            <canvas id="chartPeripheralsByType"></canvas>
         </div>
     </div>
     <div class="row">
         <div class="col-lg-4 my-3">
-            <div class="w-100 d-flex">
-                <span class="border-theme-bot fw-bold">
-                    Products by Category
-                </span>
+            <div class="home-chart shadow-sm">
+                <div class="w-100 d-flex">
+                    <span class="chart-label fw-bold">
+                        Products by Category
+                    </span>
+                </div>
+                <canvas id="chartProductsByCategory"></canvas>
             </div>
-            <canvas id="chartProductsByCategory"></canvas>
         </div>
         <div class="col-lg-8 my-3">
-            <div class="w-100 d-flex">
-                <span class="border-theme-bot fw-bold">
-                    Products added by Month
-                </span>
+            <div class="home-chart shadow-sm">
+                <div class="w-100 d-flex">
+                    <span class="chart-label fw-bold">
+                        Products added by Month
+                    </span>
+                </div>
+                <canvas id="chartProductsByMonth"></canvas>
             </div>
-            <canvas id="chartProductsByMonth"></canvas>
         </div>
     </div>
 </div>
