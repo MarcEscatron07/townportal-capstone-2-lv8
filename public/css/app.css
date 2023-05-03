@@ -219,7 +219,12 @@ body {
 
 /* CSS Ruleset for Welcome */
 /* CSS Ruleset for Home */
-.border-theme-bot {
+.home-chart {
+  background-color: #ffffff;
+  padding: 1rem;
+  min-height: auto;
+}
+.home-chart .chart-label {
   border-bottom: 3px solid #1d273b;
 }
 
@@ -238,6 +243,26 @@ body {
   }
   .sidenav {
     min-width: 250px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .home-chart {
+    min-height: auto;
+  }
+}
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+  .home-chart {
+    min-height: 290px;
+  }
+}
+@media screen and (min-width: 1200px) and (max-width: 1400px) {
+  .home-chart {
+    min-height: 345px;
+  }
+}
+@media screen and (min-width: 1400px) {
+  .home-chart {
+    min-height: 430px;
   }
 }
 
