@@ -15,7 +15,7 @@ class NetworkFactory extends Factory
     {
         return [
             'name' => 'LAN '.$this->faker->numberBetween(1, 3),
-            'provider' => $this->faker->company,
+            'provider' => $this->faker->randomElement(['PLDT', 'Globe', 'DITO', 'Converge', 'Starlink']),
             'cost' => $this->faker->randomFloat(2, 500, 10000),
             'remarks' => $this->faker->realText()
         ];

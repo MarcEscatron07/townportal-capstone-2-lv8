@@ -218,8 +218,12 @@ body {
 }
 
 /* CSS Ruleset for Welcome */
-/* CSS Ruleset for Networks */
-/* CSS Ruleset for Networks */
+/* CSS Ruleset for Home */
+.border-theme-bot {
+  border-bottom: 3px solid #1d273b;
+}
+
+/* CSS Ruleset for Home */
 @media screen and (max-width: 576px) {
   #appNavbar, #appMain {
     margin-left: 100px;
