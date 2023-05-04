@@ -26,6 +26,9 @@
             <div class="col-12">
                 <legend>Network Details</legend>
             </div>
+
+            <hr class="mb-3" />
+
             <div class="col-lg-4 my-3">
                 <label for="name" class="form-label required">Name:</label>
                 <input id="name" name="name" type="text" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" required/>
@@ -48,9 +51,7 @@
                 <textarea id="remarks" name="remarks" class="form-control @error('remarks') is-invalid @enderror"></textarea>
             </div>
 
-            <hr class="my-4" />
-
-            <div class="col-12">
+            <div class="col-12 mt-3">
                 <button type="submit" class="btn btn-success"><i class="fa fa-share"></i> <span class="ms-2">Send</span></button>
             </div>
         </fieldset>
