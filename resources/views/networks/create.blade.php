@@ -5,7 +5,7 @@
 @section('networks-active','active')
 
 @section('header')
-<div class="container page-header mb-3">
+<div class="container page-header">
     <div class="row">
         <div class="col-6 d-flex align-items-center justify-content-start">
             <h3><span class="header-title">New Network</span></h3>
