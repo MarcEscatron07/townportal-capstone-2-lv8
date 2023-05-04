@@ -258,6 +258,4 @@
         );
         /* JS code for Products */
     </script>
-
-    <script src="{{ asset('js/home-chart.js') }}"></script>
 @endsection
