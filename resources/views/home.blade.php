@@ -23,7 +23,7 @@
 
 @section('content')
 <div class="container p-3">
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-lg-8 my-3">
             <div class="home-chart shadow-sm">
                 <div class="w-100 d-flex">
@@ -110,7 +110,7 @@
                 <canvas id="chartProductsByMonth"></canvas>
             </div>
         </div>
-    </div>
+    </div> --}}
 </div>
 @endsection
 
@@ -118,7 +118,7 @@
     <script src="{{ asset('plugins/Chart.js/chart.js') }}"></script>
     <script src="{{ asset('plugins/Chart.js/plugins/chartjs-plugin-datalabels.js') }}"></script>
 
-    <script>
+    {{-- <script>
         /* JS code for Networks */
         const countNetworksJAN = parseInt({{ $network->getNetworksByMonthCount(\Carbon\Carbon::now()->year, \Carbon\Carbon::parse('January')->month) }});
         const countNetworksFEB = parseInt({{ $network->getNetworksByMonthCount(\Carbon\Carbon::now()->year, \Carbon\Carbon::parse('February')->month) }});
@@ -257,5 +257,5 @@
             countProductsDEC
         );
         /* JS code for Products */
-    </script>
+    </script> --}}
 @endsection
