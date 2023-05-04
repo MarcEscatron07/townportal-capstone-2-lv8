@@ -25,7 +25,8 @@ class NetworkController extends Controller
      */
     public function create()
     {
-        //
+        $providers = config('global.providers');
+        return view('networks.create', compact('providers'));
     }
 
     /**
@@ -36,7 +37,17 @@ class NetworkController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        // dd($data);
+        $new = new Network($data);
+
+        if($new->save()) {
+            return redirect()->route('networks.create')
+            ->with('success', 'Successfully added new network!');
+        } else {
+            return redirect()->route('networks.create')
+            ->with('failed', 'Unable to add new network...');
+        }
     }
 
     /**

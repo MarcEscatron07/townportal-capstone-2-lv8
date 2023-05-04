@@ -23,6 +23,7 @@
     <link href="{{ asset('css/tabler/tabler.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/fontawesome/all.css') }}" rel="stylesheet">
     <link href="{{ asset('plugins/DataTables/datatables.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('plugins/Toastr/toastr.min.css') }}" rel="stylesheet">
     @yield('link')
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -196,6 +197,45 @@
     {{-- <script src="{{ asset('js/tabler/tabler.min.js') }}"></script> --}}
     <script src="{{ asset('js/fontawesome/all.js') }}"></script>
     <script src="{{ asset('plugins/DataTables/datatables.min.js') }}"></script>
+    <script src="{{ asset('plugins/Toastr/toastr.min.js') }}"></script>
+
+    <script>
+        @if( \Illuminate\Support\Facades\Session::has('success') )
+            toastr.success('', "{!! session('success') !!}");
+        @elseif( \Illuminate\Support\Facades\Session::has('failed') )
+            toastr.error('', "{!! session('failed') !!}");
+        @endif
+
+        @if( \Illuminate\Support\Facades\Session::has('confirm') )
+            if(confirm("{!! session('confirm') !!}")) {
+                @if( \Illuminate\Support\Facades\Session::has('confirm_yes') )
+                    {!! session('confirm_yes') !!}
+                @endif
+            } else {
+                @if( \Illuminate\Support\Facades\Session::has('confirm_no') )
+                    {!! session('confirm_no') !!}
+                @endif
+            }
+        @endif
+
+        (() => {
+            'use strict'
+
+            const forms = document.querySelectorAll('.needs-validation')
+
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+
+                form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+    </script>
+
     @yield('script')
     <script src="{{ asset('js/app.js') }}"></script>
 </body>

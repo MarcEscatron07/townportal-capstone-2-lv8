@@ -38,6 +38,33 @@ body {
   background-color: #ffffff;
 }
 
+.page-form {
+  border-left: 24px groove #1d273b;
+  border-radius: 10px 0px 0px 10px;
+  background-color: #d8e7f4;
+}
+.page-form .form-fieldset {
+  background-color: #d8e7f4;
+}
+.page-form .form-fieldset legend {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  border-bottom: 3px solid #f59f00;
+}
+.page-form .form-fieldset textarea {
+  resize: none;
+}
+.page-form .form-fieldset .form-label {
+  color: #555555;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.page-form .form-fieldset .form-control, .page-form .form-fieldset .form-select {
+  border-radius: 0px;
+}
+
 .spinner-ctr {
   position: fixed;
   display: none;

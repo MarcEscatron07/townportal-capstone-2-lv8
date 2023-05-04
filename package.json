@@ -6,7 +6,7 @@
         "keygen": "php artisan key:generate",
         "cache": "php artisan config:cache",
         "seed": "php artisan migrate:fresh --seed",
-        "app": "php artisan serve",
+        "app": "php artisan serve --port=8080",
         "sass": "sass --watch public/css/app.scss public/css/app.css",
         "dev": "npm run development",
         "development": "mix",
