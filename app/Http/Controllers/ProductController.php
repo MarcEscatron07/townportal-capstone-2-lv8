@@ -71,7 +71,7 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $product = Product::with(['computers'])->findOrFail($id);
+        $product = Product::findOrFail($id);
         $categories = Category::get();
         return view('products.edit', compact('id', 'product', 'categories'));
     }
