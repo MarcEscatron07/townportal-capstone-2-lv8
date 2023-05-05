@@ -20,6 +20,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'role_id',
         'fname',
         'mname',
         'lname',
@@ -49,6 +50,10 @@ class User extends Authenticatable
     ];
 
     public function role() {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Role::class);
+    }
+
+    public function formattedRole() {
+        return $this->role()->first()->name ?? '';
     }
 }

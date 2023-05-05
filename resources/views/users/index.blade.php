@@ -11,7 +11,7 @@
             <h3><span class="header-title">Users</span></h3>
         </div>
         <div class="col-6 d-flex align-items-center justify-content-end">
-            <a href="#" class="btn btn-success"><i class="fa fa-plus"></i> <span class="ms-2">New Entry</span></a>
+            <a href="{{ route('users.create') }}" class="btn btn-success"><i class="fa fa-plus"></i> <span class="ms-2">New Entry</span></a>
         </div>
     </div>
 </div>
@@ -24,6 +24,7 @@
             <table class="table table-striped shadow" id="table">
                 <thead>
                     <tr class="bg-success text-dark">
+                        <th scope="col">Role</th>
                         <th scope="col">First Name</th>
                         <th scope="col">Middle Name</th>
                         <th scope="col">Last Name</th>
@@ -71,11 +72,12 @@
         orderCellsTop: true,
         ajax: "{{ route('users.data') }}",
         columns: [
+            {data: 'role_id', name: 'role_id', width:"10%", searchable: true, orderable: true},
             {data: 'fname', name: 'fname', width:"15%", searchable: true, orderable: true},
             {data: 'mname', name: 'mname', width:"15%", searchable: true, orderable: true},
             {data: 'lname', name: 'lname', width:"15%", searchable: true, orderable: true},
             {data: 'username', name: 'username', width:"15%", searchable: true, orderable: true},
-            {data: 'email', name: 'email', width:"30%", searchable: true, orderable: true},
+            {data: 'email', name: 'email', width:"20%", searchable: true, orderable: true},
             {data: 'action', name: 'action', width:"10%", searchable: false, className:"text-center", orderable: false},
         ],
         stateSave: true,
