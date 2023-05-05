@@ -11,7 +11,7 @@
             <h3><span class="header-title">Products</span></h3>
         </div>
         <div class="col-6 d-flex align-items-center justify-content-end">
-            <a href="#" class="btn btn-success"><i class="fa fa-plus"></i> <span class="ms-2">New Entry</span></a>
+            <a href="{{ route('products.create') }}" class="btn btn-success"><i class="fa fa-plus"></i> <span class="ms-2">New Entry</span></a>
         </div>
     </div>
 </div>
@@ -24,7 +24,7 @@
             <table class="table table-striped shadow" id="table">
                 <thead>
                     <tr class="bg-success text-dark">
-                        {{-- <th scope="col">Category</th> --}}
+                        <th scope="col">Category</th>
                         <th scope="col">Name</th>
                         <th scope="col">Stock</th>
                         <th scope="col">Cost</th>
@@ -71,9 +71,10 @@
         orderCellsTop: true,
         ajax: "{{ route('products.data') }}",
         columns: [
-            {data: 'name', name: 'name', width:"20%", searchable: true, orderable: true},
-            {data: 'stock', name: 'stock', width:"20%", searchable: true, orderable: true},
-            {data: 'cost', name: 'cost', width:"20%", searchable: true, orderable: true},
+            {data: 'category_id', name: 'category_id', width:"15%", searchable: true, orderable: true},
+            {data: 'name', name: 'name', width:"15%", searchable: true, orderable: true},
+            {data: 'stock', name: 'stock', width:"15%", searchable: true, orderable: true},
+            {data: 'cost', name: 'cost', width:"15%", searchable: true, orderable: true},
             {data: 'remarks', name: 'remarks', width:"30%", searchable: true, orderable: true},
             {data: 'action', name: 'action', width:"10%", searchable: false, className:"text-center", orderable: false},
         ],

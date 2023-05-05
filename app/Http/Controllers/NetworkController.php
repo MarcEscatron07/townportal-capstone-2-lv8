@@ -140,8 +140,7 @@ class NetworkController extends Controller
                                 <input type="hidden" name="_token" value="'.csrf_token().'">
                                 </form>
                             </div>';
-                })
-                ->editColumn('provider_id', function(Network $network){
+                })->editColumn('provider_id', function(Network $network){
                     return $network->formattedProvider();
                 })
                 ->rawColumns(['action'])->make(true);

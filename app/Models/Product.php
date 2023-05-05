@@ -31,4 +31,8 @@ class Product extends Model
     public function getProductsByMonthCount($year, $month) {
         return $this->whereMonth('created_at', Carbon::create($year, $month))->count() ?? 0;
     }
+
+    public function formattedCategory() {
+        return $this->category()->first()->name ?? '';
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
@@ -25,7 +26,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::get();
+        return view('products.create', compact('categories'));
     }
 
     /**
@@ -36,7 +38,17 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        // dd($data);
+        $new = new Product($data);
+
+        if($new->save()) {
+            return redirect()->route('products.create')
+            ->with('success', 'Successfully added new product!');
+        } else {
+            return redirect()->route('products.create')
+            ->with('failed', 'Unable to add new product...');
+        }
     }
 
     /**
@@ -47,7 +59,8 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Product::findOrFail($id);
+        return view('products.show', compact('id', 'product'));
     }
 
     /**
@@ -58,7 +71,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::with(['computers'])->findOrFail($id);
+        $categories = Category::get();
+        return view('products.edit', compact('id', 'product', 'categories'));
     }
 
     /**
@@ -70,7 +85,24 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $product = Product::findOrFail($id);
+        // dd($product);
+        $data = $request->all();
+        // dd($data);
+
+        $product->category_id = $data['category_id'] ?? null;
+        $product->name = $data['name'] ?? null;
+        $product->stock = $data['stock'] ?? null;
+        $product->cost = $data['cost'] ?? null;
+        $product->remarks = $data['remarks'] ?? null;
+
+        if($product->save()) {
+            return redirect()->route('products.edit', $product->id)
+            ->with('success', 'Successfully updated product!');
+        } else {
+            return redirect()->route('products.edit', $product->id)
+            ->with('failed', 'Unable to update product...');
+        }
     }
 
     /**
@@ -81,7 +113,10 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $product->delete();
+
+        return redirect()->route('products.index')->with('success','Deleted successfully');
     }
 
     public function data(Request $request) {
@@ -103,6 +138,8 @@ class ProductController extends Controller
                                 <input type="hidden" name="_token" value="'.csrf_token().'">
                                 </form>
                             </div>';
+                })->editColumn('category_id', function(Product $product){
+                    return $product->formattedCategory();
                 })
                 ->rawColumns(['action'])->make(true);
         }
