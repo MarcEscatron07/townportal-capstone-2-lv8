@@ -7,7 +7,7 @@
 @section('header')
 <div class="container page-header">
     <div class="row">
-        <div class="col-6">
+        <div class="col-6 d-flex align-items-center justify-content-start">
             <h3><span class="header-title">Users</span></h3>
         </div>
         <div class="col-6 d-flex align-items-center justify-content-end">
@@ -62,8 +62,8 @@
         scrollY: '350px',
         scrollCollapse: true,
         dom: "<'row mb-2'<'col-md-12 col-lg-4 py-1 d-flex justify-content-lg-start align-items-center'f>" +
-             "<'col-md-12 col-lg-8 py-1 pe-3 d-flex justify-content-lg-end'l>>" 
-             + "<'row'<'col-md-12'tr>>" + 
+             "<'col-md-12 col-lg-8 py-1 pe-3 d-flex justify-content-lg-end'l>>"
+             + "<'row'<'col-md-12'tr>>" +
              "<'row mt-2'<'col-md-12 col-lg-4 py-1 d-flex justify-content-lg-start align-items-center'i>" +
              "<'col-md-12 col-lg-8 py-1 pe-3 d-flex justify-content-lg-end'p>>",
         processing: false,

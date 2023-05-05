@@ -24,6 +24,7 @@ body {
 }
 
 .page-header {
+  height: 40px;
   margin-bottom: 25px;
   padding: 0px;
 }
@@ -36,6 +37,32 @@ body {
 .page-content {
   min-height: 280px;
   background-color: #ffffff;
+}
+
+.page-form {
+  border-left: 24px groove #1d273b;
+  border-radius: 10px 0px 0px 10px;
+  background-color: #d8e7f4;
+}
+.page-form .form-fieldset {
+  background-color: #d8e7f4;
+}
+.page-form .form-fieldset legend {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+.page-form .form-fieldset textarea {
+  resize: none;
+}
+.page-form .form-fieldset .form-label {
+  color: #555555;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.page-form .form-fieldset .form-control, .page-form .form-fieldset .form-select {
+  border-radius: 0px;
 }
 
 .spinner-ctr {
@@ -59,7 +86,7 @@ body {
 .table-wrapper {
   position: relative;
   overflow-x: auto;
-  background-color: #f0f8ff;
+  background-color: #d8e7f4;
 }
 
 /* CSS Ruleset for DataTables */
