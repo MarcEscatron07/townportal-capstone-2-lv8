@@ -30,11 +30,11 @@
 
             <hr class="mb-3" />
 
-            <div class="col-lg-4 my-3">
+            <div class="col-lg-3 my-3">
                 <label for="name" class="form-label required">Name:</label>
                 <input id="name" name="name" type="text" class="form-control @error('name') is-invalid @enderror" value="{{ $network && $network->name ? $network->name : old('name') }}" required/>
             </div>
-            <div class="col-lg-4 my-3">
+            <div class="col-lg-3 my-3">
                 <label for="provider" class="form-label required">Provider:</label>
                 <select id="provider" name="provider" class="form-select" required>
                     <option value="" selected>-- --</option>
@@ -43,11 +43,11 @@
                     @endforeach
                 </select>
             </div>
-            <div class="col-lg-4 my-3">
+            <div class="col-lg-3 my-3">
                 <label for="cost" class="form-label">Cost:</label>
                 <input id="cost" name="cost" type="number" min="0" step="0.01" class="form-control @error('cost') is-invalid @enderror" value="{{ $network && $network->cost ? $network->cost : old('cost') }}"/>
             </div>
-            <div class="col-lg-4 my-3">
+            <div class="col-lg-3 my-3">
                 <label for="remarks" class="form-label">Remarks:</label>
                 <textarea id="remarks" name="remarks" class="form-control @error('remarks') is-invalid @enderror">{{ $network && $network->remarks ? $network->remarks : old('remarks') }}</textarea>
             </div>
