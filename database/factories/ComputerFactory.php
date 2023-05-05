@@ -19,7 +19,6 @@ class ComputerFactory extends Factory
             'status_id' => $this->faker->numberBetween(1, Status::count()),
             'network_id' => $this->faker->numberBetween(1, Network::count()),
             'name' => 'PC #'.$this->faker->numberBetween(1, 10),
-            'unit' => $this->faker->randomElement(['Asus', 'Dell', 'HP', 'Lenovo']),
             'remarks' => $this->faker->realText(),
         ];
     }

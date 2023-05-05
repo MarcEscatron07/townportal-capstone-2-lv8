@@ -29,8 +29,7 @@ class ComputerController extends Controller
     {
         $networks = Network::get();
         $statuses = Status::get();
-        $units = config('global.units');
-        return view('computers.create', compact('networks', 'statuses', 'units'));
+        return view('computers.create', compact('networks', 'statuses'));
     }
 
     /**
@@ -77,8 +76,7 @@ class ComputerController extends Controller
         $computer = Computer::findOrFail($id);
         $networks = Network::get();
         $statuses = Status::get();
-        $units = config('global.units');
-        return view('computers.edit', compact('id', 'computer', 'networks', 'statuses', 'units'));
+        return view('computers.edit', compact('id', 'computer', 'networks', 'statuses'));
     }
 
     /**
@@ -98,7 +96,6 @@ class ComputerController extends Controller
         $computer->network_id = $data['network_id'] ?? null;
         $computer->status_id = $data['status_id'] ?? null;
         $computer->name = $data['name'] ?? null;
-        $computer->unit = $data['unit'] ?? null;
         $computer->remarks = $data['remarks'] ?? null;
 
         if($computer->save()) {

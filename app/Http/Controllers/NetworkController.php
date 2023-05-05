@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Network;
+use App\Models\Provider;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 
@@ -25,7 +26,7 @@ class NetworkController extends Controller
      */
     public function create()
     {
-        $providers = config('global.providers');
+        $providers = Provider::get();
         return view('networks.create', compact('providers'));
     }
 
@@ -72,7 +73,7 @@ class NetworkController extends Controller
     public function edit($id)
     {
         $network = Network::with(['computers'])->findOrFail($id);
-        $providers = config('global.providers');
+        $providers = Provider::get();
         return view('networks.edit', compact('id', 'network', 'providers'));
     }
 
@@ -90,8 +91,8 @@ class NetworkController extends Controller
         $data = $request->all();
         // dd($data);
 
+        $network->provider_id = $data['provider_id'] ?? null;
         $network->name = $data['name'] ?? null;
-        $network->provider = $data['provider'] ?? null;
         $network->cost = $data['cost'] ?? null;
         $network->remarks = $data['remarks'] ?? null;
 
@@ -139,6 +140,9 @@ class NetworkController extends Controller
                                 <input type="hidden" name="_token" value="'.csrf_token().'">
                                 </form>
                             </div>';
+                })
+                ->editColumn('provider_id', function(Network $network){
+                    return $network->formattedProvider();
                 })
                 ->rawColumns(['action'])->make(true);
         }

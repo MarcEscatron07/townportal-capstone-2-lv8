@@ -24,8 +24,8 @@
             <table class="table table-striped shadow" id="table">
                 <thead>
                     <tr class="bg-success text-dark">
-                        <th scope="col">Name</th>
                         <th scope="col">Provider</th>
+                        <th scope="col">Name</th>
                         <th scope="col">Cost</th>
                         <th scope="col">Remarks</th>
                         <th scope="col"></th>
@@ -70,8 +70,8 @@
         orderCellsTop: true,
         ajax: "{{ route('networks.data') }}",
         columns: [
+            {data: 'provider_id', name: 'provider_id', width:"20%", searchable: true, orderable: true},
             {data: 'name', name: 'name', width:"20%", searchable: true, orderable: true},
-            {data: 'provider', name: 'provider', width:"20%", searchable: true, orderable: true},
             {data: 'cost', name: 'cost', width:"20%", searchable: true, orderable: true},
             {data: 'remarks', name: 'remarks', width:"30%", searchable: true, orderable: true},
             {data: 'action', name: 'action', width:"10%", searchable: false, className:"text-center", orderable: false},

@@ -52,15 +52,6 @@
                 <input id="name" name="name" type="text" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" required/>
             </div>
             <div class="col-lg-3 my-3">
-                <label for="unit" class="form-label required">Unit:</label>
-                <select id="unit" name="unit" class="form-select" required>
-                    <option value="" selected>-- --</option>
-                    @foreach($units as $key => $value)
-                        <option value="{{$key}}" {{ old('unit') == $key ? 'selected':'' }}>{{$value}}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="col-lg-3 my-3">
                 <label for="remarks" class="form-label">Remarks:</label>
                 <textarea id="remarks" name="remarks" class="form-control @error('remarks') is-invalid @enderror"></textarea>
             </div>

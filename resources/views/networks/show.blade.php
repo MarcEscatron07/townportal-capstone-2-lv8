@@ -28,14 +28,14 @@
 
         <div class="col-lg-3 my-3">
             <div class="datagrid-item">
-                <div class="datagrid-title"><span>Name:</span></div>
-                <div class="datagrid-content">{{$network->name}}</div>
+                <div class="datagrid-title"><span>Provider:</span></div>
+                <div class="datagrid-content">{{$network->formattedProvider()}}</div>
             </div>
         </div>
         <div class="col-lg-3 my-3">
             <div class="datagrid-item">
-                <div class="datagrid-title"><span>Provider:</span></div>
-                <div class="datagrid-content">{{$network->provider}}</div>
+                <div class="datagrid-title"><span>Name:</span></div>
+                <div class="datagrid-content">{{$network->name}}</div>
             </div>
         </div>
         <div class="col-lg-3 my-3">

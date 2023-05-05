@@ -101,15 +101,15 @@ new Chart(chartNetworksByProvider, {
     plugins: [ChartDataLabels],
     data: {
         labels: [
-            'PLDT','Globe','DITO','Converge','Starlink'
+            'PLDT','Globe','Converge','DITO','Starlink'
         ],
         datasets: [{
             label: 'Network Provider',
             data: [
                 countNetworksPLDT,
                 countNetworksGlobe,
-                countNetworksDITO,
                 countNetworksConverge,
+                countNetworksDITO,
                 countNetworksStarlink,
             ],
             backgroundColor: [

@@ -46,12 +46,6 @@
         </div>
         <div class="col-lg-3 my-3">
             <div class="datagrid-item">
-                <div class="datagrid-title"><span>Unit:</span></div>
-                <div class="datagrid-content">{{$computer->unit}}</div>
-            </div>
-        </div>
-        <div class="col-lg-3 my-3">
-            <div class="datagrid-item">
                 <div class="datagrid-title"><span>Remarks:</span></div>
                 <div class="datagrid-content">{{$computer->remarks}}</div>
             </div>

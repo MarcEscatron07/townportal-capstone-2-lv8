@@ -18,7 +18,6 @@ class Computer extends Model
         'status_id',
         'network_id',
         'name',
-        'unit',
         'remarks'
     ];
 

@@ -147,12 +147,12 @@
             countNetworksDEC
         );
 
-        const countNetworksPLDT = parseInt({{ $network->getNetworksByProviderCount('PLDT') }});
-        const countNetworksGlobe = parseInt({{ $network->getNetworksByProviderCount('Globe') }});
-        const countNetworksDITO = parseInt({{ $network->getNetworksByProviderCount('DITO') }});
-        const countNetworksConverge = parseInt({{ $network->getNetworksByProviderCount('Converge') }});
-        const countNetworksStarlink = parseInt({{ $network->getNetworksByProviderCount('Starlink') }});
-        const sumNetworksProvider = countNetworksPLDT + countNetworksGlobe + countNetworksDITO + countNetworksConverge + countNetworksStarlink;
+        const countNetworksPLDT = parseInt({{ $network->getNetworksByProviderCount('1') }});
+        const countNetworksGlobe = parseInt({{ $network->getNetworksByProviderCount('2') }});
+        const countNetworksConverge = parseInt({{ $network->getNetworksByProviderCount('3') }});
+        const countNetworksDITO = parseInt({{ $network->getNetworksByProviderCount('4') }});
+        const countNetworksStarlink = parseInt({{ $network->getNetworksByProviderCount('5') }});
+        const sumNetworksProvider = countNetworksPLDT + countNetworksGlobe + countNetworksConverge + countNetworksDITO + countNetworksStarlink;
         /* JS code for Networks */
 
         /* JS code for Computers */

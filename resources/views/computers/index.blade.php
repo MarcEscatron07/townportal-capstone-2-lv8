@@ -27,7 +27,6 @@
                         <th scope="col">Network</th>
                         <th scope="col">Status</th>
                         <th scope="col">Name</th>
-                        <th scope="col">Unit</th>
                         <th scope="col">Remarks</th>
                         <th scope="col"></th>
                     </tr>
@@ -71,10 +70,9 @@
         orderCellsTop: true,
         ajax: "{{ route('computers.data') }}",
         columns: [
-            {data: 'network_id', network_id: 'name', width:"15%", searchable: true, orderable: true},
-            {data: 'status_id', name: 'status_id', width:"15%", searchable: true, orderable: true},
-            {data: 'name', name: 'name', width:"15%", searchable: true, orderable: true},
-            {data: 'unit', name: 'unit', width:"15%", searchable: true, orderable: true},
+            {data: 'network_id', network_id: 'name', width:"20%", searchable: true, orderable: true},
+            {data: 'status_id', name: 'status_id', width:"20%", searchable: true, orderable: true},
+            {data: 'name', name: 'name', width:"20%", searchable: true, orderable: true},
             {data: 'remarks', name: 'remarks', width:"30%", searchable: true, orderable: true},
             {data: 'action', name: 'action', width:"10%", searchable: false, className:"text-center", orderable: false},
         ],
