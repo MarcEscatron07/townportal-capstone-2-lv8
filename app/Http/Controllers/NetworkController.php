@@ -58,7 +58,9 @@ class NetworkController extends Controller
      */
     public function show($id)
     {
-        //
+        $network = Network::with(['computers'])->findOrFail($id);
+        $computers = $network->computers();
+        return view('networks.show', compact('id', 'network', 'computers'));
     }
 
     /**
@@ -69,7 +71,9 @@ class NetworkController extends Controller
      */
     public function edit($id)
     {
-        //
+        $network = Network::with(['computers'])->findOrFail($id);
+        $providers = config('global.providers');
+        return view('networks.edit', compact('id', 'network', 'providers'));
     }
 
     /**
@@ -81,7 +85,25 @@ class NetworkController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $network = Network::with(['computers'])->findOrFail($id);
+        // dd($network);
+        $data = $request->all();
+        // dd($data);
+
+        $network->name = $data['name'] ?? null;
+        $network->provider = $data['provider'] ?? null;
+        $network->cost = $data['cost'] ?? null;
+        $network->remarks = $data['remarks'] ?? null;
+
+        /* update Computers here */
+
+        if($network->save()) {
+            return redirect()->route('networks.edit', $network->id)
+            ->with('success', 'Successfully updated network!');
+        } else {
+            return redirect()->route('networks.edit', $network->id)
+            ->with('failed', 'Unable to update household...');
+        }
     }
 
     /**
@@ -92,7 +114,10 @@ class NetworkController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $network = Network::findOrFail($id);
+        $network->delete();
+
+        return redirect()->route('networks.index')->with('success','Deleted successfully');
     }
 
     public function data(Request $request) {
@@ -101,9 +126,9 @@ class NetworkController extends Controller
 
             return DataTables::of($data)
                 ->addColumn('action', function(Network $network){
-                    $showUrl = route('users.show', $network->id);
-                    $editUrl = route('users.edit', $network->id);
-                    $delUrl = route('users.destroy', $network->id);
+                    $showUrl = route('networks.show', $network->id);
+                    $editUrl = route('networks.edit', $network->id);
+                    $delUrl = route('networks.destroy', $network->id);
 
                     return '<div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                               <a href="'.$showUrl.'" class="btn btn-info rounded mx-1" title="Show"><i class="fa fa-eye"></i></a>
