@@ -25,8 +25,9 @@ body {
     font-family: "Open Sans", sans-serif;
 }
 
-h1, h2, .navbar-links a {
-    font-family: "Titillium Web", sans-serif;
+h1, h2, h3, h4, h5, h6, a {
+    font-family: "Titillium Web", sans-serif !important;
+    font-size: 1rem;
 }
 
 body {
@@ -69,7 +70,7 @@ body {
     padding: 0px;
 
     .header-title {
-        font-size: 1.3rem;
+        font-size: 1.35rem;
         border-bottom: 3px solid $tertiary-theme;
         text-transform: uppercase;
     }
@@ -89,10 +90,9 @@ body {
     background-color: #d8e7f4;
 
     legend {
-        font-size: 1.2rem;
+        font-size: 1.15rem;
         font-weight: bold;
         margin-bottom: 1rem;
-        // border-bottom: 3px solid $tertiary-theme;
     }
 
     textarea {
