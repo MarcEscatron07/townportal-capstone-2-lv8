@@ -89,6 +89,7 @@
         e.preventDefault();
         const form = $(this).parents('.btn-group').find('.form-delete');
         if(confirm('Do you really want to delete this data?')){
+            sessionStorage.getItem('table_computers') ? sessionStorage.removeItem('table_computers') : null;
             form.submit();
         }
     })

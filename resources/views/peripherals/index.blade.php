@@ -95,6 +95,7 @@
         e.preventDefault();
         const form = $(this).parents('.btn-group').find('.form-delete');
         if(confirm('Do you really want to delete this data?')){
+            sessionStorage.getItem('table_peripherals') ? sessionStorage.removeItem('table_peripherals') : null;
             form.submit();
         }
     })

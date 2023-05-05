@@ -90,6 +90,7 @@
         e.preventDefault();
         const form = $(this).parents('.btn-group').find('.form-delete');
         if(confirm('Do you really want to delete this data?')){
+            sessionStorage.getItem('table_products') ? sessionStorage.removeItem('table_products') : null;
             form.submit();
         }
     })
