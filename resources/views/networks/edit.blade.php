@@ -49,7 +49,7 @@
             </div>
             <div class="col-lg-4 my-3">
                 <label for="remarks" class="form-label">Remarks:</label>
-                <textarea id="remarks" name="remarks" class="form-control @error('remarks') is-invalid @enderror">{{$network && $network->remarks ? $network->remarks : old('remarks')}}</textarea>
+                <textarea id="remarks" name="remarks" class="form-control @error('remarks') is-invalid @enderror">{{ $network && $network->remarks ? $network->remarks : old('remarks') }}</textarea>
             </div>
 
             <div class="col-12 mt-3">

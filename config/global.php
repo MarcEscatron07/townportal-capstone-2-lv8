@@ -8,20 +8,24 @@ return [
         'Converge' => 'Converge',
         'Starlink' => 'Starlink',
     ],
+    'units' => [
+        'Desktop' => 'Desktop',
+        'Laptop' => 'Laptop',
+    ],
     'statuses' => [
-        'Available' => 'Available',
-        'In Use' => 'In Use',
-        'Under Maintenance' => 'Under Maintenance',
+        '1' => 'Available',
+        '2' => 'In Use',
+        '3' => 'Under Maintenance',
     ],
     'types' => [
-        'Headphone' => 'Headphone',
-        'Keyboard' => 'Keyboard',
-        'Monitor' => 'Monitor',
-        'Mouse' => 'Mouse',
-        'Webcam' => 'Webcam',
+        '1' => 'Headphone',
+        '2' => 'Keyboard',
+        '3' => 'Monitor',
+        '4' => 'Mouse',
+        '5' => 'Webcam',
     ],
     'categories' => [
-        'Food' => 'Food',
-        'Drinks' => 'Drinks',
+        '1' => 'Food',
+        '2' => 'Drinks',
     ]
 ];

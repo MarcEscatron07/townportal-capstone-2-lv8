@@ -59,7 +59,7 @@
         "initComplete": function(){
             $('.spinner-ctr').css('display', 'none');
         },
-        scrollY: '350px',
+        scrollY: '340px',
         scrollCollapse: true,
         dom: "<'row mb-2'<'col-md-12 col-lg-4 py-1 d-flex justify-content-lg-start align-items-center'f>" +
              "<'col-md-12 col-lg-8 py-1 pe-3 d-flex justify-content-lg-end'l>>"
@@ -90,6 +90,7 @@
         e.preventDefault();
         const form = $(this).parents('.btn-group').find('.form-delete');
         if(confirm('Do you really want to delete this data?')){
+            sessionStorage.getItem('table_products') ? sessionStorage.removeItem('table_products') : null;
             form.submit();
         }
     })

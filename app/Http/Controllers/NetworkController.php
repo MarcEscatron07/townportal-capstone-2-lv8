@@ -59,7 +59,7 @@ class NetworkController extends Controller
     public function show($id)
     {
         $network = Network::with(['computers'])->findOrFail($id);
-        $computers = $network->computers();
+        $computers = $network->computers()->get();
         return view('networks.show', compact('id', 'network', 'computers'));
     }
 
@@ -102,7 +102,7 @@ class NetworkController extends Controller
             ->with('success', 'Successfully updated network!');
         } else {
             return redirect()->route('networks.edit', $network->id)
-            ->with('failed', 'Unable to update household...');
+            ->with('failed', 'Unable to update network...');
         }
     }
 

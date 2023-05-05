@@ -58,7 +58,7 @@
         "initComplete": function(){
             $('.spinner-ctr').css('display', 'none');
         },
-        scrollY: '350px',
+        scrollY: '340px',
         scrollCollapse: true,
         dom: "<'row mb-2'<'col-md-12 col-lg-4 py-1 d-flex justify-content-lg-start align-items-center'f>" +
              "<'col-md-12 col-lg-8 py-1 pe-3 d-flex justify-content-lg-end'l>>"
@@ -70,10 +70,10 @@
         orderCellsTop: true,
         ajax: "{{ route('networks.data') }}",
         columns: [
-            {data: 'name', name: 'name', width:"15%", searchable: true, orderable: true},
-            {data: 'provider', name: 'provider', width:"15%", searchable: true, orderable: true},
-            {data: 'cost', name: 'cost', width:"15%", searchable: true, orderable: true},
-            {data: 'remarks', name: 'remarks', width:"15%", searchable: true, orderable: true},
+            {data: 'name', name: 'name', width:"20%", searchable: true, orderable: true},
+            {data: 'provider', name: 'provider', width:"20%", searchable: true, orderable: true},
+            {data: 'cost', name: 'cost', width:"20%", searchable: true, orderable: true},
+            {data: 'remarks', name: 'remarks', width:"30%", searchable: true, orderable: true},
             {data: 'action', name: 'action', width:"10%", searchable: false, className:"text-center", orderable: false},
         ],
         stateSave: true,

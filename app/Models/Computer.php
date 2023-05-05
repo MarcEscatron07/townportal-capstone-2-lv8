@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Status;
+use App\Models\Network;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -38,5 +40,13 @@ class Computer extends Model
 
     public function getComputersByMonthCount($year, $month) {
         return $this->whereMonth('created_at', Carbon::create($year, $month))->count() ?? 0;
+    }
+
+    public function formattedNetwork() {
+        return $this->network()->first()->name ?? '';
+    }
+
+    public function formattedStatus() {
+        return $this->status()->first()->name ?? '';
     }
 }
