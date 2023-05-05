@@ -102,7 +102,7 @@ class NetworkController extends Controller
             ->with('success', 'Successfully updated network!');
         } else {
             return redirect()->route('networks.edit', $network->id)
-            ->with('failed', 'Unable to update household...');
+            ->with('failed', 'Unable to update network...');
         }
     }
 
