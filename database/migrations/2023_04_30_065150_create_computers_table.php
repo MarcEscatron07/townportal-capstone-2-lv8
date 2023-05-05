@@ -18,7 +18,6 @@ class CreateComputersTable extends Migration
             $table->bigInteger('network_id')->unsigned()->index();
             $table->bigInteger('status_id')->unsigned()->index();
             $table->string('name');
-            $table->string('unit');
             $table->text('remarks')->nullable();
             $table->timestamps();
         });

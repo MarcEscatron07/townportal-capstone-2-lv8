@@ -31,17 +31,17 @@
             <hr class="mb-3" />
 
             <div class="col-lg-3 my-3">
-                <label for="name" class="form-label required">Name:</label>
-                <input id="name" name="name" type="text" class="form-control @error('name') is-invalid @enderror" value="{{ $network && $network->name ? $network->name : old('name') }}" required/>
-            </div>
-            <div class="col-lg-3 my-3">
-                <label for="provider" class="form-label required">Provider:</label>
-                <select id="provider" name="provider" class="form-select" required>
+                <label for="provider_id" class="form-label required">Provider:</label>
+                <select id="provider_id" name="provider_id" class="form-select" required>
                     <option value="" selected>-- --</option>
-                    @foreach($providers as $key => $value)
-                        <option value="{{$key}}" {{ $network && in_array($key, [$network->provider, old('provider')]) ? 'selected':'' }}>{{$value}}</option>
+                    @foreach($networks as $value)
+                        <option value="{{$value->id}}" {{ $network && in_array($value->id, [$network->provider_id, old('provider_id')]) ? 'selected':'' }}>{{$value->name}}</option>
                     @endforeach
                 </select>
+            </div>
+            <div class="col-lg-3 my-3">
+                <label for="name" class="form-label required">Name:</label>
+                <input id="name" name="name" type="text" class="form-control @error('name') is-invalid @enderror" value="{{ $network && $network->name ? $network->name : old('name') }}" required/>
             </div>
             <div class="col-lg-3 my-3">
                 <label for="cost" class="form-label">Cost:</label>

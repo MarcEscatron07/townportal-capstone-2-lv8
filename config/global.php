@@ -2,15 +2,11 @@
 
 return [
     'providers' => [
-        'PLDT' => 'PLDT',
-        'Globe' => 'Globe',
-        'DITO' => 'DITO',
-        'Converge' => 'Converge',
-        'Starlink' => 'Starlink',
-    ],
-    'units' => [
-        'Desktop' => 'Desktop',
-        'Laptop' => 'Laptop',
+        '1' => 'PLDT',
+        '2' => 'Globe',
+        '3' => 'Converge',
+        '4' => 'DITO',
+        '5' => 'Starlink',
     ],
     'statuses' => [
         '1' => 'Available',
@@ -27,5 +23,6 @@ return [
     'categories' => [
         '1' => 'Food',
         '2' => 'Drinks',
-    ]
+        '3' => 'Merchandise',
+    ],
 ];

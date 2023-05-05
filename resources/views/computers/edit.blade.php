@@ -53,15 +53,6 @@
                 <input id="name" name="name" type="text" class="form-control @error('name') is-invalid @enderror" value="{{ $computer && $computer->name ? $computer->name : old('name') }}" required/>
             </div>
             <div class="col-lg-3 my-3">
-                <label for="unit" class="form-label required">Unit:</label>
-                <select id="unit" name="unit" class="form-select" required>
-                    <option value="" selected>-- --</option>
-                    @foreach($units as $key => $value)
-                        <option value="{{$key}}" {{ $computer && in_array($key, [$computer->unit, old('unit')]) ? 'selected':'' }}>{{$value}}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="col-lg-3 my-3">
                 <label for="remarks" class="form-label">Remarks:</label>
                 <textarea id="remarks" name="remarks" class="form-control @error('remarks') is-invalid @enderror">{{ $computer && $computer->remarks ? $computer->remarks : old('remarks') }}</textarea>
             </div>
