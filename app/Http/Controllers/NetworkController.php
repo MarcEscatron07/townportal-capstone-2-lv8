@@ -58,7 +58,9 @@ class NetworkController extends Controller
      */
     public function show($id)
     {
-        //
+        $network = Network::with(['computers'])->findOrFail($id);
+        $computers = $network->computers();
+        return view('networks.show', compact('id', 'network', 'computers'));
     }
 
     /**
@@ -84,7 +86,9 @@ class NetworkController extends Controller
     public function update(Request $request, $id)
     {
         $network = Network::with(['computers'])->findOrFail($id);
+        // dd($network);
         $data = $request->all();
+        // dd($data);
 
         $network->name = $data['name'] ?? null;
         $network->provider = $data['provider'] ?? null;

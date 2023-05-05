@@ -23,48 +23,6 @@ body {
   position: relative;
 }
 
-.page-header {
-  height: 40px;
-  margin-bottom: 25px;
-  padding: 0px;
-}
-.page-header .header-title {
-  font-size: 1.3rem;
-  border-bottom: 3px solid #f59f00;
-  text-transform: uppercase;
-}
-
-.page-content {
-  min-height: 280px;
-  background-color: #ffffff;
-}
-
-.page-form {
-  border-left: 24px groove #1d273b;
-  border-radius: 10px 0px 0px 10px;
-  background-color: #d8e7f4;
-}
-.page-form .form-fieldset {
-  background-color: #d8e7f4;
-}
-.page-form .form-fieldset legend {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-}
-.page-form .form-fieldset textarea {
-  resize: none;
-}
-.page-form .form-fieldset .form-label {
-  color: #555555;
-  font-size: 0.85rem;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-.page-form .form-fieldset .form-control, .page-form .form-fieldset .form-select {
-  border-radius: 0px;
-}
-
 .spinner-ctr {
   position: fixed;
   display: none;
@@ -87,6 +45,53 @@ body {
   position: relative;
   overflow-x: auto;
   background-color: #d8e7f4;
+}
+
+.page-header {
+  height: 40px;
+  margin-bottom: 25px;
+  padding: 0px;
+}
+.page-header .header-title {
+  font-size: 1.3rem;
+  border-bottom: 3px solid #f59f00;
+  text-transform: uppercase;
+}
+
+.page-content {
+  background-color: #ffffff;
+}
+
+.page-form {
+  border-left: 24px groove #1d273b;
+  border-radius: 10px 0px 0px 10px;
+  background-color: #d8e7f4;
+}
+
+.form-fieldset {
+  background-color: #d8e7f4;
+}
+.form-fieldset legend {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+.form-fieldset textarea {
+  min-height: 100px;
+  resize: none;
+}
+.form-fieldset .form-label {
+  color: #555555;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.form-fieldset .form-control, .form-fieldset .form-select {
+  border-radius: 0px;
+}
+
+.datagrid-title {
+  font-size: 0.85rem;
 }
 
 /* CSS Ruleset for DataTables */

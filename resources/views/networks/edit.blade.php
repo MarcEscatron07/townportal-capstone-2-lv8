@@ -8,7 +8,7 @@
 <div class="container page-header">
     <div class="row">
         <div class="col-6 d-flex align-items-center justify-content-start">
-            <h3><span class="header-title">Edit Network Details</span></h3>
+            <h3><span class="header-title">Edit Network</span></h3>
         </div>
         <div class="col-6 d-flex align-items-center justify-content-end">
             <a href="{{ route('networks.index') }}" class="btn btn-secondary"><i class="fa fa-backward-step"></i> <span class="ms-2">Back</span></a>
