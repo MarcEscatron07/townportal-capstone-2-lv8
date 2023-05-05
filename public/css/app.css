@@ -95,6 +95,13 @@ body {
 }
 
 /* CSS Ruleset for DataTables */
+.dataTables_scrollHead th {
+  background: #1d273b !important;
+  color: #f59f00 !important;
+  padding: 0.8rem !important;
+  font-size: 0.75rem !important;
+}
+
 .dataTable {
   border: 2px solid #c7c7c7 !important;
 }

@@ -117,6 +117,15 @@ body {
 }
 
 /* CSS Ruleset for DataTables */
+.dataTables_scrollHead {
+    th {
+        background: $primary-theme !important;
+        color: $tertiary-theme !important;
+        padding: .8rem !important;
+        font-size: .75rem !important;
+    }
+}
+
 .dataTable{
     border: 2px solid $secondary-hover !important;
 }
