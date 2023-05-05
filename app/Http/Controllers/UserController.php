@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
@@ -25,7 +26,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $roles = Role::get();
+        return view('users.create', compact('roles'));
     }
 
     /**
@@ -36,7 +38,17 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        // dd($data);
+        $new = new User($data);
+
+        if($new->save()) {
+            return redirect()->route('users.create')
+            ->with('success', 'Successfully added new user!');
+        } else {
+            return redirect()->route('users.create')
+            ->with('failed', 'Unable to add new user...');
+        }
     }
 
     /**
@@ -47,7 +59,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('users.show', compact('id', 'user'));
     }
 
     /**
@@ -58,7 +71,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $roles = Role::get();
+        return view('users.edit', compact('id', 'user', 'roles'));
     }
 
     /**
@@ -70,7 +85,27 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+        // dd($user);
+        $data = $request->all();
+        // dd($data);
+
+        $user->role_id = $data['role_id'] ?? null;
+        $user->fname = $data['fname'] ?? null;
+        $user->mname = $data['mname'] ?? null;
+        $user->lname = $data['lname'] ?? null;
+        $user->username = $data['username'] ?? null;
+        $user->email = $data['email'] ?? null;
+        $user->password = $data['password'] ?? null;
+        $user->image = $data['image'] ?? null;
+
+        if($user->save()) {
+            return redirect()->route('users.edit', $user->id)
+            ->with('success', 'Successfully updated user!');
+        } else {
+            return redirect()->route('users.edit', $user->id)
+            ->with('failed', 'Unable to update user...');
+        }
     }
 
     /**
@@ -81,7 +116,10 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return redirect()->route('users.index')->with('success','Deleted successfully');
     }
 
     public function data(Request $request) {
