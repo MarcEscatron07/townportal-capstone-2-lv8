@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Type;
+use App\Models\Computer;
 use App\Models\Peripheral;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
@@ -25,7 +27,9 @@ class PeripheralController extends Controller
      */
     public function create()
     {
-        //
+        $computers = Computer::get();
+        $types = Type::get();
+        return view('peripherals.create', compact('computers', 'types'));
     }
 
     /**
@@ -36,7 +40,17 @@ class PeripheralController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        // dd($data);
+        $new = new Peripheral($data);
+
+        if($new->save()) {
+            return redirect()->route('peripherals.create')
+            ->with('success', 'Successfully added new peripheral!');
+        } else {
+            return redirect()->route('peripherals.create')
+            ->with('failed', 'Unable to add new peripheral...');
+        }
     }
 
     /**
@@ -47,7 +61,8 @@ class PeripheralController extends Controller
      */
     public function show($id)
     {
-        //
+        $peripheral = Peripheral::findOrFail($id);
+        return view('peripherals.show', compact('id', 'peripheral'));
     }
 
     /**
@@ -58,7 +73,10 @@ class PeripheralController extends Controller
      */
     public function edit($id)
     {
-        //
+        $peripheral = Peripheral::findOrFail($id);
+        $computers = Computer::get();
+        $types = Type::get();
+        return view('peripherals.edit', compact('id', 'peripheral', 'computers', 'types'));
     }
 
     /**
@@ -70,7 +88,27 @@ class PeripheralController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $peripheral = Peripheral::findOrFail($id);
+        // dd($network);
+        $data = $request->all();
+        // dd($data);
+
+        $peripheral->computer_id = $data['computer_id'] ?? null;
+        $peripheral->type_id = $data['type_id'] ?? null;
+        $peripheral->name = $data['name'] ?? null;
+        $peripheral->brand = $data['brand'] ?? null;
+        $peripheral->model = $data['model'] ?? null;
+        $peripheral->serial_number = $data['serial_number'] ?? null;
+        $peripheral->cost = $data['cost'] ?? null;
+        $peripheral->remarks = $data['remarks'] ?? null;
+
+        if($peripheral->save()) {
+            return redirect()->route('peripherals.edit', $peripheral->id)
+            ->with('success', 'Successfully updated peripheral!');
+        } else {
+            return redirect()->route('peripherals.edit', $peripheral->id)
+            ->with('failed', 'Unable to update peripheral...');
+        }
     }
 
     /**
@@ -81,7 +119,10 @@ class PeripheralController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $peripheral = Peripheral::findOrFail($id);
+        $peripheral->delete();
+
+        return redirect()->route('peripherals.index')->with('success','Deleted successfully');
     }
 
     public function data(Request $request) {
@@ -103,6 +144,10 @@ class PeripheralController extends Controller
                                 <input type="hidden" name="_token" value="'.csrf_token().'">
                                 </form>
                             </div>';
+                })->editColumn('computer_id', function(Peripheral $peripheral){
+                    return $peripheral->formattedComputer();
+                })->editColumn('type_id', function(Peripheral $peripheral){
+                    return $peripheral->formattedType();
                 })
                 ->rawColumns(['action'])->make(true);
         }

@@ -11,7 +11,7 @@
             <h3><span class="header-title">Peripherals</span></h3>
         </div>
         <div class="col-6 d-flex align-items-center justify-content-end">
-            <a href="#" class="btn btn-success"><i class="fa fa-plus"></i> <span class="ms-2">New Entry</span></a>
+            <a href="{{ route('peripherals.create') }}" class="btn btn-success"><i class="fa fa-plus"></i> <span class="ms-2">New Entry</span></a>
         </div>
     </div>
 </div>
@@ -24,8 +24,8 @@
             <table class="table table-striped shadow" id="table">
                 <thead>
                     <tr class="bg-success text-dark">
-                        {{-- <th scope="col">Computer</th>
-                        <th scope="col">Type</th> --}}
+                        <th scope="col">Computer</th>
+                        <th scope="col">Type</th>
                         <th scope="col">Name</th>
                         <th scope="col">Brand</th>
                         <th scope="col">Model</th>
@@ -74,12 +74,14 @@
         orderCellsTop: true,
         ajax: "{{ route('peripherals.data') }}",
         columns: [
-            {data: 'name', name: 'name', width:"15%", searchable: true, orderable: true},
-            {data: 'brand', name: 'brand', width:"15%", searchable: true, orderable: true},
-            {data: 'model', name: 'model', width:"15%", searchable: true, orderable: true},
-            {data: 'serial_number', name: 'serial_number', width:"15%", searchable: true, orderable: true},
-            {data: 'cost', name: 'cost', width:"15%", searchable: true, orderable: true},
-            {data: 'remarks', name: 'remarks', width:"15%", searchable: true, orderable: true},
+            {data: 'computer_id', name: 'computer_id', width:"8%", searchable: true, orderable: true},
+            {data: 'type_id', name: 'type_id', width:"8%", searchable: true, orderable: true},
+            {data: 'name', name: 'name', width:"10%", searchable: true, orderable: true},
+            {data: 'brand', name: 'brand', width:"8%", searchable: true, orderable: true},
+            {data: 'model', name: 'model', width:"8%", searchable: true, orderable: true},
+            {data: 'serial_number', name: 'serial_number', width:"10%", searchable: true, orderable: true},
+            {data: 'cost', name: 'cost', width:"8%", searchable: true, orderable: true},
+            {data: 'remarks', name: 'remarks', width:"30%", searchable: true, orderable: true},
             {data: 'action', name: 'action', width:"10%", searchable: false, className:"text-center", orderable: false},
         ],
         stateSave: true,

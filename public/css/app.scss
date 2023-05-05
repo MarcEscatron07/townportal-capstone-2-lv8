@@ -27,7 +27,6 @@ body {
 
 h1, h2, h3, h4, h5, h6, a {
     font-family: "Titillium Web", sans-serif !important;
-    font-size: 1rem;
 }
 
 body {
@@ -258,6 +257,7 @@ body {
                 padding: 20px;
                 margin: 0px;
                 color: $secondary-theme;
+                font-size: 1rem;
                 text-decoration: none;
             }
         }

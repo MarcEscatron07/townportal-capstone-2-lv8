@@ -38,4 +38,12 @@ class Peripheral extends Model
     public function getPeripheralsByTypeCount($type_id) {
         return $this->where('type_id', $type_id)->count() ?? 0;
     }
+
+    public function formattedComputer() {
+        return $this->computer()->first()->name ?? '';
+    }
+
+    public function formattedType() {
+        return $this->type()->first()->name ?? '';
+    }
 }

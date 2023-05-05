@@ -26,25 +26,25 @@
 
         <hr class="mb-3" />
 
-        <div class="col-lg-4 my-3">
+        <div class="col-lg-3 my-3">
             <div class="datagrid-item">
                 <div class="datagrid-title"><span>Name:</span></div>
                 <div class="datagrid-content">{{$network->name}}</div>
             </div>
         </div>
-        <div class="col-lg-4 my-3">
+        <div class="col-lg-3 my-3">
             <div class="datagrid-item">
                 <div class="datagrid-title"><span>Provider:</span></div>
                 <div class="datagrid-content">{{$network->provider}}</div>
             </div>
         </div>
-        <div class="col-lg-4 my-3">
+        <div class="col-lg-3 my-3">
             <div class="datagrid-item">
                 <div class="datagrid-title"><span>Cost:</span></div>
                 <div class="datagrid-content">{{$network->cost}}</div>
             </div>
         </div>
-        <div class="col-lg-4 my-3">
+        <div class="col-lg-3 my-3">
             <div class="datagrid-item">
                 <div class="datagrid-title"><span>Remarks:</span></div>
                 <div class="datagrid-content">{{$network->remarks}}</div>
