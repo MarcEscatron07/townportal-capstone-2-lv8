@@ -437,17 +437,19 @@ new Chart(chartProductsByCategory, {
     plugins: [ChartDataLabels],
     data: {
         labels: [
-            'Food','Drinks'
+            'Food','Drinks','Merchandise'
         ],
         datasets: [{
             label: 'Categories',
             data: [
                 countProductsFood,
                 countProductsDrinks,
+                countProductsMerchandise,
             ],
             backgroundColor: [
                 'rgba(54, 162, 235, 1)',
                 'rgba(255, 99, 132, 1)',
+                'rgba(255, 205, 86, 1)',
             ],
             hoverOffset: 4
         }],

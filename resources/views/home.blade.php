@@ -228,7 +228,8 @@
         /* JS code for Products */
         const countProductsFood = parseInt({{ $product->getProductsByCategoryCount('1') }});
         const countProductsDrinks = parseInt({{ $product->getProductsByCategoryCount('2') }});
-        const sumProductsCategory = countProductsFood + countProductsDrinks;
+        const countProductsMerchandise = parseInt({{ $product->getProductsByCategoryCount('3') }});
+        const sumProductsCategory = countProductsFood + countProductsDrinks + countProductsMerchandise;
 
         const countProductsJAN = parseInt({{ $product->getProductsByMonthCount(\Carbon\Carbon::now()->year, \Carbon\Carbon::parse('January')->month) }});
         const countProductsFEB = parseInt({{ $product->getProductsByMonthCount(\Carbon\Carbon::now()->year, \Carbon\Carbon::parse('February')->month) }});

@@ -17,13 +17,13 @@ class DatabaseSeeder extends Seeder
             RolesSeeder::class,
             UsersSeeder::class,
             ProvidersSeeder::class,
-            // NetworksSeeder::class,
+            // NetworksSeeder::class, // comment when not needed in seeding
             StatusesSeeder::class,
-            // ComputersSeeder::class,
+            // ComputersSeeder::class, // comment when not needed in seeding
             TypesSeeder::class,
-            // PeripheralsSeeder::class,
+            // PeripheralsSeeder::class, // comment when not needed in seeding
             CategoriesSeeder::class,
-            // ProductsSeeder::class,
+            // ProductsSeeder::class, // comment when not needed in seeding
         ]);
     }
 }
