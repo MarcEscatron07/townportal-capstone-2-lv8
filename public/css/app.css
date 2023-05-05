@@ -102,6 +102,10 @@ body {
   font-size: 0.75rem !important;
 }
 
+.dataTables_scrollBody tr.odd {
+  background-color: #f1f1f1 !important;
+}
+
 .dataTable {
   border: 2px solid #c7c7c7 !important;
 }

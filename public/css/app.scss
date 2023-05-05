@@ -126,6 +126,14 @@ body {
     }
 }
 
+.dataTables_scrollBody {
+    tr {
+        &.odd {
+            background-color: #f1f1f1 !important;
+        }
+    }
+}
+
 .dataTable{
     border: 2px solid $secondary-hover !important;
 }
