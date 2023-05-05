@@ -90,9 +90,9 @@ class PeripheralController extends Controller
 
             return DataTables::of($data)
                 ->addColumn('action', function(Peripheral $peripheral){
-                    $showUrl = route('users.show', $peripheral->id);
-                    $editUrl = route('users.edit', $peripheral->id);
-                    $delUrl = route('users.destroy', $peripheral->id);
+                    $showUrl = route('peripherals.show', $peripheral->id);
+                    $editUrl = route('peripherals.edit', $peripheral->id);
+                    $delUrl = route('peripherals.destroy', $peripheral->id);
 
                     return '<div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                               <a href="'.$showUrl.'" class="btn btn-info rounded mx-1" title="Show"><i class="fa fa-eye"></i></a>

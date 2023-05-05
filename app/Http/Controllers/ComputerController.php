@@ -90,9 +90,9 @@ class ComputerController extends Controller
 
             return DataTables::of($data)
                 ->addColumn('action', function(Computer $computer){
-                    $showUrl = route('users.show', $computer->id);
-                    $editUrl = route('users.edit', $computer->id);
-                    $delUrl = route('users.destroy', $computer->id);
+                    $showUrl = route('computers.show', $computer->id);
+                    $editUrl = route('computers.edit', $computer->id);
+                    $delUrl = route('computers.destroy', $computer->id);
 
                     return '<div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                               <a href="'.$showUrl.'" class="btn btn-info rounded mx-1" title="Show"><i class="fa fa-eye"></i></a>

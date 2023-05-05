@@ -90,9 +90,9 @@ class ProductController extends Controller
 
             return DataTables::of($data)
                 ->addColumn('action', function(Product $product){
-                    $showUrl = route('users.show', $product->id);
-                    $editUrl = route('users.edit', $product->id);
-                    $delUrl = route('users.destroy', $product->id);
+                    $showUrl = route('products.show', $product->id);
+                    $editUrl = route('products.edit', $product->id);
+                    $delUrl = route('products.destroy', $product->id);
 
                     return '<div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                               <a href="'.$showUrl.'" class="btn btn-info rounded mx-1" title="Show"><i class="fa fa-eye"></i></a>
