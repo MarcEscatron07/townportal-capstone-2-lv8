@@ -62,7 +62,8 @@ class ComputerController extends Controller
      */
     public function show($id)
     {
-        //
+        $computer = Computer::findOrFail($id);
+        return view('computers.show', compact('id', 'computer'));
     }
 
     /**

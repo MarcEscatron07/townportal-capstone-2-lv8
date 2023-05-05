@@ -59,7 +59,7 @@ class NetworkController extends Controller
     public function show($id)
     {
         $network = Network::with(['computers'])->findOrFail($id);
-        $computers = $network->computers();
+        $computers = $network->computers()->get();
         return view('networks.show', compact('id', 'network', 'computers'));
     }
 
