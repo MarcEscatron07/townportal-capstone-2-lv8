@@ -23,6 +23,7 @@ class UsersSeeder extends Seeder
                 'lname' => 'Escatron',
                 'username' => 'marcusbenz07',
                 'email' => 'marc.escatron07@gmail.com',
+                'image' => 'images/profile/profile-owner.png',
                 'password' => Hash::make('passowner'),
             ],
             [
@@ -32,6 +33,7 @@ class UsersSeeder extends Seeder
                 'lname' => 'Gesalan',
                 'username' => 'espegez28',
                 'email' => 'espegez28@gmail.com',
+                'image' => 'images/profile/profile-manager.png',
                 'password' => Hash::make('passmanager'),
             ],
             [
@@ -41,6 +43,7 @@ class UsersSeeder extends Seeder
                 'lname' => 'Alarva',
                 'username' => 'kewnie25',
                 'email' => 'kewnie@gmail.com',
+                'image' => 'images/profile/profile-staff.png',
                 'password' => Hash::make('passstaff'),
             ],
         ]);

@@ -1,8 +1,8 @@
 {
     "private": true,
     "scripts": {
-        "composer-install": "composer install",
-        "composer-update": "composer update",
+        "cpsi": "composer install",
+        "cpsu": "composer update",
         "keygen": "php artisan key:generate",
         "cache": "php artisan config:cache",
         "seed": "php artisan migrate:fresh --seed",

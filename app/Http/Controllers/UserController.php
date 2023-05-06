@@ -39,6 +39,16 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        if($request->hasFile('image')) {
+            $directory_path = 'images/profile/';
+            $image = $request->file('image');
+            $image_path = $directory_path.$image->getClientOriginalName();
+
+            $image->move($directory_path, $image_path);
+        } else {
+            $image_path = 'images/profile/profile-default.png';
+        }
+        $data['image'] = $image_path;
         // dd($data);
         $new = new User($data);
 
@@ -131,7 +141,7 @@ class UserController extends Controller
                     $showUrl = route('users.show', $user->id);
                     $editUrl = route('users.edit', $user->id);
                     $delUrl = route('users.destroy', $user->id);
-                    
+
                     return '<div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                               <a href="'.$showUrl.'" class="btn btn-info rounded mx-1" title="Show"><i class="fa fa-eye"></i></a>
                               <a href="'.$editUrl.'" class="btn btn-warning rounded mx-1" title="Edit"><i class="fa fa-edit"></i></a>
@@ -141,6 +151,8 @@ class UserController extends Controller
                                 <input type="hidden" name="_token" value="'.csrf_token().'">
                                 </form>
                             </div>';
+                })->editColumn('role_id', function(User $user){
+                    return $user->formattedRole();
                 })
                 ->rawColumns(['action'])->make(true);
         }
