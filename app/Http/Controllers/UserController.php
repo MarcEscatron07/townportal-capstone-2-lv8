@@ -50,7 +50,7 @@ class UserController extends Controller
         }
         $data['image'] = $image;
         // dd($data);
-        
+
         $new = new User($data);
 
         if($new->save()) {
@@ -108,7 +108,21 @@ class UserController extends Controller
         $user->username = $data['username'] ?? null;
         $user->email = $data['email'] ?? null;
         $user->password = $data['password'] ?? null;
-        $user->image = $data['image'] ?? null;
+
+        if($request->hasFile('image')) {
+            $directory_path = 'images/profile/';
+            if(file_exists(public_path($directory_path.$user->image))) { // delete old image if there is a new one
+                unlink($directory_path.$user->image);
+            }
+            $image_file = $request->file('image');
+            $image = $image_file->getClientOriginalName();
+
+            $image_file->move($directory_path, $directory_path.$image);
+        } else {
+            $image = $user->image;
+        }
+        $data['image'] = $image;
+        $user->image = $data['image'];
 
         if($user->save()) {
             return redirect()->route('users.edit', $user->id)

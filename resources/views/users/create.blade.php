@@ -60,9 +60,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="webcam-tab-pane" role="tabpanel" aria-labelledby="webcam-tab" tabindex="0">
+                        {{-- <div class="tab-pane fade" id="webcam-tab-pane" role="tabpanel" aria-labelledby="webcam-tab" tabindex="0"> --}}
                             {{-- Webcam HTML here --}}
-                        </div>
+                        {{-- </div> --}}
                     </div>
                 </div>
             </div>
@@ -124,7 +124,7 @@
         function displayUploadedFile(input, value, onSuccess, onFail) {
             // console.log('displayUploadedFile > input', input)
             // console.log('displayUploadedFile > value', value)
-            
+
             if(input && value) {
                 const ext = value.substring(value.lastIndexOf('.') + 1).toLowerCase();
                 const allowedExt = ['png','jpg','jpeg'];
