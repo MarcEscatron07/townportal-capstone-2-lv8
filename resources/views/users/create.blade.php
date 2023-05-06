@@ -55,9 +55,9 @@
                                     <label for="image-customupload" class="form-label">User Image:</label>
                                     <div class="fileupload-container">
                                         <label id="image-customupload" for="image-defaultupload" class="custom-fileupload bg-dark text-white rounded">
-                                            <i class="fa fa-upload me-1"></i> Upload Picture
+                                            <i class="fa fa-upload me-1"></i> Upload Image
                                         </label>
-                                        <input type="file" id="image-defaultupload" name="image-customupload" type="file" class="default-fileupload"/>
+                                        <input type="file" id="image-defaultupload" type="file" class="default-fileupload"/>
                                     </div>
                                 </div>
                             </div>
@@ -105,7 +105,7 @@
                     </div>
                     <div class="col-lg-4 my-3">
                         <label for="cfpassword" class="form-label required">Confirm Password:</label>
-                        <input id="cfpassword" name="cfpassword" type="password" class="form-control @error('cfpassword') is-invalid @enderror" value="{{ old('cfpassword') }}" required/>
+                        <input id="cfpassword" type="password" class="form-control @error('cfpassword') is-invalid @enderror" value="{{ old('cfpassword') }}" required/>
                     </div>
                 </div>
                 <div class="row">
@@ -140,7 +140,10 @@
                         const base64image = e.target.result;
                         /*** base64 Output ***/
                         if(onSuccess) {
-                            onSuccess(base64image);
+                            onSuccess(
+                                uploadedFile,
+                                base64image
+                            );
                         }
                     }
                     reader.readAsDataURL(uploadedFile);
@@ -168,24 +171,27 @@
                 // console.log('.default-fileupload > this', this)
 
                 const input = this;
-                const name = input.name;
+                const id = input.id;
                 const value = $(input).val();
-                // console.log(`${name} > value:`, value)
+                // console.log(`${id} > value:`, value)
 
                 if(value && value.length > 0) {
-                    $(`#${name}`).addClass('text-warning');
+                    $(`#${id}`).addClass('text-warning');
                 } else {
-                    $(`#${name}`).removeClass('text-warning');
+                    $(`#${id}`).removeClass('text-warning');
                 }
 
-                switch(name) {
-                    case 'image-customupload':
+                switch(id) {
+                    case 'image-defaultupload':
                         displayUploadedFile(
                             input, value,
-                            (base64image) => {
-                                // console.log('pic_upload > base64image:', base64image)
+                            (file, base64image) => {
+                                console.log(`${id} > file:`, file)
+                                // console.log(`${id} > base64image:`, base64image)
+
                                 $('#page-imageviewer').attr('src', base64image);
-                                $("#page-hiddenupload").val(base64image);
+                                // $("#page-hiddenupload").val(base64image);
+                                $("#page-hiddenupload").val(file && file.name ? file.name : '');
                             },
                             () => { resetFileUpload(); }
                         );
