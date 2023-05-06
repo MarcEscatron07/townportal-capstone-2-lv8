@@ -37,7 +37,7 @@
 </div>
 @endsection
 
-@section('script')
+@push('script')
 <script>
     let table;
 
@@ -61,8 +61,8 @@
         scrollY: '340px',
         scrollCollapse: true,
         dom: "<'row mb-2'<'col-md-12 col-lg-4 py-1 d-flex justify-content-lg-start align-items-center'f>" +
-             "<'col-md-12 col-lg-8 py-1 pe-3 d-flex justify-content-lg-end'l>>" 
-             + "<'row'<'col-md-12'tr>>" + 
+             "<'col-md-12 col-lg-8 py-1 pe-3 d-flex justify-content-lg-end'l>>"
+             + "<'row'<'col-md-12'tr>>" +
              "<'row mt-2'<'col-md-12 col-lg-4 py-1 d-flex justify-content-lg-start align-items-center'i>" +
              "<'col-md-12 col-lg-8 py-1 pe-3 d-flex justify-content-lg-end'p>>",
         processing: false,
@@ -94,4 +94,4 @@
         }
     })
 </script>
-@endsection
+@endpush

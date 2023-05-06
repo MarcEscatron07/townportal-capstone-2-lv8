@@ -39,7 +39,7 @@
 </div>
 @endsection
 
-@section('script')
+@push('script')
 <script>
     let table;
 
@@ -98,4 +98,4 @@
         }
     })
 </script>
-@endsection
+@endpush

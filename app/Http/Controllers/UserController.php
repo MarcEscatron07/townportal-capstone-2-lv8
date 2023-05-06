@@ -6,6 +6,7 @@ use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -49,6 +50,7 @@ class UserController extends Controller
             $image = null;
         }
         $data['image'] = $image;
+        $data['password'] = Hash::make($data['password']);
         // dd($data);
 
         $new = new User($data);
@@ -101,13 +103,13 @@ class UserController extends Controller
         $data = $request->all();
         // dd($data);
 
-        $user->role_id = $data['role_id'] ?? null;
-        $user->fname = $data['fname'] ?? null;
+        $user->role_id = $data['role_id'] ?? $user->role_id;
+        $user->fname = $data['fname'] ?? $user->fname;
         $user->mname = $data['mname'] ?? null;
-        $user->lname = $data['lname'] ?? null;
-        $user->username = $data['username'] ?? null;
+        $user->lname = $data['lname'] ?? $user->lname;
+        $user->username = $data['username'] ?? $user->username;
         $user->email = $data['email'] ?? null;
-        $user->password = $data['password'] ?? null;
+        $user->password = Hash::make($data['password']) ?? $user->password;
 
         if($request->hasFile('image')) {
             $directory_path = 'images/profile/';
@@ -119,7 +121,7 @@ class UserController extends Controller
 
             $image_file->move($directory_path, $directory_path.$image);
         } else {
-            $image = $user->image;
+            $image = $user->image ?? null;
         }
         $data['image'] = $image;
         $user->image = $data['image'];
@@ -155,7 +157,7 @@ class UserController extends Controller
 
     public function data(Request $request) {
         if($request->ajax()) {
-            $data = User::get();
+            $data = User::where('id','!=','1')->get();
 
             return DataTables::of($data)
                 ->addColumn('action', function(User $user){
