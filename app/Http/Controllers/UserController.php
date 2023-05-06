@@ -40,17 +40,18 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        $data['password'] = Hash::make($data['password']);
+
         if($request->hasFile('image')) {
             $directory_path = 'images/profile/';
             $image_file = $request->file('image');
-            $image = $image_file->getClientOriginalName();
+            $image_filename = $data['lname']."_".$data['fname']."_".time()."_PROFILE.png";
 
-            $image_file->move($directory_path, $directory_path.$image);
+            $image_file->move($directory_path, $directory_path.$image_filename);
         } else {
-            $image = null;
+            $image_filename = null;
         }
-        $data['image'] = $image;
-        $data['password'] = Hash::make($data['password']);
+        $data['image'] = $image_filename;
         // dd($data);
 
         $new = new User($data);
@@ -117,13 +118,13 @@ class UserController extends Controller
                 unlink($directory_path.$user->image);
             }
             $image_file = $request->file('image');
-            $image = $image_file->getClientOriginalName();
+            $image_filename = $data['lname']."_".$data['fname']."_".time()."_PROFILE.png";
 
-            $image_file->move($directory_path, $directory_path.$image);
+            $image_file->move($directory_path, $directory_path.$image_filename);
         } else {
-            $image = $user->image ?? null;
+            $image_filename = $user->image ?? null;
         }
-        $data['image'] = $image;
+        $data['image'] = $image_filename;
         $user->image = $data['image'];
 
         if($user->save()) {
