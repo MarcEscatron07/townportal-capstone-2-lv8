@@ -29,7 +29,7 @@
 
             <hr class="mb-3" />
 
-            <div class="col-lg-3">
+            <div class="col-xl-3">
                 <div class="page-tabcontainer">
                     <ul id="page-tab" class="page-tab nav nav-tabs" role="tablist">
                         <li class="nav-item" role="presentation">
@@ -68,7 +68,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-9 mt-3">
+            <div class="col-xl-9 mt-3">
                 <div class="row">
                     <div class="col-lg-4 my-3">
                         <label for="role_id" class="form-label required">Role:</label>
