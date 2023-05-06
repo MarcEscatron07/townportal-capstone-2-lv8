@@ -41,15 +41,16 @@ class UserController extends Controller
         $data = $request->all();
         if($request->hasFile('image')) {
             $directory_path = 'images/profile/';
-            $image = $request->file('image');
-            $image_path = $directory_path.$image->getClientOriginalName();
+            $image_file = $request->file('image');
+            $image = $image_file->getClientOriginalName();
 
-            $image->move($directory_path, $image_path);
+            $image_file->move($directory_path, $directory_path.$image);
         } else {
-            $image_path = 'images/profile/profile-default.png';
+            $image = null;
         }
-        $data['image'] = $image_path;
+        $data['image'] = $image;
         // dd($data);
+
         $new = new User($data);
 
         if($new->save()) {
@@ -107,7 +108,21 @@ class UserController extends Controller
         $user->username = $data['username'] ?? null;
         $user->email = $data['email'] ?? null;
         $user->password = $data['password'] ?? null;
-        $user->image = $data['image'] ?? null;
+
+        if($request->hasFile('image')) {
+            $directory_path = 'images/profile/';
+            if(file_exists(public_path($directory_path.$user->image))) { // delete old image if there is a new one
+                unlink($directory_path.$user->image);
+            }
+            $image_file = $request->file('image');
+            $image = $image_file->getClientOriginalName();
+
+            $image_file->move($directory_path, $directory_path.$image);
+        } else {
+            $image = $user->image;
+        }
+        $data['image'] = $image;
+        $user->image = $data['image'];
 
         if($user->save()) {
             return redirect()->route('users.edit', $user->id)
@@ -127,6 +142,12 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::findOrFail($id);
+
+        $directory_path = 'images/profile/';
+        if($user->image && file_exists(public_path($directory_path.$user->image))) {
+            unlink($directory_path.$user->image);
+        }
+
         $user->delete();
 
         return redirect()->route('users.index')->with('success','Deleted successfully');

@@ -38,18 +38,15 @@
                 <li class="nav-item w-50">
                     <a class="nav-link rounded-0 active" id="pills-login-tab" data-bs-toggle="pill" href="#pills-login" role="tab" aria-controls="pills-login" aria-selected="true">Log In</a>
                 </li>
-                <li class="nav-item w-50">
+                {{-- <li class="nav-item w-50">
                     <a class="nav-link rounded-0" id="pills-register-tab" data-bs-toggle="pill" href="#pills-register" role="tab" aria-controls="pills-register" aria-selected="false">Register</a>
-                </li>
+                </li> --}}
             </ul>
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="pills-login-tab">
                     <div class="card py-4">
-                        {{-- <div class="card-header rounded-0 bg-light text-dark">{{ __('Login') }}</div> --}}
-
                         <div class="card-body">
                             <form method="POST" action="{{ route('login') }}">
-                            {{-- <form method="POST" action=""> --}}
                                 @csrf
 
                                 <div class="form-group row my-2">
@@ -80,18 +77,6 @@
                                     </div>
                                 </div>
 
-                                {{-- <div class="form-group row my-2">
-                                    <div class="col-md-6 offset-md-4">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                            <label class="form-check-label" for="remember">
-                                                {{ __('Remember Me') }}
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div> --}}
-
                                 <div class="form-group row my-2 mb-0">
                                     <div class="col-md-8 offset-md-4">
                                         <button type="submit" class="btn btn-yellow rounded-0">
@@ -111,11 +96,8 @@
                 </div>
                 <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="pills-register-tab">
                     <div class="card">
-                        {{-- <div class="card-header bg-light text-dark">{{ __('Register') }}</div> --}}
-
                         <div class="card-body">
                             <form method="POST" action="{{ route('register') }}">
-                            {{-- <form method="POST" action=""> --}}
                                 @csrf
 
                                 <div class="form-group row my-2">
