@@ -108,7 +108,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12 mt-1">
-                        <button type="submit" class="btn btn-success"><i class="fa fa-share"></i> <span class="ms-2">Send</span></button>
+                        <button type="submit" class="form-submit-btn btn btn-success"><i class="fa fa-share"></i> <span class="ms-2">Send</span></button>
                     </div>
                 </div>
             </div>
@@ -117,7 +117,7 @@
 </div>
 @endsection
 
-@section('script')
+@push('script')
     <script>
         const originalImage = $('#page-imageviewer').attr('src');
 
@@ -196,6 +196,24 @@
                         break;
                 }
             });
+
+            $('#password, #cfpassword').on('keyup', function(e) {
+                console.log('#password > val', $('#password').val())
+                console.log('#cfpassword > val', $('#cfpassword').val())
+
+                if (
+                    $('#password').val().trim() !== '' && $('#cfpassword').val() !== '' &&
+                    $('#password').val() == $('#cfpassword').val()
+                ) {
+                    $('#password, #cfpassword').removeClass('is-invalid was-validated form-control:invalid');
+                    $('#password, #cfpassword').addClass('is-valid was-validated form-control:valid');
+                    $('.form-submit-btn').removeAttr('disabled');
+                } else {
+                    $('#password, #cfpassword').removeClass('is-valid was-validated form-control:valid');
+                    $('#password, #cfpassword').addClass('is-invalid was-validated form-control:invalid');
+                    $('.form-submit-btn').attr('disabled', 'disabled');
+                }
+            });
         })
     </script>
-@endsection
+@endpush

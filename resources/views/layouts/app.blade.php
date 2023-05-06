@@ -24,7 +24,8 @@
     <link href="{{ asset('css/fontawesome/all.css') }}" rel="stylesheet">
     <link href="{{ asset('plugins/DataTables/datatables.min.css') }}" rel="stylesheet">
     <link href="{{ asset('plugins/Toastr/toastr.min.css') }}" rel="stylesheet">
-    @yield('link')
+    
+    @stack('link')
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -239,7 +240,8 @@
             })
         })()
     </script>
-    @yield('script')
+
+    @stack('script')
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

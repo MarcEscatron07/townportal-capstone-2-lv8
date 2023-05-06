@@ -23,9 +23,10 @@
     <link href="{{ asset('css/tabler/tabler.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/fontawesome/all.css') }}" rel="stylesheet">
     <link href="{{ asset('plugins/DataTables/datatables.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('plugins/Toastr/toastr.min.css') }}" rel="stylesheet">
 
-    @yield('link')
+    @stack('link')
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -53,11 +54,32 @@
 
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap/bootstrap.bundle.js') }}"></script>
-    <script src="{{ asset('js/tabler/tabler.min.js') }}"></script>
+    {{-- <script src="{{ asset('js/tabler/tabler.min.js') }}"></script> --}}
     <script src="{{ asset('js/fontawesome/all.js') }}"></script>
     <script src="{{ asset('plugins/DataTables/datatables.min.js') }}"></script>
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('plugins/Toastr/toastr.min.js') }}"></script>
 
-    @yield('script')
+    <script>
+        @if( \Illuminate\Support\Facades\Session::has('success') )
+            toastr.success('', "{!! session('success') !!}");
+        @elseif( \Illuminate\Support\Facades\Session::has('failed') )
+            toastr.error('', "{!! session('failed') !!}");
+        @endif
+
+        @if( \Illuminate\Support\Facades\Session::has('confirm') )
+            if(confirm("{!! session('confirm') !!}")) {
+                @if( \Illuminate\Support\Facades\Session::has('confirm_yes') )
+                    {!! session('confirm_yes') !!}
+                @endif
+            } else {
+                @if( \Illuminate\Support\Facades\Session::has('confirm_no') )
+                    {!! session('confirm_no') !!}
+                @endif
+            }
+        @endif
+    </script>
+
+    @stack('script')
+    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

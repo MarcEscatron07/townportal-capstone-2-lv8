@@ -114,9 +114,9 @@
 </div>
 @endsection
 
-@section('script')
-    <script src="{{ asset('plugins/Chart.js/chart.js') }}"></script>
-    <script src="{{ asset('plugins/Chart.js/plugins/chartjs-plugin-datalabels.js') }}"></script>
+@push('script')
+    <script src="{{ asset('plugins/ChartJS/chart.js') }}"></script>
+    <script src="{{ asset('plugins/ChartJS/chartjs-plugin-datalabels.js') }}"></script>
 
     <script>
         /* JS code for Networks */
@@ -259,4 +259,4 @@
         );
         /* JS code for Products */
     </script>
-@endsection
+@endpush
