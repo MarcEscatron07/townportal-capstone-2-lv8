@@ -44,12 +44,10 @@
                         </li> --}}
                     </ul>
                     <div id="page-tabcontent" class="page-tabcontent tab-content">
-                        <input type="hidden" id="page-hiddenupload" class="hidden-fileupload" name="image" />
-
                         <div class="tab-pane fade show active" id="fileupload-tab-pane" role="tabpanel" aria-labelledby="fileupload-tab" tabindex="0">
                             <div class="row">
                                 <div class="col-12 d-flex align-items-center justify-content-center">
-                                    <img id="page-imageviewer" class="image-viewer" src="{{ asset('images/profile-default.png') }}" alt="user-image">
+                                    <img id="page-imageviewer" class="image-viewer" src="{{ asset('images/profile/profile-default.png') }}" alt="user-image">
                                 </div>
                                 <div class="col-12 mt-3">
                                     <label for="image-customupload" class="form-label">User Image:</label>
@@ -57,7 +55,7 @@
                                         <label id="image-customupload" for="image-defaultupload" class="custom-fileupload bg-dark text-white rounded">
                                             <i class="fa fa-upload me-1"></i> Upload Image
                                         </label>
-                                        <input type="file" id="image-defaultupload" type="file" class="default-fileupload"/>
+                                        <input id="image-defaultupload" name="image" type="file" class="default-fileupload"/>
                                     </div>
                                 </div>
                             </div>
@@ -126,6 +124,7 @@
         function displayUploadedFile(input, value, onSuccess, onFail) {
             // console.log('displayUploadedFile > input', input)
             // console.log('displayUploadedFile > value', value)
+            
             if(input && value) {
                 const ext = value.substring(value.lastIndexOf('.') + 1).toLowerCase();
                 const allowedExt = ['png','jpg','jpeg'];
@@ -162,8 +161,9 @@
         function resetFileUpload() {
             $('#page-imageviewer').attr('src', originalImage);
             $("#image-defaultupload").val('');
-            $("#page-hiddenupload").val('');
         }
+
+
 
         $(document).ready(function() {
             $(document).on('change', '.default-fileupload', function(e) {
@@ -186,12 +186,10 @@
                         displayUploadedFile(
                             input, value,
                             (file, base64image) => {
-                                console.log(`${id} > file:`, file)
+                                // console.log(`${id} > file:`, file)
                                 // console.log(`${id} > base64image:`, base64image)
 
                                 $('#page-imageviewer').attr('src', base64image);
-                                // $("#page-hiddenupload").val(base64image);
-                                $("#page-hiddenupload").val(file && file.name ? file.name : '');
                             },
                             () => { resetFileUpload(); }
                         );

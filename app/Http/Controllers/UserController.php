@@ -39,6 +39,16 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        if($request->hasFile('image')) {
+            $directory_path = 'images/profile/';
+            $image = $request->file('image');
+            $image_path = $directory_path.$image->getClientOriginalName();
+
+            $image->move($directory_path, $image_path);
+        } else {
+            $image_path = 'images/profile/profile-default.png';
+        }
+        $data['image'] = $image_path;
         // dd($data);
         $new = new User($data);
 
