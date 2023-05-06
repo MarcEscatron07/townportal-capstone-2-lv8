@@ -50,6 +50,7 @@ class UserController extends Controller
         }
         $data['image'] = $image;
         // dd($data);
+        
         $new = new User($data);
 
         if($new->save()) {
