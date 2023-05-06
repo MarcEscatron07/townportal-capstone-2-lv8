@@ -131,7 +131,7 @@ class UserController extends Controller
                     $showUrl = route('users.show', $user->id);
                     $editUrl = route('users.edit', $user->id);
                     $delUrl = route('users.destroy', $user->id);
-                    
+
                     return '<div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                               <a href="'.$showUrl.'" class="btn btn-info rounded mx-1" title="Show"><i class="fa fa-eye"></i></a>
                               <a href="'.$editUrl.'" class="btn btn-warning rounded mx-1" title="Edit"><i class="fa fa-edit"></i></a>
@@ -141,6 +141,8 @@ class UserController extends Controller
                                 <input type="hidden" name="_token" value="'.csrf_token().'">
                                 </form>
                             </div>';
+                })->editColumn('role_id', function(User $user){
+                    return $user->formattedRole();
                 })
                 ->rawColumns(['action'])->make(true);
         }
