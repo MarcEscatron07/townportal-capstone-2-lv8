@@ -88,7 +88,7 @@
                                     @endif
                                     <div class="d-none d-sm-block ps-2">
                                         <div class="text-success">{{ \Illuminate\Support\Facades\Auth::user()->username }}</div>
-                                        {{-- <div class="mt-1 small text-white">{{ strtoupper(Auth::user()->office) }}</div> --}}
+                                        <div class="mt-1 small">{{ Auth::user()->formattedRole() }}</div>
                                     </div>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
