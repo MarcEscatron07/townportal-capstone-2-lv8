@@ -41,14 +41,14 @@ class UserController extends Controller
         $data = $request->all();
         if($request->hasFile('image')) {
             $directory_path = 'images/profile/';
-            $image = $request->file('image');
-            $image_path = $directory_path.$image->getClientOriginalName();
+            $image_file = $request->file('image');
+            $image = $image_file->getClientOriginalName();
 
-            $image->move($directory_path, $image_path);
+            $image_file->move($directory_path, $directory_path.$image);
         } else {
-            $image_path = 'images/profile/profile-default.png';
+            $image = null;
         }
-        $data['image'] = $image_path;
+        $data['image'] = $image;
         // dd($data);
         $new = new User($data);
 
