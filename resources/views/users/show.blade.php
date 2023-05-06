@@ -26,44 +26,57 @@
 
         <hr class="mb-3" />
 
-        <div class="col-lg-3 my-3">
-            <div class="datagrid-item">
-                <div class="datagrid-title"><span>Role:</span></div>
-                <div class="datagrid-content">{{$user->formattedRole()}}</div>
+        <div class="col-xl-3">
+            <div class="row">
+                <div class="col-12 d-flex align-items-center justify-content-center">
+                    @if(file_exists(public_path('images/profile/'.$user->image)))
+                        <img id="page-imageviewer" class="image-viewer" src="{{ asset('images/profile/'.$user->image) }}" alt="user-image">
+                    @else
+                        <img id="page-imageviewer" class="image-viewer" src="{{ asset('images/profile/profile-default.png') }}" alt="user-image">
+                    @endif
+                </div>
             </div>
         </div>
-        <div class="col-lg-3 my-3">
-            <div class="datagrid-item">
-                <div class="datagrid-title"><span>First Name:</span></div>
-                <div class="datagrid-content">{{$user->fname}}</div>
+        <div class="col-xl-9 mt-3">
+            <div class="row">
+                <div class="col-lg-4 my-3">
+                    <div class="datagrid-item">
+                        <div class="datagrid-title"><span>Role:</span></div>
+                        <div class="datagrid-content">{{$user->formattedRole()}}</div>
+                    </div>
+                </div>
+                <div class="col-lg-4 my-3">
+                    <div class="datagrid-item">
+                        <div class="datagrid-title"><span>First Name:</span></div>
+                        <div class="datagrid-content">{{$user->fname}}</div>
+                    </div>
+                </div>
+                <div class="col-lg-4 my-3">
+                    <div class="datagrid-item">
+                        <div class="datagrid-title"><span>Middle Name:</span></div>
+                        <div class="datagrid-content">{{$user->mname}}</div>
+                    </div>
+                </div>
+                <div class="col-lg-4 my-3">
+                    <div class="datagrid-item">
+                        <div class="datagrid-title"><span>Last Name:</span></div>
+                        <div class="datagrid-content">{{$user->lname}}</div>
+                    </div>
+                </div>
+                <div class="col-lg-4 my-3">
+                    <div class="datagrid-item">
+                        <div class="datagrid-title"><span>Username:</span></div>
+                        <div class="datagrid-content">{{$user->username}}</div>
+                    </div>
+                </div>
+                <div class="col-lg-4 my-3">
+                    <div class="datagrid-item">
+                        <div class="datagrid-title"><span>Email:</span></div>
+                        <div class="datagrid-content">{{$user->email}}</div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="col-lg-3 my-3">
-            <div class="datagrid-item">
-                <div class="datagrid-title"><span>Middle Name:</span></div>
-                <div class="datagrid-content">{{$user->mname}}</div>
-            </div>
-        </div>
-        <div class="col-lg-3 my-3">
-            <div class="datagrid-item">
-                <div class="datagrid-title"><span>Last Name:</span></div>
-                <div class="datagrid-content">{{$user->lname}}</div>
-            </div>
-        </div>
-        <div class="col-lg-3 my-3">
-            <div class="datagrid-item">
-                <div class="datagrid-title"><span>Username:</span></div>
-                <div class="datagrid-content">{{$user->username}}</div>
-            </div>
-        </div>
-        <div class="col-lg-3 my-3">
-            <div class="datagrid-item">
-                <div class="datagrid-title"><span>Email:</span></div>
-                <div class="datagrid-content">{{$user->email}}</div>
-            </div>
-        </div>
-
-        {{-- DISPLAY USER IMAGE --}}
     </fieldset>
 </div>
 @endsection
