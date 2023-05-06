@@ -142,6 +142,12 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::findOrFail($id);
+
+        $directory_path = 'images/profile/';
+        if($user->image && file_exists(public_path($directory_path.$user->image))) {
+            unlink($directory_path.$user->image);
+        }
+
         $user->delete();
 
         return redirect()->route('users.index')->with('success','Deleted successfully');

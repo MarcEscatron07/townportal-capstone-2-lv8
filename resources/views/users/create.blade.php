@@ -94,8 +94,8 @@
                         <input id="username" name="username" type="text" class="form-control @error('username') is-invalid @enderror" value="{{ old('username') }}" required/>
                     </div>
                     <div class="col-lg-4 my-3">
-                        <label for="email" class="form-label required">Email:</label>
-                        <input id="email" name="email" type="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" required/>
+                        <label for="email" class="form-label">Email:</label>
+                        <input id="email" name="email" type="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}"/>
                     </div>
                     <div class="col-lg-4 my-3">
                         <label for="password" class="form-label required">Password:</label>
