@@ -7,7 +7,7 @@ $secondary-hover: #c7c7c7;
 $tertiary-hover: #d28800;
 
 $sidenav-width-default: 250px;
-$sidenav-width-mobile: 100px;
+$sidenav-width-mobile: 80px;
 
 
 @font-face {
@@ -305,6 +305,7 @@ body {
 
         span {
             color: $secondary-theme;
+            font-size: 1rem;
         }
     }
 }
@@ -373,6 +374,12 @@ body {
 
     .sidenav {
         min-width: $sidenav-width-mobile;
+
+        .sidenav-bot {
+            span {
+                font-size: .74rem;
+            }
+        }
     }
 }
 
@@ -383,6 +390,12 @@ body {
 
     .sidenav {
         min-width: $sidenav-width-default;
+
+        .sidenav-bot {
+            span {
+                font-size: 1rem;
+            }
+        }
     }
 }
 
