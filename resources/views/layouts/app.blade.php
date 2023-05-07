@@ -88,7 +88,7 @@
                                     </div>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                    <a href="{{ route('home') }}" class="dropdown-item">Profile</a>
+                                    <a href="{{ route('profile') }}" class="dropdown-item">Profile</a>
                                     <form action="{{ route('logout') }}" method="POST">
                                         @csrf
                                         <button type="submit" class="dropdown-item d-flex w-100">Logout</button>

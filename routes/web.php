@@ -32,6 +32,7 @@ Auth::routes();
 
 Route::middleware(['auth'])->group(function() {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/profile', [UserController::class, 'profile'])->name('profile');
 
     Route::get('/networks/data', [NetworkController::class, 'data'])->name('networks.data');
     Route::get('/computers/data', [ComputerController::class, 'data'])->name('computers.data');
