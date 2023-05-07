@@ -114,7 +114,7 @@
                 <div class="row">
                     <div class="col-12 mt-1">
                         <button type="submit" class="form-submit-btn btn btn-success"><i class="fa fa-share"></i> <span class="ms-2">Send</span></button>
-                        <div class="form-check ms-4">
+                        <div class="form-check ms-md-4">
                             <input id="update-credentials" type="checkbox" class="form-check-input" />
                             <label class="form-check-label" for="update-credentials">
                                 Update Credentials
