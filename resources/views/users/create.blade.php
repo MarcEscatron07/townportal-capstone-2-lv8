@@ -118,102 +118,102 @@
 @endsection
 
 @push('script')
-    <script>
-        const originalImage = $('#page-imageviewer').attr('src');
+<script>
+    const originalImage = $('#page-imageviewer').attr('src');
 
-        function displayUploadedFile(input, value, onSuccess, onFail) {
-            // console.log('displayUploadedFile > input', input)
-            // console.log('displayUploadedFile > value', value)
+    function displayUploadedFile(input, value, onSuccess, onFail) {
+        // console.log('displayUploadedFile > input', input)
+        // console.log('displayUploadedFile > value', value)
 
-            if(input && value) {
-                const ext = value.substring(value.lastIndexOf('.') + 1).toLowerCase();
-                const allowedExt = ['png','jpg','jpeg'];
-                if(input.files && input.files[0] && allowedExt.includes(ext)) {
-                    /*** File Output ***/
-                    const uploadedFile = input.files[0];
-                    /*** File Output ***/
+        if(input && value) {
+            const ext = value.substring(value.lastIndexOf('.') + 1).toLowerCase();
+            const allowedExt = ['png','jpg','jpeg'];
+            if(input.files && input.files[0] && allowedExt.includes(ext)) {
+                /*** File Output ***/
+                const uploadedFile = input.files[0];
+                /*** File Output ***/
 
-                    let reader = new FileReader();
-                    reader.onload = function(e){
-                        /*** base64 Output ***/
-                        const base64image = e.target.result;
-                        /*** base64 Output ***/
-                        if(onSuccess) {
-                            onSuccess(
-                                uploadedFile,
-                                base64image
-                            );
-                        }
-                    }
-                    reader.readAsDataURL(uploadedFile);
-                } else {
-                    if(onFail) {
-                        onFail();
+                let reader = new FileReader();
+                reader.onload = function(e){
+                    /*** base64 Output ***/
+                    const base64image = e.target.result;
+                    /*** base64 Output ***/
+                    if(onSuccess) {
+                        onSuccess(
+                            uploadedFile,
+                            base64image
+                        );
                     }
                 }
+                reader.readAsDataURL(uploadedFile);
             } else {
                 if(onFail) {
                     onFail();
                 }
             }
+        } else {
+            if(onFail) {
+                onFail();
+            }
         }
+    }
 
-        function resetFileUpload() {
-            $('#page-imageviewer').attr('src', originalImage);
-            $("#image-defaultupload").val('');
-        }
+    function resetFileUpload() {
+        $('#page-imageviewer').attr('src', originalImage);
+        $("#image-defaultupload").val('');
+    }
 
 
 
-        $(document).ready(function() {
-            $(document).on('change', '.default-fileupload', function(e) {
-                // console.log('.default-fileupload > e', e)
-                // console.log('.default-fileupload > this', this)
+    $(document).ready(function() {
+        $(document).on('change', '.default-fileupload', function(e) {
+            // console.log('.default-fileupload > e', e)
+            // console.log('.default-fileupload > this', this)
 
-                const input = this;
-                const id = input.id;
-                const value = $(input).val();
-                // console.log(`${id} > value:`, value)
+            const input = this;
+            const id = input.id;
+            const value = $(input).val();
+            // console.log(`${id} > value:`, value)
 
-                if(value && value.length > 0) {
-                    $(`#${id}`).addClass('text-warning');
-                } else {
-                    $(`#${id}`).removeClass('text-warning');
-                }
+            if(value && value.length > 0) {
+                $(`#${id}`).addClass('text-warning');
+            } else {
+                $(`#${id}`).removeClass('text-warning');
+            }
 
-                switch(id) {
-                    case 'image-defaultupload':
-                        displayUploadedFile(
-                            input, value,
-                            (file, base64image) => {
-                                // console.log(`${id} > file:`, file)
-                                // console.log(`${id} > base64image:`, base64image)
+            switch(id) {
+                case 'image-defaultupload':
+                    displayUploadedFile(
+                        input, value,
+                        (file, base64image) => {
+                            // console.log(`${id} > file:`, file)
+                            // console.log(`${id} > base64image:`, base64image)
 
-                                $('#page-imageviewer').attr('src', base64image);
-                            },
-                            () => { resetFileUpload(); }
-                        );
-                        break;
-                }
-            });
+                            $('#page-imageviewer').attr('src', base64image);
+                        },
+                        () => { resetFileUpload(); }
+                    );
+                    break;
+            }
+        });
 
-            $('#password, #cfpassword').on('keyup', function(e) {
-                console.log('#password > val', $('#password').val())
-                console.log('#cfpassword > val', $('#cfpassword').val())
+        $('#password, #cfpassword').on('keyup', function(e) {
+            console.log('#password > val', $('#password').val())
+            console.log('#cfpassword > val', $('#cfpassword').val())
 
-                if (
-                    $('#password').val().trim() !== '' && $('#cfpassword').val() !== '' &&
-                    $('#password').val() == $('#cfpassword').val()
-                ) {
-                    $('#password, #cfpassword').removeClass('is-invalid was-validated form-control:invalid');
-                    $('#password, #cfpassword').addClass('is-valid was-validated form-control:valid');
-                    $('.form-submit-btn').removeAttr('disabled');
-                } else {
-                    $('#password, #cfpassword').removeClass('is-valid was-validated form-control:valid');
-                    $('#password, #cfpassword').addClass('is-invalid was-validated form-control:invalid');
-                    $('.form-submit-btn').attr('disabled', 'disabled');
-                }
-            });
-        })
-    </script>
+            if (
+                $('#password').val().trim() !== '' && $('#cfpassword').val() !== '' &&
+                $('#password').val() == $('#cfpassword').val()
+            ) {
+                $('#password, #cfpassword').removeClass('is-invalid was-validated form-control:invalid');
+                $('#password, #cfpassword').addClass('is-valid was-validated form-control:valid');
+                $('.form-submit-btn').removeAttr('disabled');
+            } else {
+                $('#password, #cfpassword').removeClass('is-valid was-validated form-control:valid');
+                $('#password, #cfpassword').addClass('is-invalid was-validated form-control:invalid');
+                $('.form-submit-btn').attr('disabled', 'disabled');
+            }
+        });
+    })
+</script>
 @endpush

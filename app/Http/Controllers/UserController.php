@@ -6,6 +6,7 @@ use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -40,7 +41,10 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        $data['password'] = Hash::make($data['password']);
+
+        if($request->has('password')) {
+            $data['password'] = Hash::make($data['password']);
+        }
 
         if($request->hasFile('image')) {
             $directory_path = 'images/profile/';
@@ -104,13 +108,13 @@ class UserController extends Controller
         $data = $request->all();
         // dd($data);
 
-        $user->role_id = $data['role_id'] ?? $user->role_id;
-        $user->fname = $data['fname'] ?? $user->fname;
-        $user->mname = $data['mname'] ?? null;
-        $user->lname = $data['lname'] ?? $user->lname;
-        $user->username = $data['username'] ?? $user->username;
-        $user->email = $data['email'] ?? null;
-        $user->password = Hash::make($data['password']) ?? $user->password;
+        $user->role_id = $request->has('role_id') ? $data['role_id'] : $user->role_id;
+        $user->fname = $request->has('fname') ? $data['fname'] : $user->fname;
+        $user->mname = $request->has('mname') ? $data['mname'] :$user->mname;
+        $user->lname = $request->has('lname') ? $data['lname'] : $user->lname;
+        $user->username = $request->has('username') ? $data['username'] : $user->username;
+        $user->email = $request->has('email') ? $data['email'] : $user->email;
+        $user->password = $request->has('password') ? Hash::make($data['password']) : $user->password;
 
         if($request->hasFile('image')) {
             $directory_path = 'images/profile/';
@@ -128,10 +132,10 @@ class UserController extends Controller
         $user->image = $data['image'];
 
         if($user->save()) {
-            return redirect()->route('users.edit', $user->id)
+            return back()
             ->with('success', 'Successfully updated user!');
         } else {
-            return redirect()->route('users.edit', $user->id)
+            return back()
             ->with('failed', 'Unable to update user...');
         }
     }
@@ -180,5 +184,11 @@ class UserController extends Controller
                 })
                 ->rawColumns(['action'])->make(true);
         }
+    }
+
+    public function profile() {
+        $id = Auth::user()->id;
+        $user = $user = User::findOrFail($id);
+        return view('profile', compact('id', 'user'));
     }
 }

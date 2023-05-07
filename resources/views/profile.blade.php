@@ -1,17 +1,15 @@
 @extends('layouts.app')
 
-@section('title', 'Edit User')
-
-@section('users-active','active')
+@section('title', 'My Profile')
 
 @section('header')
 <div class="container page-header">
     <div class="row">
         <div class="col-6 d-flex align-items-center justify-content-start">
-            <h3><span class="header-title">Edit User</span></h3>
+            <h3><span class="header-title">My Profile</span></h3>
         </div>
         <div class="col-6 d-flex align-items-center justify-content-end">
-            <a href="{{ route('users.index') }}" class="btn btn-secondary"><i class="fa fa-backward-step"></i> <span class="ms-2">Back</span></a>
+            <a href="{{ url()->previous() }}" class="btn btn-secondary"><i class="fa fa-backward-step"></i> <span class="ms-2">Back</span></a>
         </div>
     </div>
 </div>
@@ -74,15 +72,6 @@
             <div class="col-xl-9 mt-3">
                 <div class="row">
                     <div class="col-lg-4 my-3">
-                        <label for="role_id" class="form-label required">Role:</label>
-                        <select id="role_id" name="role_id" class="form-select" required>
-                            <option value="" selected>-- --</option>
-                            @foreach($roles as $value)
-                                <option value="{{$value->id}}" {{ $user && in_array($value->id, [$user->role_id, old('role_id')]) ? 'selected':'' }}>{{$value->name}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="col-lg-4 my-3">
                         <label for="fname" class="form-label required">First Name:</label>
                         <input id="fname" name="fname" type="text" class="form-control @error('fname') is-invalid @enderror" value="{{ $user && $user->fname ? $user->fname : old('fname') }}" required/>
                     </div>
@@ -130,102 +119,7 @@
 
 @push('script')
 <script>
-    const originalImage = $('#page-imageviewer').attr('src');
-
-    function displayUploadedFile(input, value, onSuccess, onFail) {
-        // console.log('displayUploadedFile > input', input)
-        // console.log('displayUploadedFile > value', value)
-
-        if(input && value) {
-            const ext = value.substring(value.lastIndexOf('.') + 1).toLowerCase();
-            const allowedExt = ['png','jpg','jpeg'];
-            if(input.files && input.files[0] && allowedExt.includes(ext)) {
-                /*** File Output ***/
-                const uploadedFile = input.files[0];
-                /*** File Output ***/
-
-                let reader = new FileReader();
-                reader.onload = function(e){
-                    /*** base64 Output ***/
-                    const base64image = e.target.result;
-                    /*** base64 Output ***/
-                    if(onSuccess) {
-                        onSuccess(
-                            uploadedFile,
-                            base64image
-                        );
-                    }
-                }
-                reader.readAsDataURL(uploadedFile);
-            } else {
-                if(onFail) {
-                    onFail();
-                }
-            }
-        } else {
-            if(onFail) {
-                onFail();
-            }
-        }
-    }
-
-    function resetFileUpload() {
-        $('#page-imageviewer').attr('src', originalImage);
-        $("#image-defaultupload").val('');
-    }
-
-
-
-    $(document).ready(function() {
-        $(document).on('change', '.default-fileupload', function(e) {
-            // console.log('.default-fileupload > e', e)
-            // console.log('.default-fileupload > this', this)
-
-            const input = this;
-            const id = input.id;
-            const value = $(input).val();
-            // console.log(`${id} > value:`, value)
-
-            if(value && value.length > 0) {
-                $(`#${id}`).addClass('text-warning');
-            } else {
-                $(`#${id}`).removeClass('text-warning');
-            }
-
-            switch(id) {
-                case 'image-defaultupload':
-                    displayUploadedFile(
-                        input, value,
-                        (file, base64image) => {
-                            // console.log(`${id} > file:`, file)
-                            // console.log(`${id} > base64image:`, base64image)
-
-                            $('#page-imageviewer').attr('src', base64image);
-                        },
-                        () => { resetFileUpload(); }
-                    );
-                    break;
-            }
-        });
-
-        $('#password, #cfpassword').on('keyup', function(e) {
-            console.log('#password > val', $('#password').val())
-            console.log('#cfpassword > val', $('#cfpassword').val())
-
-            if (
-                $('#password').val().trim() !== '' && $('#cfpassword').val() !== '' &&
-                $('#password').val() == $('#cfpassword').val()
-            ) {
-                $('#password, #cfpassword').removeClass('is-invalid was-validated form-control:invalid');
-                $('#password, #cfpassword').addClass('is-valid was-validated form-control:valid');
-                $('.form-submit-btn').removeAttr('disabled');
-            } else {
-                $('#password, #cfpassword').removeClass('is-valid was-validated form-control:valid');
-                $('#password, #cfpassword').addClass('is-invalid was-validated form-control:invalid');
-                $('.form-submit-btn').attr('disabled', 'disabled');
-            }
-        });
-
+    $(document).ready(function(){
         $("#update-credentials").click(function(e) {
             if($(this).is(":checked")){
                 $(".credentials").attr('disabled',false).prop('disabled',false);
@@ -233,6 +127,6 @@
                 $(".credentials").attr('disabled',true).prop('disabled',true);
             }
         })
-    })
+    });
 </script>
 @endpush
