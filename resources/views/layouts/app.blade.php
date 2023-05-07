@@ -24,7 +24,7 @@
     <link href="{{ asset('css/fontawesome/all.css') }}" rel="stylesheet">
     <link href="{{ asset('plugins/DataTables/datatables.min.css') }}" rel="stylesheet">
     <link href="{{ asset('plugins/Toastr/toastr.min.css') }}" rel="stylesheet">
-    
+
     @stack('link')
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -54,16 +54,11 @@
                         <strong class="d-block">{{ config('app.name', 'Laravel') }}</strong>
                     </span>
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
-
+                <div class="collapse navbar-collapse mt-3 mt-md-0" id="navbarSupportedContent">
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
@@ -87,7 +82,7 @@
                                     @else
                                         <img class="avatar avatar-sm" src="{{ asset('images/profile/profile-default.png') }}" alt="user-avatar">
                                     @endif
-                                    <div class="d-none d-sm-block ps-2">
+                                    <div class="ps-2">
                                         <div class="text-success">{{ \Illuminate\Support\Facades\Auth::user()->username }}</div>
                                         <div class="mt-1 small">{{ Auth::user()->formattedRole() }}</div>
                                     </div>
