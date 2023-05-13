@@ -41,57 +41,59 @@
 <script>
     let table;
 
-    $('#table').on('preInit.dt length.dt page.dt search.dt order.dt', function() {
-        $('.spinner-ctr').css('display', 'flex');
-    });
+    $(document).ready(function(){
+        $('#table').on('preInit.dt length.dt page.dt search.dt order.dt', function() {
+            $('.spinner-ctr').css('display', 'flex');
+        });
 
-    $('#table').on('init.dt draw.dt', function() {
-        $('.spinner-ctr').css('display', 'none');
-    });
-
-    $.fn.dataTable.ext.errMode = function(settings, helpPage, message) {
-        console.log('DataTable > errMode > message:', message);
-        $('.spinner-ctr').css('display', 'none');
-    };
-
-    table = $("#table").DataTable({
-        "initComplete": function(){
+        $('#table').on('init.dt draw.dt', function() {
             $('.spinner-ctr').css('display', 'none');
-        },
-        scrollY: '340px',
-        scrollCollapse: true,
-        dom: "<'row mb-2'<'col-md-12 col-lg-4 py-1 d-flex justify-content-lg-start align-items-center'f>" +
-             "<'col-md-12 col-lg-8 py-1 pe-3 d-flex justify-content-lg-end'l>>"
-             + "<'row'<'col-md-12'tr>>" +
-             "<'row mt-2'<'col-md-12 col-lg-4 py-1 d-flex justify-content-lg-start align-items-center'i>" +
-             "<'col-md-12 col-lg-8 py-1 pe-3 d-flex justify-content-lg-end'p>>",
-        processing: false,
-        serverSide: true,
-        orderCellsTop: true,
-        ajax: "{{ route('computers.data') }}",
-        columns: [
-            {data: 'network_id', network_id: 'name', width:"20%", searchable: true, orderable: true},
-            {data: 'status_id', name: 'status_id', width:"20%", searchable: true, orderable: true},
-            {data: 'name', name: 'name', width:"20%", searchable: true, orderable: true},
-            {data: 'remarks', name: 'remarks', width:"30%", searchable: true, orderable: true},
-            {data: 'action', name: 'action', width:"10%", searchable: false, className:"text-center", orderable: false},
-        ],
-        stateSave: true,
-        stateSaveCallback: function(_settings, data) {
-            sessionStorage.setItem('table_computers', JSON.stringify(data));
-        },
-        stateLoadCallback: function(_settings) {
-            return JSON.parse(sessionStorage.getItem('table_computers') ?? '{}');
-        }
-    });
+        });
 
-    $(document).on('click','.btn-delete',function(e){
-        e.preventDefault();
-        const form = $(this).parents('.btn-group').find('.form-delete');
-        if(confirm('Do you really want to delete this data?')){
-            sessionStorage.getItem('table_computers') ? sessionStorage.removeItem('table_computers') : null;
-            form.submit();
-        }
-    })
+        $.fn.dataTable.ext.errMode = function(settings, helpPage, message) {
+            console.log('DataTable > errMode > message:', message);
+            $('.spinner-ctr').css('display', 'none');
+        };
+
+        table = $("#table").DataTable({
+            "initComplete": function(){
+                $('.spinner-ctr').css('display', 'none');
+            },
+            scrollY: '340px',
+            scrollCollapse: true,
+            dom: "<'row mb-2'<'col-md-12 col-lg-4 py-1 d-flex justify-content-lg-start align-items-center'f>" +
+                 "<'col-md-12 col-lg-8 py-1 pe-3 d-flex justify-content-lg-end'l>>"
+                 + "<'row'<'col-md-12'tr>>" +
+                 "<'row mt-2'<'col-md-12 col-lg-4 py-1 d-flex justify-content-lg-start align-items-center'i>" +
+                 "<'col-md-12 col-lg-8 py-1 pe-3 d-flex justify-content-lg-end'p>>",
+            processing: false,
+            serverSide: true,
+            orderCellsTop: true,
+            ajax: "{{ route('computers.data') }}",
+            columns: [
+                {data: 'network_id', network_id: 'name', width:"20%", searchable: true, orderable: true},
+                {data: 'status_id', name: 'status_id', width:"20%", searchable: true, orderable: true},
+                {data: 'name', name: 'name', width:"20%", searchable: true, orderable: true},
+                {data: 'remarks', name: 'remarks', width:"30%", searchable: true, orderable: true},
+                {data: 'action', name: 'action', width:"10%", searchable: false, className:"text-center", orderable: false},
+            ],
+            stateSave: true,
+            stateSaveCallback: function(_settings, data) {
+                sessionStorage.setItem('table_computers', JSON.stringify(data));
+            },
+            stateLoadCallback: function(_settings) {
+                return JSON.parse(sessionStorage.getItem('table_computers') ?? '{}');
+            }
+        });
+
+        $(document).on('click','.btn-delete',function(e){
+            e.preventDefault();
+            const form = $(this).parents('.btn-group').find('.form-delete');
+            if(confirm('Do you really want to delete this data?')){
+                sessionStorage.getItem('table_computers') ? sessionStorage.removeItem('table_computers') : null;
+                form.submit();
+            }
+        });
+    });
 </script>
 @endpush

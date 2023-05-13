@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class ReportsController extends Controller
 {
-    public function index()
+    public function index($module)
     {
         $modules = [
             'Networks',
@@ -45,7 +45,7 @@ class ReportsController extends Controller
                 'Remarks',
             ],
         ];
-        $defModule = $modules[0];
+        $defModule = $module ?? $modules[0];
 
         return view('reports.index', compact('modules', 'columns', 'defModule'));
     }

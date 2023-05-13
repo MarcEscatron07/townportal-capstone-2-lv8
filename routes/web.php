@@ -44,7 +44,7 @@ Route::middleware(['auth'])->group(function() {
 
     Route::get('/reports/data', [ReportsController::class, 'data'])->name('reports.data');
     Route::get('/reports/generate', [ReportsController::class, 'generate'])->name('reports.generate');
-    Route::get('/reports', [ReportsController::class, 'index'])->name('reports.index');
+    Route::get('/reports/{module}', [ReportsController::class, 'index'])->name('reports.index');
 
     Route::resources([
         'networks' => NetworkController::class,

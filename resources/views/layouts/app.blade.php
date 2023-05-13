@@ -164,7 +164,7 @@
                         </a>
                     </li>
                     <li class="@yield('reports-active')" title="Reports">
-                        <a href="{{ route('reports.index') }}" class="navigation-link row">
+                        <a href="{{ route('reports.index', 'Networks') }}" class="navigation-link row">
                             <div class="col-sm-2 d-flex align-items-center justify-content-center">
                                 <i class="fa fa-file-excel"></i>
                             </div>
