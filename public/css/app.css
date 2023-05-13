@@ -245,6 +245,9 @@ body {
 .sidenav .sidenav-mid .navigation-list li.active {
   background-color: #213150;
 }
+.sidenav .sidenav-mid .navigation-list li.active a {
+  color: #f59f00;
+}
 .sidenav .sidenav-mid .navigation-list .navigation-link {
   width: 100%;
   padding: 20px;

@@ -146,7 +146,7 @@ body {
 
 .form-check{
     display: inline-block;
-    
+
     input[type="checkbox"] {
         border: 1px solid #8d8b8b;
     }
@@ -290,6 +290,10 @@ body {
 
                 &.active {
                     background-color: #213150;
+
+                    a {
+                        color: $tertiary-theme;
+                    }
                 }
             }
 
