@@ -69,6 +69,13 @@
             processing: false,
             serverSide: true,
             orderCellsTop: true,
+            stateSave: true,
+            stateSaveCallback: function(_settings, data) {
+                sessionStorage.setItem('table_computers', JSON.stringify(data));
+            },
+            stateLoadCallback: function(_settings) {
+                return JSON.parse(sessionStorage.getItem('table_computers') ?? '{}');
+            },
             ajax: "{{ route('computers.data') }}",
             columns: [
                 {data: 'network_id', network_id: 'name', width:"20%", searchable: true, orderable: true},
@@ -77,13 +84,6 @@
                 {data: 'remarks', name: 'remarks', width:"30%", searchable: true, orderable: true},
                 {data: 'action', name: 'action', width:"10%", searchable: false, className:"text-center", orderable: false},
             ],
-            stateSave: true,
-            stateSaveCallback: function(_settings, data) {
-                sessionStorage.setItem('table_computers', JSON.stringify(data));
-            },
-            stateLoadCallback: function(_settings) {
-                return JSON.parse(sessionStorage.getItem('table_computers') ?? '{}');
-            }
         });
 
         $(document).on('click','.btn-delete',function(e){

@@ -70,6 +70,13 @@
             processing: false,
             serverSide: true,
             orderCellsTop: true,
+            stateSave: true,
+            stateSaveCallback: function(_settings, data) {
+                sessionStorage.setItem('table_products', JSON.stringify(data));
+            },
+            stateLoadCallback: function(_settings) {
+                return JSON.parse(sessionStorage.getItem('table_products') ?? '{}');
+            },
             ajax: "{{ route('products.data') }}",
             columns: [
                 {data: 'category_id', name: 'category_id', width:"15%", searchable: true, orderable: true},
@@ -79,13 +86,6 @@
                 {data: 'remarks', name: 'remarks', width:"30%", searchable: true, orderable: true},
                 {data: 'action', name: 'action', width:"10%", searchable: false, className:"text-center", orderable: false},
             ],
-            stateSave: true,
-            stateSaveCallback: function(_settings, data) {
-                sessionStorage.setItem('table_products', JSON.stringify(data));
-            },
-            stateLoadCallback: function(_settings) {
-                return JSON.parse(sessionStorage.getItem('table_products') ?? '{}');
-            }
         });
 
         $(document).on('click','.btn-delete',function(e){

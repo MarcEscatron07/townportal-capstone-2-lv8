@@ -73,6 +73,13 @@
             processing: false,
             serverSide: true,
             orderCellsTop: true,
+            stateSave: true,
+            stateSaveCallback: function(_settings, data) {
+                sessionStorage.setItem('table_peripherals', JSON.stringify(data));
+            },
+            stateLoadCallback: function(_settings) {
+                return JSON.parse(sessionStorage.getItem('table_peripherals') ?? '{}');
+            },
             ajax: "{{ route('peripherals.data') }}",
             columns: [
                 {data: 'computer_id', name: 'computer_id', width:"8%", searchable: true, orderable: true},
@@ -85,13 +92,6 @@
                 {data: 'remarks', name: 'remarks', width:"20%", searchable: true, orderable: true},
                 {data: 'action', name: 'action', width:"10%", searchable: false, className:"text-center", orderable: false},
             ],
-            stateSave: true,
-            stateSaveCallback: function(_settings, data) {
-                sessionStorage.setItem('table_peripherals', JSON.stringify(data));
-            },
-            stateLoadCallback: function(_settings) {
-                return JSON.parse(sessionStorage.getItem('table_peripherals') ?? '{}');
-            }
         });
 
         $(document).on('click','.btn-delete',function(e){

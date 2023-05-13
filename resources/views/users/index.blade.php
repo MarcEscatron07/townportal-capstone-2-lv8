@@ -71,6 +71,13 @@
             processing: false,
             serverSide: true,
             orderCellsTop: true,
+            stateSave: true,
+            stateSaveCallback: function(_settings, data) {
+                sessionStorage.setItem('table_users', JSON.stringify(data));
+            },
+            stateLoadCallback: function(_settings) {
+                return JSON.parse(sessionStorage.getItem('table_users') ?? '{}');
+            },
             ajax: "{{ route('users.data') }}",
             columns: [
                 {data: 'role_id', name: 'role_id', width:"10%", searchable: true, orderable: true},
@@ -81,13 +88,6 @@
                 {data: 'email', name: 'email', width:"20%", searchable: true, orderable: true},
                 {data: 'action', name: 'action', width:"10%", searchable: false, className:"text-center", orderable: false},
             ],
-            stateSave: true,
-            stateSaveCallback: function(_settings, data) {
-                sessionStorage.setItem('table_users', JSON.stringify(data));
-            },
-            stateLoadCallback: function(_settings) {
-                return JSON.parse(sessionStorage.getItem('table_users') ?? '{}');
-            }
         });
 
         $(document).on('click','.btn-delete',function(e){

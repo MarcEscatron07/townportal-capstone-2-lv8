@@ -29,12 +29,12 @@
         </div>
         <div class="col-lg-9 my-2">
             <div class="row h-100 w-100 m-0">
-                <div class="col-3 d-flex align-items-end ps-0">
-                    <button type="submit" class="btn btn-info reports-btn"><i class="fa fa-circle-check"></i> <span class="ms-2">Select</span></button>
+                <div class="col-md-3 d-flex align-items-end p-0">
+                    <button id="btn-select" type="submit" class="btn btn-info reports-btn"><i class="fa fa-circle-check"></i> <span class="ms-2">Select</span></button>
                 </div>
-                <div class="col-9 d-flex align-items-end pe-0 justify-content-end">
-                    <button type="button" class="btn btn-warning reports-btn me-1" disabled><i class="fa fa-times"></i> <span class="ms-2">Clear</span></button>
-                    <button type="button" class="btn btn-success reports-btn ms-1"><i class="fa fa-table-list"></i> <span class="ms-2">Generate</span></button>
+                <div class="col-md-9 d-flex align-items-end p-0 justify-content-md-end">
+                    <button id="btn-clear" type="button" class="btn btn-warning reports-btn me-1" onclick="clearData()"><i class="fa fa-times"></i> <span class="ms-2">Clear</span></button>
+                    <button id="btn-generate" type="button" class="btn btn-success reports-btn ms-1" onclick="fetchData()"><i class="fa fa-table-list"></i> <span class="ms-2">Generate</span></button>
                 </div>
             </div>
         </div>
@@ -42,14 +42,15 @@
 
     <form id="form-generate" class="row p-3" action="{{ route('reports.generate') }}" method="GET">
         <div class="col-12 mb-2">
-            <button type="submit" class="btn btn-dark reports-btn" disabled><i class="fa fa-download"></i> <span class="ms-2">Export</span></button>
+            <button id="btn-export" type="submit" class="btn btn-dark reports-btn" disabled><i class="fa fa-download"></i> <span class="ms-2">Export</span></button>
         </div>
+        <hr class="my-3" />
         <div class="col-12 table-wrapper">
             <table class="table table-striped shadow" id="table">
                 <thead>
                     <tr class="bg-success text-dark">
                         @if($columns && $defModule && $columns[$defModule])
-                            @foreach($columns[$defModule] as $value)
+                            @foreach($columns[$defModule] as $key => $value)
                                 <th scope="col">{{$value}}</th>
                             @endforeach
                         @endif
@@ -63,6 +64,8 @@
 
 @push('script')
 <script>
+    let table;
+
     $(document).ready(function(){
         $(document).on('change','#module',function(e){
             // console.log('Select module > val', e.target.value)
@@ -73,6 +76,63 @@
             // console.log('newUrl > val', newUrl)
             $('#form-module').attr("action", newUrl);
         });
+
+        $('#table').on('preInit.dt length.dt page.dt search.dt order.dt', function() {
+            $('.spinner-ctr').css('display', 'flex');
+        });
+
+        $('#table').on('init.dt draw.dt', function() {
+            $('.spinner-ctr').css('display', 'none');
+        });
+
+        $.fn.dataTable.ext.errMode = function ( settings, helpPage, message ) {
+            console.log(message);
+            $('.spinner-ctr').css('display', 'none');
+        };
+
+        fetchData(true);
     });
+
+    function clearData() {
+        $('#form-generate').trigger('reset');
+        $("#btn-export").prop('disabled',true).attr('disabled',true);
+    }
+
+    function fetchData(isInit) {
+        const parsedCols = @json($columns && $defModule && $columns[$defModule] ? array_keys($columns[$defModule]) : []);
+        const cols = parsedCols.map(pCol => {
+            return {
+                data: pCol,
+                name: pCol,
+                width: "auto",
+                searchable: true,
+                orderable: true
+            }
+        })
+        console.log('Reports table > columns', cols)
+
+        let tableObj = {
+            "initComplete": function(){
+                $('.spinner-ctr').css('display', 'none');
+            },
+            scrollY: '340px',
+            scrollCollapse: true,
+            dom: "<'row mb-2'<'col-md-12 col-lg-4 py-1 d-flex justify-content-lg-start align-items-center'f>" +
+                 "<'col-md-12 col-lg-8 py-1 pe-3 d-flex justify-content-lg-end'l>>"
+                 + "<'row'<'col-md-12'tr>>" +
+                 "<'row mt-2'<'col-md-12 col-lg-4 py-1 d-flex justify-content-lg-start align-items-center'i>" +
+                 "<'col-md-12 col-lg-8 py-1 pe-3 d-flex justify-content-lg-end'p>>",
+            processing: false,
+            serverSide: true,
+            orderCellsTop: true,
+        };
+
+        if(!isInit) {
+            tableObj['ajax'] = "{{ route('reports.data', $defModule) }}";
+            tableObj['columns'] = cols;
+        }
+
+        table = $("#table").DataTable(tableObj);
+    }
 </script>
 @endpush

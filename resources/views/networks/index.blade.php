@@ -69,6 +69,13 @@
             processing: false,
             serverSide: true,
             orderCellsTop: true,
+            stateSave: true,
+            stateSaveCallback: function(_settings, data) {
+                sessionStorage.setItem('table_networks', JSON.stringify(data));
+            },
+            stateLoadCallback: function(_settings) {
+                return JSON.parse(sessionStorage.getItem('table_networks') ?? '{}');
+            },
             ajax: "{{ route('networks.data') }}",
             columns: [
                 {data: 'provider_id', name: 'provider_id', width:"20%", searchable: true, orderable: true},
@@ -77,13 +84,6 @@
                 {data: 'remarks', name: 'remarks', width:"30%", searchable: true, orderable: true},
                 {data: 'action', name: 'action', width:"10%", searchable: false, className:"text-center", orderable: false},
             ],
-            stateSave: true,
-            stateSaveCallback: function(_settings, data) {
-                sessionStorage.setItem('table_networks', JSON.stringify(data));
-            },
-            stateLoadCallback: function(_settings) {
-                return JSON.parse(sessionStorage.getItem('table_networks') ?? '{}');
-            }
         });
 
         $(document).on('click','.btn-delete',function(e){

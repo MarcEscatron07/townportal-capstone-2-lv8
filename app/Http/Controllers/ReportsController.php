@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Network;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class ReportsController extends Controller
 {
@@ -16,33 +18,33 @@ class ReportsController extends Controller
         ];
         $columns = [
             'Networks' => [
-                'Provider',
-                'Name',
-                'Cost',
-                'Remarks',
+                'provider_id' => 'Provider',
+                'name' => 'Name',
+                'cost' => 'Cost',
+                'remarks' => 'Remarks',
             ],
             'Computers' => [
-                'Network',
-                'Status',
-                'Name',
-                'Remarks',
+                'network_id' => 'Network',
+                'status_id' => 'Status',
+                'name' => 'Name',
+                'remarks' => 'Remarks',
             ],
             'Peripherals' => [
-                'Computer',
-                'Type',
-                'Name',
-                'Brand',
-                'Model',
-                'Serial No.',
-                'Cost',
-                'Remarks',
+                'computer_id' => 'Computer',
+                'type_id' => 'Type',
+                'name' => 'Name',
+                'brand' => 'Brand',
+                'model' => 'Model',
+                'serial_number' => 'Serial No.',
+                'cost' => 'Cost',
+                'remarks' => 'Remarks',
             ],
             'Products' => [
-                'Category',
-                'Name',
-                'Stock',
-                'Cost',
-                'Remarks',
+                'category_id' => 'Category',
+                'name' => 'Name',
+                'stock' => 'Stock',
+                'cost' => 'Cost',
+                'remarks' => 'Remarks',
             ],
         ];
         $defModule = $module ?? $modules[0];
@@ -50,12 +52,30 @@ class ReportsController extends Controller
         return view('reports.index', compact('modules', 'columns', 'defModule'));
     }
 
-    public function generate()
+    public function data($module)
     {
-        return null;
+        switch($module) {
+            case 'Networks':
+            $data = Network::get();
+
+            return DataTables::of($data)
+                ->editColumn('provider_id', function(Network $network){
+                    return $network->formattedProvider();
+                })
+                ->make(true);
+                break;
+            case 'Computers':
+                break;
+            case 'Peripherals':
+                break;
+            case 'Products':
+                break;
+        }
+
+        return 'reports.data > module: '.$module;
     }
 
-    public function data()
+    public function generate()
     {
         return null;
     }
