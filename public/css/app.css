@@ -106,13 +106,15 @@ body {
   min-height: 100px;
   resize: none;
 }
-.form-fieldset .form-label {
+
+.form-label {
   color: #555555;
   font-size: 0.85rem;
   font-weight: bold;
   text-transform: uppercase;
 }
-.form-fieldset .form-control, .form-fieldset .form-select {
+
+.form-control, .form-select {
   border-radius: 0;
 }
 

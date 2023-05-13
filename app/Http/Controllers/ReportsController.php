@@ -8,7 +8,14 @@ class ReportsController extends Controller
 {
     public function index()
     {
-        return view('reports.index');
+        $modules = [
+            'Networks' => 'Networks',
+            'Computers' => 'Computers',
+            'Peripherals' => 'Peripherals',
+            'Products' => 'Products',
+        ];
+
+        return view('reports.index', compact('modules'));
     }
 
     public function generate()

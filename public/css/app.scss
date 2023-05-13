@@ -131,17 +131,17 @@ body {
         min-height: 100px;
         resize: none;
     }
+}
 
-    .form-label {
-        color: #555555;
-        font-size: .85rem;
-        font-weight: bold;
-        text-transform: uppercase;
-    }
+.form-label {
+    color: #555555;
+    font-size: .85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
 
-    .form-control, .form-select {
-        border-radius: 0;
-    }
+.form-control, .form-select {
+    border-radius: 0;
 }
 
 .form-check{
