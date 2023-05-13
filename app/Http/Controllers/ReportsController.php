@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Network;
+use App\Models\Product;
+use App\Models\Computer;
+use App\Models\Peripheral;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 
@@ -55,28 +58,63 @@ class ReportsController extends Controller
     public function data($module)
     {
         switch($module) {
-            case 'Networks':
-            $data = Network::get();
-
-            return DataTables::of($data)
-                ->editColumn('provider_id', function(Network $network){
-                    return $network->formattedProvider();
-                })
-                ->make(true);
-                break;
             case 'Computers':
+                $data = Computer::get();
+                return DataTables::of($data)
+                    ->editColumn('network_id', function(Computer $computer){
+                        return $computer->formattedNetwork();
+                    })->editColumn('status_id', function(Computer $computer){
+                        return $computer->formattedStatus();
+                    })
+                    ->make(true);
                 break;
             case 'Peripherals':
+                $data = Peripheral::get();
+                return DataTables::of($data)
+                    ->editColumn('computer_id', function(Peripheral $peripheral){
+                        return $peripheral->formattedComputer();
+                    })->editColumn('type_id', function(Peripheral $peripheral){
+                        return $peripheral->formattedType();
+                    })
+                    ->make(true);
                 break;
             case 'Products':
+                $data = Product::get();
+                return DataTables::of($data)
+                    ->editColumn('category_id', function(Product $product){
+                        return $product->formattedCategory();
+                    })
+                    ->make(true);
+                break;
+            default:
+                $data = Network::get();
+                return DataTables::of($data)
+                    ->editColumn('provider_id', function(Network $network){
+                        return $network->formattedProvider();
+                    })
+                    ->make(true);
+                break;
+        }
+    }
+
+    public function generate($module)
+    {
+        $genModule = 'Networks';
+        switch($module) {
+            case 'Computers':
+                $genModule = $module;
+                break;
+            case 'Peripherals':
+                $genModule = $module;
+                break;
+            case 'Products':
+                $genModule = $module;
+                break;
+            default:
+                $genModule = $module;
                 break;
         }
 
-        return 'reports.data > module: '.$module;
-    }
-
-    public function generate()
-    {
-        return null;
+        return 'Generate > module: '.$genModule;
     }
 }

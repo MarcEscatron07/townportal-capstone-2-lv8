@@ -42,7 +42,7 @@ Route::middleware(['auth'])->group(function() {
 
     Route::get('/users/data', [UserController::class, 'data'])->name('users.data');
 
-    Route::get('/reports/generate', [ReportsController::class, 'generate'])->name('reports.generate');
+    Route::get('/reports/generate/{module}', [ReportsController::class, 'generate'])->name('reports.generate');
     Route::get('/reports/data/{module}', [ReportsController::class, 'data'])->name('reports.data');
     Route::get('/reports/{module}', [ReportsController::class, 'index'])->name('reports.index');
 
