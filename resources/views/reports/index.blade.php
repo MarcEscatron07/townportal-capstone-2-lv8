@@ -33,8 +33,8 @@
                     <button id="btn-select" type="submit" class="btn btn-info reports-btn"><i class="fa fa-circle-check"></i> <span class="ms-2">Select</span></button>
                 </div>
                 <div class="col-md-9 d-flex align-items-end p-0 justify-content-md-end">
-                    <button id="btn-clear" type="button" class="btn btn-warning reports-btn me-1" onclick="clearData()" disabled><i class="fa fa-times"></i> <span class="ms-2">Clear</span></button>
-                    <button id="btn-generate" type="button" class="btn btn-success reports-btn ms-1" onclick="fetchData()"><i class="fa fa-table-list"></i> <span class="ms-2">Generate</span></button>
+                    <button id="btn-clear" type="button" class="btn btn-warning reports-btn" onclick="clearData()" disabled><i class="fa fa-times"></i> <span class="ms-2">Clear</span></button>
+                    <button id="btn-generate" type="button" class="btn btn-success reports-btn" onclick="fetchData()"><i class="fa fa-table-list"></i> <span class="ms-2">Generate</span></button>
                 </div>
             </div>
         </div>
