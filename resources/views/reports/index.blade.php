@@ -79,8 +79,15 @@
                 $(rForm).attr("action", newUrl);
             })
 
-            // $("#btn-clear").prop('disabled',true).attr('disabled',true);
+            $("#btn-clear").prop('disabled',true).attr('disabled',true);
+            $("#btn-generate").prop('disabled',true).attr('disabled',true);
             $("#btn-export").prop('disabled',true).attr('disabled',true);
+
+            clearData();
+
+            if(value == "{{$defModule}}") {
+                $("#btn-generate").prop('disabled',false).attr('disabled',false);
+            }
         });
 
         $('#table').on('preInit.dt length.dt page.dt search.dt order.dt', function() {
