@@ -44,7 +44,6 @@ body {
 .table-wrapper {
   position: relative;
   overflow-x: auto;
-  background-color: #d8e7f4;
 }
 
 .page-header {
@@ -59,7 +58,7 @@ body {
 }
 
 .page-content {
-  background-color: #ffffff;
+  background-color: #d8e7f4;
 }
 
 .page-form {

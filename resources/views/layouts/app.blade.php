@@ -175,6 +175,16 @@
                             </a>
                         </li>
                     @endif
+                    <li class="@yield('reports-active')" title="Reports">
+                        <a href="{{ route('reports.index') }}" class="navigation-link row">
+                            <div class="col-sm-2 d-flex align-items-center justify-content-center">
+                                <i class="fa fa-file-excel"></i>
+                            </div>
+                            <div class="col-10 d-none d-sm-flex">
+                                Reports
+                            </div>
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div class="sidenav-bot">
