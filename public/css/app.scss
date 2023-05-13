@@ -378,6 +378,12 @@ body {
 }
 /* CSS Ruleset for Home */
 
+/* CSS Ruleset for Reports */
+.reports-btn {
+    min-width: 115px;
+}
+/* CSS Ruleset for Reports */
+
 
 @media screen and (max-width: 576px){ // Bootstrap Breakpoint: Extra Small
     #appNavbar, #appMain {
