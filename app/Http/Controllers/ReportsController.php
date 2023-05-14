@@ -203,12 +203,17 @@ class ReportsController extends Controller
 
         switch($module) {
             case 'Peripherals':
+                $sheet->getStyle("F11:F{$index}")->applyFromArray($borderStyle);
                 $sheet->getStyle("F11:F{$index}")->getAlignment()->applyFromArray($verticalStyle);
+                $sheet->getStyle("G11:G{$index}")->applyFromArray($borderStyle);
                 $sheet->getStyle("G11:G{$index}")->getAlignment()->applyFromArray($verticalStyle);
+                $sheet->getStyle("H11:H{$index}")->applyFromArray($borderStyle);
                 $sheet->getStyle("H11:H{$index}")->getAlignment()->applyFromArray($verticalStyle);
+                $sheet->getStyle("I11:I{$index}")->applyFromArray($borderStyle);
                 $sheet->getStyle("I11:I{$index}")->getAlignment()->applyFromArray($verticalStyle);
                 break;
             case 'Products':
+                $sheet->getStyle("F11:F{$index}")->applyFromArray($borderStyle);
                 $sheet->getStyle("F11:F{$index}")->getAlignment()->applyFromArray($verticalStyle);
                 break;
         }
