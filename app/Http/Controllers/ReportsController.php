@@ -105,53 +105,6 @@ class ReportsController extends Controller
         switch($module) {
             case 'Computers':
                 $data = Computer::get();
-                $spreadsheet = IOFactory::load("spreadsheets\\townportal-computers.xlsx");
-                $sheet = $spreadsheet->getActiveSheet();
-                $index = 11;
-                $ctr = 1;
-
-                foreach ($data as $d){
-                    $sheet->setCellValue('A'.$index, $ctr);
-                    $sheet->setCellValue('B'.$index, $d->formattedNetwork());
-                    $sheet->setCellValue('C'.$index, $d->formattedStatus());
-                    $sheet->setCellValue('D'.$index, $d->name);
-                    $sheet->setCellValue('E'.$index, $d->remarks);
-
-                    $index++;
-                    $ctr++;
-                }
-                $verticalStyle = [
-                    'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,
-                    'vertical' => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER,
-                    'wrapText' => TRUE
-                ];
-
-                $borderStyle = [
-                    'borders' => [
-                        'allBorders' => [
-                            'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
-                        ],
-                    ],
-                ];
-                $index--;
-
-                $sheet->getStyle("A11:E{$index}")->getFont()->setName('Arial');
-                $sheet->getStyle("A11:E{$index}")->getFont()->setSize(8);
-                $sheet->getStyle("A11:E{$index}")->applyFromArray($borderStyle);
-                $sheet->getStyle("B11:B{$index}")->getAlignment()->applyFromArray($verticalStyle);
-                $sheet->getStyle("C11:C{$index}")->getAlignment()->applyFromArray($verticalStyle);
-                $sheet->getStyle("D11:D{$index}")->getAlignment()->applyFromArray($verticalStyle);
-                $sheet->getStyle("E11:E{$index}")->getAlignment()->applyFromArray($verticalStyle);
-
-                $writer = new Xlsx($spreadsheet);
-                $today = Carbon::now()->format('F d, Y') ?? null;
-                $uid = $today ? '-'.$today : '';
-                $filename = "Town_Portal_{$module}{$uid}";
-                header('Content-Type: application/vnd.ms-excel');
-                header('Content-Disposition: attachment;filename="'.$filename.'.xlsx"');
-                header('Cache-Control: max-age=0');
-
-                $writer->save('php://output');
                 break;
             case 'Peripherals':
                 break;
@@ -160,5 +113,89 @@ class ReportsController extends Controller
             default:
                 break;
         }
+        $this->export($data, $module);
+    }
+
+    private function export($data, $module) {
+        switch($module) {
+            case 'Computers':
+                $spreadsheet = IOFactory::load("spreadsheets\\townportal-computers.xlsx");
+                break;
+            case 'Peripherals':
+                break;
+            case 'Products':
+                break;
+            default:
+                break;
+        }
+        $sheet = $spreadsheet->getActiveSheet();
+        $index = 11;
+        $ctr = 1;
+
+        foreach ($data as $d){
+            switch($module) {
+                case 'Computers':
+                    $sheet->setCellValue('A'.$index, $ctr);
+                    $sheet->setCellValue('B'.$index, $d->formattedNetwork());
+                    $sheet->setCellValue('C'.$index, $d->formattedStatus());
+                    $sheet->setCellValue('D'.$index, $d->name);
+                    $sheet->setCellValue('E'.$index, $d->remarks);
+                    break;
+                case 'Peripherals':
+                    break;
+                case 'Products':
+                    break;
+                default:
+                    break;
+            }
+
+            $index++;
+            $ctr++;
+        }
+
+        $verticalStyle = [
+            'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,
+            'vertical' => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER,
+            'wrapText' => TRUE
+        ];
+
+        $borderStyle = [
+            'borders' => [
+                'allBorders' => [
+                    'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                ],
+            ],
+        ];
+
+        $index--;
+
+        switch($module) {
+            case 'Computers':
+                $sheet->getStyle("A11:E{$index}")->getFont()->setName('Arial');
+                $sheet->getStyle("A11:E{$index}")->getFont()->setSize(8);
+                $sheet->getStyle("A11:E{$index}")->applyFromArray($borderStyle);
+                $sheet->getStyle("B11:B{$index}")->getAlignment()->applyFromArray($verticalStyle);
+                $sheet->getStyle("C11:C{$index}")->getAlignment()->applyFromArray($verticalStyle);
+                $sheet->getStyle("D11:D{$index}")->getAlignment()->applyFromArray($verticalStyle);
+                $sheet->getStyle("E11:E{$index}")->getAlignment()->applyFromArray($verticalStyle);
+                break;
+            case 'Peripherals':
+                break;
+            case 'Products':
+                break;
+            default:
+                break;
+        }
+
+        $writer = new Xlsx($spreadsheet);
+        $today = Carbon::now()->format('F d, Y') ?? null;
+        $uid = $today ? '-'.$today : '';
+        $filename = "Town_Portal_{$module}{$uid}";
+
+        header('Content-Type: application/vnd.ms-excel');
+        header('Content-Disposition: attachment;filename="'.$filename.'.xlsx"');
+        header('Cache-Control: max-age=0');
+
+        $writer->save('php://output');
     }
 }
