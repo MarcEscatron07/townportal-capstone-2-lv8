@@ -112,7 +112,7 @@
             table.destroy();
         }
 
-        $('#form-generate').trigger('reset');
+        // $('#form-generate').trigger('reset');
         $("#btn-clear").prop('disabled',true).attr('disabled',true);
         $("#btn-export").prop('disabled',true).attr('disabled',true);
 

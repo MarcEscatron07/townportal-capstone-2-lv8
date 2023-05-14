@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Network;
 use App\Models\Product;
 use App\Models\Computer;
 use App\Models\Peripheral;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use PhpOffice\PhpSpreadsheet\IOFactory;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class ReportsController extends Controller
 {
@@ -71,18 +74,18 @@ class ReportsController extends Controller
             case 'Peripherals':
                 $data = Peripheral::get();
                 return DataTables::of($data)
-                    ->editColumn('computer_id', function(Peripheral $peripheral){
-                        return $peripheral->formattedComputer();
-                    })->editColumn('type_id', function(Peripheral $peripheral){
-                        return $peripheral->formattedType();
+                    ->editColumn('computer_id', function(Peripheral $deripheral){
+                        return $deripheral->formattedComputer();
+                    })->editColumn('type_id', function(Peripheral $deripheral){
+                        return $deripheral->formattedType();
                     })
                     ->make(true);
                 break;
             case 'Products':
                 $data = Product::get();
                 return DataTables::of($data)
-                    ->editColumn('category_id', function(Product $product){
-                        return $product->formattedCategory();
+                    ->editColumn('category_id', function(Product $droduct){
+                        return $droduct->formattedCategory();
                     })
                     ->make(true);
                 break;
@@ -99,22 +102,63 @@ class ReportsController extends Controller
 
     public function generate($module)
     {
-        $genModule = 'Networks';
         switch($module) {
             case 'Computers':
-                $genModule = $module;
+                $data = Computer::get();
+                $spreadsheet = IOFactory::load("spreadsheets\\townportal-computers.xlsx");
+                $sheet = $spreadsheet->getActiveSheet();
+                $index = 11;
+                $ctr = 1;
+
+                foreach ($data as $d){
+                    $sheet->setCellValue('A'.$index, $ctr);
+                    $sheet->setCellValue('B'.$index, $d->formattedNetwork());
+                    $sheet->setCellValue('C'.$index, $d->formattedStatus());
+                    $sheet->setCellValue('D'.$index, $d->name);
+                    $sheet->setCellValue('E'.$index, $d->remarks);
+
+                    $index++;
+                    $ctr++;
+                }
+                $verticalStyle = [
+                    'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,
+                    'vertical' => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER,
+                    'wrapText' => TRUE
+                ];
+
+                $borderStyle = [
+                    'borders' => [
+                        'allBorders' => [
+                            'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                        ],
+                    ],
+                ];
+                $index--;
+
+                $sheet->getStyle("A11:E{$index}")->getFont()->setName('Arial');
+                $sheet->getStyle("A11:E{$index}")->getFont()->setSize(8);
+                $sheet->getStyle("A11:E{$index}")->applyFromArray($borderStyle);
+                $sheet->getStyle("B11:B{$index}")->getAlignment()->applyFromArray($verticalStyle);
+                $sheet->getStyle("C11:C{$index}")->getAlignment()->applyFromArray($verticalStyle);
+                $sheet->getStyle("D11:D{$index}")->getAlignment()->applyFromArray($verticalStyle);
+                $sheet->getStyle("E11:E{$index}")->getAlignment()->applyFromArray($verticalStyle);
+
+                $writer = new Xlsx($spreadsheet);
+                $today = Carbon::now()->format('F d, Y') ?? null;
+                $uid = $today ? '-'.$today : '';
+                $filename = "Town_Portal_{$module}{$uid}";
+                header('Content-Type: application/vnd.ms-excel');
+                header('Content-Disposition: attachment;filename="'.$filename.'.xlsx"');
+                header('Cache-Control: max-age=0');
+
+                $writer->save('php://output');
                 break;
             case 'Peripherals':
-                $genModule = $module;
                 break;
             case 'Products':
-                $genModule = $module;
                 break;
             default:
-                $genModule = $module;
                 break;
         }
-
-        return 'Generate > module: '.$genModule;
     }
 }
