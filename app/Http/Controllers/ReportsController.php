@@ -7,7 +7,6 @@ use App\Models\Network;
 use App\Models\Product;
 use App\Models\Computer;
 use App\Models\Peripheral;
-use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
@@ -107,10 +106,13 @@ class ReportsController extends Controller
                 $data = Computer::get();
                 break;
             case 'Peripherals':
+                $data = Peripheral::get();
                 break;
             case 'Products':
+                $data = Product::get();
                 break;
             default:
+                $data = Network::get();
                 break;
         }
         $this->export($data, $module);
@@ -122,10 +124,13 @@ class ReportsController extends Controller
                 $spreadsheet = IOFactory::load("spreadsheets\\townportal-computers.xlsx");
                 break;
             case 'Peripherals':
+                $spreadsheet = IOFactory::load("spreadsheets\\townportal-peripherals.xlsx");
                 break;
             case 'Products':
+                $spreadsheet = IOFactory::load("spreadsheets\\townportal-products.xlsx");
                 break;
             default:
+                $spreadsheet = IOFactory::load("spreadsheets\\townportal-networks.xlsx");
                 break;
         }
         $sheet = $spreadsheet->getActiveSheet();
@@ -142,16 +147,37 @@ class ReportsController extends Controller
                     $sheet->setCellValue('E'.$index, $d->remarks);
                     break;
                 case 'Peripherals':
+                    $sheet->setCellValue('A'.$index, $ctr);
+                    $sheet->setCellValue('B'.$index, $d->formattedComputer());
+                    $sheet->setCellValue('C'.$index, $d->formattedType());
+                    $sheet->setCellValue('D'.$index, $d->name);
+                    $sheet->setCellValue('E'.$index, $d->brand);
+                    $sheet->setCellValue('F'.$index, $d->model);
+                    $sheet->setCellValue('G'.$index, $d->serial_number);
+                    $sheet->setCellValue('H'.$index, $d->cost);
+                    $sheet->setCellValue('I'.$index, $d->remarks);
                     break;
                 case 'Products':
+                    $sheet->setCellValue('A'.$index, $ctr);
+                    $sheet->setCellValue('B'.$index, $d->formattedCategory());
+                    $sheet->setCellValue('C'.$index, $d->name);
+                    $sheet->setCellValue('D'.$index, $d->stock);
+                    $sheet->setCellValue('E'.$index, $d->cost);
+                    $sheet->setCellValue('F'.$index, $d->remarks);
                     break;
                 default:
+                    $sheet->setCellValue('A'.$index, $ctr);
+                    $sheet->setCellValue('B'.$index, $d->formattedProvider());
+                    $sheet->setCellValue('C'.$index, $d->name);
+                    $sheet->setCellValue('D'.$index, $d->cost);
+                    $sheet->setCellValue('E'.$index, $d->remarks);
                     break;
             }
 
             $index++;
             $ctr++;
         }
+        $index--;
 
         $verticalStyle = [
             'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,
@@ -167,23 +193,23 @@ class ReportsController extends Controller
             ],
         ];
 
-        $index--;
+        $sheet->getStyle("A11:E{$index}")->getFont()->setName('Arial');
+        $sheet->getStyle("A11:E{$index}")->getFont()->setSize(8);
+        $sheet->getStyle("A11:E{$index}")->applyFromArray($borderStyle);
+        $sheet->getStyle("B11:B{$index}")->getAlignment()->applyFromArray($verticalStyle);
+        $sheet->getStyle("C11:C{$index}")->getAlignment()->applyFromArray($verticalStyle);
+        $sheet->getStyle("D11:D{$index}")->getAlignment()->applyFromArray($verticalStyle);
+        $sheet->getStyle("E11:E{$index}")->getAlignment()->applyFromArray($verticalStyle);
 
         switch($module) {
-            case 'Computers':
-                $sheet->getStyle("A11:E{$index}")->getFont()->setName('Arial');
-                $sheet->getStyle("A11:E{$index}")->getFont()->setSize(8);
-                $sheet->getStyle("A11:E{$index}")->applyFromArray($borderStyle);
-                $sheet->getStyle("B11:B{$index}")->getAlignment()->applyFromArray($verticalStyle);
-                $sheet->getStyle("C11:C{$index}")->getAlignment()->applyFromArray($verticalStyle);
-                $sheet->getStyle("D11:D{$index}")->getAlignment()->applyFromArray($verticalStyle);
-                $sheet->getStyle("E11:E{$index}")->getAlignment()->applyFromArray($verticalStyle);
-                break;
             case 'Peripherals':
+                $sheet->getStyle("F11:F{$index}")->getAlignment()->applyFromArray($verticalStyle);
+                $sheet->getStyle("G11:G{$index}")->getAlignment()->applyFromArray($verticalStyle);
+                $sheet->getStyle("H11:H{$index}")->getAlignment()->applyFromArray($verticalStyle);
+                $sheet->getStyle("I11:I{$index}")->getAlignment()->applyFromArray($verticalStyle);
                 break;
             case 'Products':
-                break;
-            default:
+                $sheet->getStyle("F11:F{$index}")->getAlignment()->applyFromArray($verticalStyle);
                 break;
         }
 
