@@ -232,7 +232,7 @@
             }else{
                 $(".credentials").attr('disabled',true).prop('disabled',true);
             }
-        })
+        });
     })
 </script>
 @endpush

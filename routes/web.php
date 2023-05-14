@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NetworkController;
 use App\Http\Controllers\PeripheralController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -40,6 +41,10 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/products/data', [ProductController::class, 'data'])->name('products.data');
 
     Route::get('/users/data', [UserController::class, 'data'])->name('users.data');
+
+    Route::get('/reports/generate/{module}', [ReportsController::class, 'generate'])->name('reports.generate');
+    Route::get('/reports/data/{module}', [ReportsController::class, 'data'])->name('reports.data');
+    Route::get('/reports/{module}', [ReportsController::class, 'index'])->name('reports.index');
 
     Route::resources([
         'networks' => NetworkController::class,

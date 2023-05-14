@@ -1,6 +1,7 @@
 $primary-theme: #1d273b;
 $secondary-theme: #ffffff;
 $tertiary-theme: #f59f00;
+$form-theme : #d8e7f4;
 
 $primary-hover: #213150;
 $secondary-hover: #c7c7c7;
@@ -60,7 +61,6 @@ body {
 .table-wrapper {
     position: relative;
     overflow-x: auto;
-    background-color: #d8e7f4;
 }
 
 .page-header {
@@ -76,13 +76,13 @@ body {
 }
 
 .page-content {
-    background-color: $secondary-theme;
+    background-color: $form-theme;
 }
 
 .page-form {
     border-left: 24px groove $primary-theme;
     border-radius: 10px 0 0 10px;
-    background-color: #d8e7f4;
+    background-color: $form-theme;
 }
 
 .page-tabcontainer {
@@ -119,7 +119,7 @@ body {
 }
 
 .form-fieldset {
-    background-color: #d8e7f4;
+    background-color: $form-theme;
 
     legend {
         font-size: 1.15rem;
@@ -131,22 +131,22 @@ body {
         min-height: 100px;
         resize: none;
     }
+}
 
-    .form-label {
-        color: #555555;
-        font-size: .85rem;
-        font-weight: bold;
-        text-transform: uppercase;
-    }
+.form-label {
+    color: #555555;
+    font-size: .85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
 
-    .form-control, .form-select {
-        border-radius: 0;
-    }
+.form-control, .form-select {
+    border-radius: 0;
 }
 
 .form-check{
     display: inline-block;
-    
+
     input[type="checkbox"] {
         border: 1px solid #8d8b8b;
     }
@@ -290,6 +290,10 @@ body {
 
                 &.active {
                     background-color: #213150;
+
+                    a {
+                        color: $tertiary-theme;
+                    }
                 }
             }
 
@@ -373,6 +377,12 @@ body {
     }
 }
 /* CSS Ruleset for Home */
+
+/* CSS Ruleset for Reports */
+.reports-btn {
+    min-width: 115px;
+}
+/* CSS Ruleset for Reports */
 
 
 @media screen and (max-width: 576px){ // Bootstrap Breakpoint: Extra Small

@@ -44,7 +44,6 @@ body {
 .table-wrapper {
   position: relative;
   overflow-x: auto;
-  background-color: #d8e7f4;
 }
 
 .page-header {
@@ -59,7 +58,7 @@ body {
 }
 
 .page-content {
-  background-color: #ffffff;
+  background-color: #d8e7f4;
 }
 
 .page-form {
@@ -107,13 +106,15 @@ body {
   min-height: 100px;
   resize: none;
 }
-.form-fieldset .form-label {
+
+.form-label {
   color: #555555;
   font-size: 0.85rem;
   font-weight: bold;
   text-transform: uppercase;
 }
-.form-fieldset .form-control, .form-fieldset .form-select {
+
+.form-control, .form-select {
   border-radius: 0;
 }
 
@@ -245,6 +246,9 @@ body {
 .sidenav .sidenav-mid .navigation-list li.active {
   background-color: #213150;
 }
+.sidenav .sidenav-mid .navigation-list li.active a {
+  color: #f59f00;
+}
 .sidenav .sidenav-mid .navigation-list .navigation-link {
   width: 100%;
   padding: 20px;
@@ -308,6 +312,12 @@ body {
 }
 
 /* CSS Ruleset for Home */
+/* CSS Ruleset for Reports */
+.reports-btn {
+  min-width: 115px;
+}
+
+/* CSS Ruleset for Reports */
 @media screen and (max-width: 576px) {
   #appNavbar, #appMain {
     margin-left: 80px;
