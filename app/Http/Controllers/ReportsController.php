@@ -121,16 +121,16 @@ class ReportsController extends Controller
     private function export($data, $module) {
         switch($module) {
             case 'Computers':
-                $spreadsheet = IOFactory::load("spreadsheets\\townportal-computers.xlsx");
+                $spreadsheet = IOFactory::load(public_path("spreadsheets/townportal-computers.xlsx"));
                 break;
             case 'Peripherals':
-                $spreadsheet = IOFactory::load("spreadsheets\\townportal-peripherals.xlsx");
+                $spreadsheet = IOFactory::load(public_path("spreadsheets/townportal-peripherals.xlsx"));
                 break;
             case 'Products':
-                $spreadsheet = IOFactory::load("spreadsheets\\townportal-products.xlsx");
+                $spreadsheet = IOFactory::load(public_path("spreadsheets/townportal-products.xlsx"));
                 break;
             default:
-                $spreadsheet = IOFactory::load("spreadsheets\\townportal-networks.xlsx");
+                $spreadsheet = IOFactory::load(public_path("spreadsheets/townportal-networks.xlsx"));
                 break;
         }
         $sheet = $spreadsheet->getActiveSheet();
