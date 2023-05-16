@@ -15,43 +15,8 @@ class ReportsController extends Controller
 {
     public function index($module)
     {
-        $modules = [
-            'Networks',
-            'Computers',
-            'Peripherals',
-            'Products',
-        ];
-        $columns = [
-            'Networks' => [
-                'provider_id' => 'Provider',
-                'name' => 'Name',
-                'cost' => 'Cost',
-                'remarks' => 'Remarks',
-            ],
-            'Computers' => [
-                'network_id' => 'Network',
-                'status_id' => 'Status',
-                'name' => 'Name',
-                'remarks' => 'Remarks',
-            ],
-            'Peripherals' => [
-                'computer_id' => 'Computer',
-                'type_id' => 'Type',
-                'name' => 'Name',
-                'brand' => 'Brand',
-                'model' => 'Model',
-                'serial_number' => 'Serial No.',
-                'cost' => 'Cost',
-                'remarks' => 'Remarks',
-            ],
-            'Products' => [
-                'category_id' => 'Category',
-                'name' => 'Name',
-                'stock' => 'Stock',
-                'cost' => 'Cost',
-                'remarks' => 'Remarks',
-            ],
-        ];
+        $modules = config('global.modules') ?? ['Networks'];
+        $columns = config('global.columns');
         $defModule = $module ?? $modules[0];
 
         return view('reports.index', compact('modules', 'columns', 'defModule'));
