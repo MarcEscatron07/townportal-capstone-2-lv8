@@ -25,4 +25,41 @@ return [
         '2' => 'Drinks',
         '3' => 'Merchandise',
     ],
+    'modules' => [
+        'Networks',
+        'Computers',
+        'Peripherals',
+        'Products',
+    ],
+    'columns' => [
+        'Networks' => [
+            'provider_id' => 'Provider',
+            'name' => 'Name',
+            'cost' => 'Cost',
+            'remarks' => 'Remarks',
+        ],
+        'Computers' => [
+            'network_id' => 'Network',
+            'status_id' => 'Status',
+            'name' => 'Name',
+            'remarks' => 'Remarks',
+        ],
+        'Peripherals' => [
+            'computer_id' => 'Computer',
+            'type_id' => 'Type',
+            'name' => 'Name',
+            'brand' => 'Brand',
+            'model' => 'Model',
+            'serial_number' => 'Serial No.',
+            'cost' => 'Cost',
+            'remarks' => 'Remarks',
+        ],
+        'Products' => [
+            'category_id' => 'Category',
+            'name' => 'Name',
+            'stock' => 'Stock',
+            'cost' => 'Cost',
+            'remarks' => 'Remarks',
+        ],
+    ],
 ];
