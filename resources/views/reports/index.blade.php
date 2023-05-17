@@ -27,7 +27,7 @@
                 @endforeach
             </select>
         </div>
-        <div class="col-lg-9 my-2 d-flex align-items-end p-0 justify-content-md-end">
+        <div class="col-lg-9 my-2 p-0 d-flex align-items-end justify-content-md-end">
             <button id="btn-clear" type="button" class="btn btn-warning reports-btn" onclick="clearData()" disabled><i class="fa fa-times"></i> <span class="ms-2">Clear</span></button>
             <button id="btn-generate" type="button" class="btn btn-success reports-btn" onclick="fetchData()"><i class="fa fa-table-list"></i> <span class="ms-2">Generate</span></button>
         </div>
