@@ -27,16 +27,9 @@
                 @endforeach
             </select>
         </div>
-        <div class="col-lg-9 my-2">
-            <div class="row h-100 w-100 m-0">
-                <div class="col-md-3 d-flex align-items-end p-0">
-                    <button id="btn-select" type="submit" class="btn btn-info reports-btn"><i class="fa fa-circle-check"></i> <span class="ms-2">Select</span></button>
-                </div>
-                <div class="col-md-9 d-flex align-items-end p-0 justify-content-md-end">
-                    <button id="btn-clear" type="button" class="btn btn-warning reports-btn" onclick="clearData()" disabled><i class="fa fa-times"></i> <span class="ms-2">Clear</span></button>
-                    <button id="btn-generate" type="button" class="btn btn-success reports-btn" onclick="fetchData()"><i class="fa fa-table-list"></i> <span class="ms-2">Generate</span></button>
-                </div>
-            </div>
+        <div class="col-lg-9 my-2 p-0 d-flex align-items-end justify-content-md-end">
+            <button id="btn-clear" type="button" class="btn btn-warning reports-btn" onclick="clearData()" disabled><i class="fa fa-times"></i> <span class="ms-2">Clear</span></button>
+            <button id="btn-generate" type="button" class="btn btn-success reports-btn" onclick="fetchData()"><i class="fa fa-table-list"></i> <span class="ms-2">Generate</span></button>
         </div>
     </form>
 
@@ -70,24 +63,10 @@
         $(document).on('change','#module',function(e){
             // console.log('Select module > val', e.target.value)
             const value = e.target.value;
-            const reportsForms = ['#form-module', '#form-generate'];
-            reportsForms.forEach(rForm => {
-                const oldUrl = $(rForm).attr('action');
-                // console.log('oldUrl > val', oldUrl)
-                const newUrl = oldUrl.substring(0, oldUrl.lastIndexOf('/') + 1).concat(value ?? 'Networks');
-                // console.log('newUrl > val', newUrl)
-                $(rForm).attr("action", newUrl);
-            })
-
-            $("#btn-clear").prop('disabled',true).attr('disabled',true);
-            $("#btn-generate").prop('disabled',true).attr('disabled',true);
-            $("#btn-export").prop('disabled',true).attr('disabled',true);
-
-            clearData();
-
-            if(value == "{{$defModule}}") {
-                $("#btn-generate").prop('disabled',false).attr('disabled',false);
-            }
+            const oldUrl = $('#form-module').attr('action');
+            const newUrl = oldUrl.substring(0, oldUrl.lastIndexOf('/') + 1).concat(value ?? 'Networks');
+            $('#form-module').attr("action", newUrl);
+            $('#form-module').submit();
         });
 
         $('#table').on('preInit.dt length.dt page.dt search.dt order.dt', function() {
