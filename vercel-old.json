@@ -26,11 +26,11 @@
         "ASSET_URL": "https://townportal-capstone-2-lv8.vercel.app",
 
         "DB_CONNECTION": "mysql",
-        "DB_HOST": "db4free.net",
+        "DB_HOST": "sql12.freesqldatabase.com",
         "DB_PORT": "3306",
-        "DB_DATABASE": "townportal",
-        "DB_USERNAME": "marcusbenz07",
-        "DB_PASSWORD": "we4r3elektrik",
+        "DB_DATABASE": "sql12615387",
+        "DB_USERNAME": "sql12615387",
+        "DB_PASSWORD": "aQNsnWq1aE",
 
         "APP_CONFIG_CACHE": "/tmp/config.php",
         "APP_EVENTS_CACHE": "/tmp/events.php",
