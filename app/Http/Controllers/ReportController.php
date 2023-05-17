@@ -11,7 +11,7 @@ use Yajra\DataTables\DataTables;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
-class ReportsController extends Controller
+class ReportController extends Controller
 {
     public function index($module)
     {
